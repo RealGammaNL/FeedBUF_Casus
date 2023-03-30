@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL
+    public class MAINDAL
     {
         string connectionstring = "";
+
+        public string test(int testgetal)
+        {
+            return testgetal.ToString();
+        }
     }
 }
