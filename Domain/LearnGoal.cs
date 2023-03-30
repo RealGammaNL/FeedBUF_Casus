@@ -8,6 +8,6 @@ namespace DOMAIN
 {
     public class LearnGoal
     {
-
+        public List<Activity> Activities;
     }
 }
