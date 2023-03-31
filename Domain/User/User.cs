@@ -10,10 +10,15 @@ namespace DOMAIN
     {
         public int ID;
         public string Name;
-        public User(int id, string name)
+        public string Password;
+        public string Email;
+
+        public User(int id, string name, string password, string email)
         {
             ID = id;
             Name = name;
+            Password = password;
+            Email = email;
         }
     }
 }
