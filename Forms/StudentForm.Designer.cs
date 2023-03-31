@@ -45,7 +45,12 @@ namespace FeedBUF_Casus.Forms
             this.lblLearnGoals = new System.Windows.Forms.Label();
             this.pnlFeedback = new System.Windows.Forms.Panel();
             this.dgvAskQuestion = new System.Windows.Forms.DataGridView();
+            this.clnQuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnQuestionQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFeedback = new System.Windows.Forms.DataGridView();
+            this.clnFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAskQuestion = new System.Windows.Forms.Label();
             this.lblFeedback = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
@@ -58,11 +63,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlConclusion = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.clnFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnQuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnQuestionQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -258,6 +258,20 @@ namespace FeedBUF_Casus.Forms
             this.dgvAskQuestion.Size = new System.Drawing.Size(396, 210);
             this.dgvAskQuestion.TabIndex = 3;
             // 
+            // clnQuestionID
+            // 
+            this.clnQuestionID.HeaderText = "ID";
+            this.clnQuestionID.MinimumWidth = 6;
+            this.clnQuestionID.Name = "clnQuestionID";
+            this.clnQuestionID.Width = 125;
+            // 
+            // clnQuestionQuestion
+            // 
+            this.clnQuestionQuestion.HeaderText = "Vraag";
+            this.clnQuestionQuestion.MinimumWidth = 6;
+            this.clnQuestionQuestion.Name = "clnQuestionQuestion";
+            this.clnQuestionQuestion.Width = 125;
+            // 
             // dgvFeedback
             // 
             this.dgvFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -273,6 +287,27 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.Size = new System.Drawing.Size(418, 210);
             this.dgvFeedback.TabIndex = 2;
+            // 
+            // clnFeedbackID
+            // 
+            this.clnFeedbackID.HeaderText = "ID";
+            this.clnFeedbackID.MinimumWidth = 6;
+            this.clnFeedbackID.Name = "clnFeedbackID";
+            this.clnFeedbackID.Width = 125;
+            // 
+            // clnFeedbackAuthor
+            // 
+            this.clnFeedbackAuthor.HeaderText = "Auteur";
+            this.clnFeedbackAuthor.MinimumWidth = 6;
+            this.clnFeedbackAuthor.Name = "clnFeedbackAuthor";
+            this.clnFeedbackAuthor.Width = 125;
+            // 
+            // clnFeedbackFeedback
+            // 
+            this.clnFeedbackFeedback.HeaderText = "Feedback";
+            this.clnFeedbackFeedback.MinimumWidth = 6;
+            this.clnFeedbackFeedback.Name = "clnFeedbackFeedback";
+            this.clnFeedbackFeedback.Width = 125;
             // 
             // lblAskQuestion
             // 
@@ -410,41 +445,6 @@ namespace FeedBUF_Casus.Forms
             this.label2.Size = new System.Drawing.Size(147, 36);
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
-            // 
-            // clnFeedbackID
-            // 
-            this.clnFeedbackID.HeaderText = "ID";
-            this.clnFeedbackID.MinimumWidth = 6;
-            this.clnFeedbackID.Name = "clnFeedbackID";
-            this.clnFeedbackID.Width = 125;
-            // 
-            // clnFeedbackAuthor
-            // 
-            this.clnFeedbackAuthor.HeaderText = "Auteur";
-            this.clnFeedbackAuthor.MinimumWidth = 6;
-            this.clnFeedbackAuthor.Name = "clnFeedbackAuthor";
-            this.clnFeedbackAuthor.Width = 125;
-            // 
-            // clnFeedbackFeedback
-            // 
-            this.clnFeedbackFeedback.HeaderText = "Feedback";
-            this.clnFeedbackFeedback.MinimumWidth = 6;
-            this.clnFeedbackFeedback.Name = "clnFeedbackFeedback";
-            this.clnFeedbackFeedback.Width = 125;
-            // 
-            // clnQuestionID
-            // 
-            this.clnQuestionID.HeaderText = "ID";
-            this.clnQuestionID.MinimumWidth = 6;
-            this.clnQuestionID.Name = "clnQuestionID";
-            this.clnQuestionID.Width = 125;
-            // 
-            // clnQuestionQuestion
-            // 
-            this.clnQuestionQuestion.HeaderText = "Vraag";
-            this.clnQuestionQuestion.MinimumWidth = 6;
-            this.clnQuestionQuestion.Name = "clnQuestionQuestion";
-            this.clnQuestionQuestion.Width = 125;
             // 
             // StudentForm
             // 
