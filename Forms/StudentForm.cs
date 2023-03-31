@@ -52,5 +52,10 @@ namespace FeedBUF_Casus.Forms
         {
 
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
