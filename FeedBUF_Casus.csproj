@@ -57,14 +57,6 @@
     <Compile Include="Domain\User\Student.cs" />
     <Compile Include="Domain\User\Teacher.cs" />
     <Compile Include="Domain\User\User.cs" />
-    <Compile Include="Forms\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs" />
-    <Compile Include="Forms\StudentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\StudentForm.Designer.cs" />
     <Compile Include="Forms\TeacherForm.cs">
       <SubType>Form</SubType>
     </Compile>
