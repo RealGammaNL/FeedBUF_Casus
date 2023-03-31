@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FeedBUF
+namespace FeedBUF_Casus.Forms
 {
     public partial class StudentForm : Form
     {
