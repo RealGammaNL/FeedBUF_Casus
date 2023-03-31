@@ -6,9 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DOMAIN;
 using System.Windows.Forms;
 
-namespace FeedBUF
+namespace FeedBUF_Casus.Forms
 {
     public partial class StudentForm : Form
     {
