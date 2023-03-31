@@ -24,11 +24,6 @@ namespace FeedBUF_Casus.Forms
         public LoginForm()
         {
             InitializeComponent();
-            Student teststudent = new Student(2, "Bert", "123", "bert@mail.net");
-            Teacher testteacher = new Teacher(3, "Jan", "321", "jan@mail.net");
-
-            Students.Add(teststudent);
-            Teachers.Add(testteacher);
         }
 
         public void SignInButton_Click(object sender, EventArgs e)
@@ -41,7 +36,7 @@ namespace FeedBUF_Casus.Forms
                 {
                     Hide();
                     found = true;
-                    StudentForm studentform = new StudentForm();
+                    StudentForm studentform = new StudentForm(student);
                     studentform.Show();
                     break;
                 }
@@ -53,7 +48,7 @@ namespace FeedBUF_Casus.Forms
                 {
                     Hide();
                     found = true;
-                    TeacherForm teacherform = new TeacherForm();
+                    TeacherForm teacherform = new TeacherForm(teacher);
                     teacherform.Show();
                     break;
                 }
