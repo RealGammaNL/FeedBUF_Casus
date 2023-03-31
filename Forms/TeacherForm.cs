@@ -16,5 +16,6 @@ namespace FeedBUF_Casus.Forms
         {
             InitializeComponent();
         }
+
     }
 }
