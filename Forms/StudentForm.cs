@@ -16,6 +16,36 @@ namespace FeedBUF_Casus.Forms
         public StudentForm()
         {
             InitializeComponent();
+            panels.Add(pnlFeedback);
+            panels.Add(pnlFeedforward);
+            panels.Add(pnlFeedup);
+            panels.Add(pnlConclusion);
+        }
+
+        public List<Panel> panels = new List<Panel>() { };
+        // aanpassen met de panels in de form
+
+        private void Switchpanel(object sender, EventArgs e)
+        {
+            string selectedChoice = cbxPanelSwitch.Text;
+            string selectedPnl = "pnl" + selectedChoice;
+
+            HidePanels();
+            foreach (Panel panel in panels)
+            {
+                if (panel.Name == selectedPnl)
+                {
+                    panel.Show();
+                }
+            }
+        }
+
+        private void HidePanels()
+        {
+            foreach (Panel p in panels)
+            {
+                p.Hide();
+            }
         }
     }
 }
