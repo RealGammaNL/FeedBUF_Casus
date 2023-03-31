@@ -45,12 +45,7 @@ namespace FeedBUF_Casus.Forms
             this.lblLearnGoals = new System.Windows.Forms.Label();
             this.pnlFeedback = new System.Windows.Forms.Panel();
             this.dgvAskQuestion = new System.Windows.Forms.DataGridView();
-            this.clnQuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnQuestionQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFeedback = new System.Windows.Forms.DataGridView();
-            this.clnFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAskQuestion = new System.Windows.Forms.Label();
             this.lblFeedback = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
@@ -63,6 +58,23 @@ namespace FeedBUF_Casus.Forms
             this.pnlConclusion = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.clnFeedforwardLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardLearngoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedupLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedupLearnGoalLearnGoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedupActivitiesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedupActivitiesActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackQuestionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackQuestionQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackFeedbackAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedbackFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -185,27 +197,36 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Name = "pnlFeedup";
             this.pnlFeedup.Size = new System.Drawing.Size(1875, 914);
             this.pnlFeedup.TabIndex = 3;
+            this.pnlFeedup.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFeedup_Paint);
             // 
             // dgvActivities
             // 
             this.dgvActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedupActivitiesID,
+            this.clnFeedupActivitiesActivity});
             this.dgvActivities.Location = new System.Drawing.Point(612, 84);
             this.dgvActivities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvActivities.Name = "dgvActivities";
+            this.dgvActivities.RowHeadersVisible = false;
             this.dgvActivities.RowHeadersWidth = 51;
             this.dgvActivities.RowTemplate.Height = 24;
-            this.dgvActivities.Size = new System.Drawing.Size(240, 150);
+            this.dgvActivities.Size = new System.Drawing.Size(240, 179);
             this.dgvActivities.TabIndex = 3;
             // 
             // dgvLearnGoals
             // 
             this.dgvLearnGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLearnGoals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedupLearnGoalID,
+            this.clnFeedupLearnGoalLearnGoal});
             this.dgvLearnGoals.Location = new System.Drawing.Point(39, 84);
             this.dgvLearnGoals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLearnGoals.Name = "dgvLearnGoals";
+            this.dgvLearnGoals.RowHeadersVisible = false;
             this.dgvLearnGoals.RowHeadersWidth = 51;
             this.dgvLearnGoals.RowTemplate.Height = 24;
-            this.dgvLearnGoals.Size = new System.Drawing.Size(240, 150);
+            this.dgvLearnGoals.Size = new System.Drawing.Size(240, 200);
             this.dgvLearnGoals.TabIndex = 2;
             // 
             // lblActivities
@@ -247,8 +268,8 @@ namespace FeedBUF_Casus.Forms
             // 
             this.dgvAskQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAskQuestion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnQuestionID,
-            this.clnQuestionQuestion});
+            this.clnFeedbackQuestionID,
+            this.clnFeedbackQuestionQuestion});
             this.dgvAskQuestion.Location = new System.Drawing.Point(612, 84);
             this.dgvAskQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvAskQuestion.Name = "dgvAskQuestion";
@@ -258,27 +279,13 @@ namespace FeedBUF_Casus.Forms
             this.dgvAskQuestion.Size = new System.Drawing.Size(396, 210);
             this.dgvAskQuestion.TabIndex = 3;
             // 
-            // clnQuestionID
-            // 
-            this.clnQuestionID.HeaderText = "ID";
-            this.clnQuestionID.MinimumWidth = 6;
-            this.clnQuestionID.Name = "clnQuestionID";
-            this.clnQuestionID.Width = 125;
-            // 
-            // clnQuestionQuestion
-            // 
-            this.clnQuestionQuestion.HeaderText = "Vraag";
-            this.clnQuestionQuestion.MinimumWidth = 6;
-            this.clnQuestionQuestion.Name = "clnQuestionQuestion";
-            this.clnQuestionQuestion.Width = 125;
-            // 
             // dgvFeedback
             // 
             this.dgvFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnFeedbackID,
-            this.clnFeedbackAuthor,
-            this.clnFeedbackFeedback});
+            this.clnFeedbackFeedbackID,
+            this.clnFeedbackFeedbackAuthor,
+            this.clnFeedbackFeedbackFeedback});
             this.dgvFeedback.Location = new System.Drawing.Point(39, 84);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvFeedback.Name = "dgvFeedback";
@@ -287,27 +294,6 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.Size = new System.Drawing.Size(418, 210);
             this.dgvFeedback.TabIndex = 2;
-            // 
-            // clnFeedbackID
-            // 
-            this.clnFeedbackID.HeaderText = "ID";
-            this.clnFeedbackID.MinimumWidth = 6;
-            this.clnFeedbackID.Name = "clnFeedbackID";
-            this.clnFeedbackID.Width = 125;
-            // 
-            // clnFeedbackAuthor
-            // 
-            this.clnFeedbackAuthor.HeaderText = "Auteur";
-            this.clnFeedbackAuthor.MinimumWidth = 6;
-            this.clnFeedbackAuthor.Name = "clnFeedbackAuthor";
-            this.clnFeedbackAuthor.Width = 125;
-            // 
-            // clnFeedbackFeedback
-            // 
-            this.clnFeedbackFeedback.HeaderText = "Feedback";
-            this.clnFeedbackFeedback.MinimumWidth = 6;
-            this.clnFeedbackFeedback.Name = "clnFeedbackFeedback";
-            this.clnFeedbackFeedback.Width = 125;
             // 
             // lblAskQuestion
             // 
@@ -349,9 +335,13 @@ namespace FeedBUF_Casus.Forms
             // dgvFeedback2
             // 
             this.dgvFeedback2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFeedback2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedforwardFeedbackID,
+            this.clnFeedforwardFeedbackFeedback});
             this.dgvFeedback2.Location = new System.Drawing.Point(459, 53);
             this.dgvFeedback2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvFeedback2.Name = "dgvFeedback2";
+            this.dgvFeedback2.RowHeadersVisible = false;
             this.dgvFeedback2.RowHeadersWidth = 51;
             this.dgvFeedback2.RowTemplate.Height = 24;
             this.dgvFeedback2.Size = new System.Drawing.Size(240, 210);
@@ -364,27 +354,35 @@ namespace FeedBUF_Casus.Forms
             this.lblFeedback2.ForeColor = System.Drawing.Color.Orange;
             this.lblFeedback2.Location = new System.Drawing.Point(453, 14);
             this.lblFeedback2.Name = "lblFeedback2";
-            this.lblFeedback2.Size = new System.Drawing.Size(147, 36);
+            this.lblFeedback2.Size = new System.Drawing.Size(145, 36);
             this.lblFeedback2.TabIndex = 4;
-            this.lblFeedback2.Text = "Conclusie";
+            this.lblFeedback2.Text = "Feedback";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedforwardConclusionID,
+            this.clnFeedforwardConclusionConclusion});
             this.dataGridView1.Location = new System.Drawing.Point(947, 53);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 181);
+            this.dataGridView1.Size = new System.Drawing.Size(240, 210);
             this.dataGridView1.TabIndex = 3;
             // 
             // dgvLearnGoals2
             // 
             this.dgvLearnGoals2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLearnGoals2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedforwardLearnGoalID,
+            this.clnFeedforwardLearngoal});
             this.dgvLearnGoals2.Location = new System.Drawing.Point(39, 53);
             this.dgvLearnGoals2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLearnGoals2.Name = "dgvLearnGoals2";
+            this.dgvLearnGoals2.RowHeadersVisible = false;
             this.dgvLearnGoals2.RowHeadersWidth = 51;
             this.dgvLearnGoals2.RowTemplate.Height = 24;
             this.dgvLearnGoals2.Size = new System.Drawing.Size(240, 210);
@@ -426,9 +424,13 @@ namespace FeedBUF_Casus.Forms
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnConclusionConclusionID,
+            this.clnConclusionConclusionConclusion});
             this.dataGridView3.Location = new System.Drawing.Point(39, 84);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.Size = new System.Drawing.Size(240, 210);
@@ -446,16 +448,135 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
+            // clnFeedforwardLearnGoalID
+            // 
+            this.clnFeedforwardLearnGoalID.HeaderText = "ID";
+            this.clnFeedforwardLearnGoalID.MinimumWidth = 6;
+            this.clnFeedforwardLearnGoalID.Name = "clnFeedforwardLearnGoalID";
+            this.clnFeedforwardLearnGoalID.Width = 125;
+            // 
+            // clnFeedforwardLearngoal
+            // 
+            this.clnFeedforwardLearngoal.HeaderText = "Leerdoel";
+            this.clnFeedforwardLearngoal.MinimumWidth = 6;
+            this.clnFeedforwardLearngoal.Name = "clnFeedforwardLearngoal";
+            this.clnFeedforwardLearngoal.Width = 125;
+            // 
+            // clnFeedforwardFeedbackID
+            // 
+            this.clnFeedforwardFeedbackID.HeaderText = "ID";
+            this.clnFeedforwardFeedbackID.MinimumWidth = 6;
+            this.clnFeedforwardFeedbackID.Name = "clnFeedforwardFeedbackID";
+            this.clnFeedforwardFeedbackID.Width = 125;
+            // 
+            // clnFeedforwardFeedbackFeedback
+            // 
+            this.clnFeedforwardFeedbackFeedback.HeaderText = "Feedback";
+            this.clnFeedforwardFeedbackFeedback.MinimumWidth = 6;
+            this.clnFeedforwardFeedbackFeedback.Name = "clnFeedforwardFeedbackFeedback";
+            this.clnFeedforwardFeedbackFeedback.Width = 125;
+            // 
+            // clnFeedforwardConclusionID
+            // 
+            this.clnFeedforwardConclusionID.HeaderText = "ID";
+            this.clnFeedforwardConclusionID.MinimumWidth = 6;
+            this.clnFeedforwardConclusionID.Name = "clnFeedforwardConclusionID";
+            this.clnFeedforwardConclusionID.Width = 125;
+            // 
+            // clnFeedforwardConclusionConclusion
+            // 
+            this.clnFeedforwardConclusionConclusion.HeaderText = "Conclusie";
+            this.clnFeedforwardConclusionConclusion.MinimumWidth = 6;
+            this.clnFeedforwardConclusionConclusion.Name = "clnFeedforwardConclusionConclusion";
+            this.clnFeedforwardConclusionConclusion.Width = 125;
+            // 
+            // clnFeedupLearnGoalID
+            // 
+            this.clnFeedupLearnGoalID.HeaderText = "ID";
+            this.clnFeedupLearnGoalID.MinimumWidth = 6;
+            this.clnFeedupLearnGoalID.Name = "clnFeedupLearnGoalID";
+            this.clnFeedupLearnGoalID.Width = 125;
+            // 
+            // clnFeedupLearnGoalLearnGoal
+            // 
+            this.clnFeedupLearnGoalLearnGoal.HeaderText = "Leerdoel";
+            this.clnFeedupLearnGoalLearnGoal.MinimumWidth = 6;
+            this.clnFeedupLearnGoalLearnGoal.Name = "clnFeedupLearnGoalLearnGoal";
+            this.clnFeedupLearnGoalLearnGoal.Width = 125;
+            // 
+            // clnFeedupActivitiesID
+            // 
+            this.clnFeedupActivitiesID.HeaderText = "ID";
+            this.clnFeedupActivitiesID.MinimumWidth = 6;
+            this.clnFeedupActivitiesID.Name = "clnFeedupActivitiesID";
+            this.clnFeedupActivitiesID.Width = 125;
+            // 
+            // clnFeedupActivitiesActivity
+            // 
+            this.clnFeedupActivitiesActivity.HeaderText = "Activiteit";
+            this.clnFeedupActivitiesActivity.MinimumWidth = 6;
+            this.clnFeedupActivitiesActivity.Name = "clnFeedupActivitiesActivity";
+            this.clnFeedupActivitiesActivity.Width = 125;
+            // 
+            // clnFeedbackQuestionID
+            // 
+            this.clnFeedbackQuestionID.HeaderText = "ID";
+            this.clnFeedbackQuestionID.MinimumWidth = 6;
+            this.clnFeedbackQuestionID.Name = "clnFeedbackQuestionID";
+            this.clnFeedbackQuestionID.Width = 125;
+            // 
+            // clnFeedbackQuestionQuestion
+            // 
+            this.clnFeedbackQuestionQuestion.HeaderText = "Vraag";
+            this.clnFeedbackQuestionQuestion.MinimumWidth = 6;
+            this.clnFeedbackQuestionQuestion.Name = "clnFeedbackQuestionQuestion";
+            this.clnFeedbackQuestionQuestion.Width = 125;
+            // 
+            // clnFeedbackFeedbackID
+            // 
+            this.clnFeedbackFeedbackID.HeaderText = "ID";
+            this.clnFeedbackFeedbackID.MinimumWidth = 6;
+            this.clnFeedbackFeedbackID.Name = "clnFeedbackFeedbackID";
+            this.clnFeedbackFeedbackID.Width = 125;
+            // 
+            // clnFeedbackFeedbackAuthor
+            // 
+            this.clnFeedbackFeedbackAuthor.HeaderText = "Auteur";
+            this.clnFeedbackFeedbackAuthor.MinimumWidth = 6;
+            this.clnFeedbackFeedbackAuthor.Name = "clnFeedbackFeedbackAuthor";
+            this.clnFeedbackFeedbackAuthor.Width = 125;
+            // 
+            // clnFeedbackFeedbackFeedback
+            // 
+            this.clnFeedbackFeedbackFeedback.HeaderText = "Feedback";
+            this.clnFeedbackFeedbackFeedback.MinimumWidth = 6;
+            this.clnFeedbackFeedbackFeedback.Name = "clnFeedbackFeedbackFeedback";
+            this.clnFeedbackFeedbackFeedback.Width = 125;
+            // 
+            // clnConclusionConclusionID
+            // 
+            this.clnConclusionConclusionID.HeaderText = "ID";
+            this.clnConclusionConclusionID.MinimumWidth = 6;
+            this.clnConclusionConclusionID.Name = "clnConclusionConclusionID";
+            this.clnConclusionConclusionID.Width = 125;
+            // 
+            // clnConclusionConclusionConclusion
+            // 
+            this.clnConclusionConclusionConclusion.HeaderText = "Conclusie";
+            this.clnConclusionConclusionConclusion.MinimumWidth = 6;
+            this.clnConclusionConclusionConclusion.Name = "clnConclusionConclusionConclusion";
+            this.clnConclusionConclusionConclusion.Width = 125;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1901, 1033);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlFeedup);
-            this.Controls.Add(this.pnlConclusion);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -511,10 +632,22 @@ namespace FeedBUF_Casus.Forms
         private Panel pnlConclusion;
         private DataGridView dataGridView3;
         private Label label2;
-        private DataGridViewTextBoxColumn clnQuestionID;
-        private DataGridViewTextBoxColumn clnQuestionQuestion;
-        private DataGridViewTextBoxColumn clnFeedbackID;
-        private DataGridViewTextBoxColumn clnFeedbackAuthor;
-        private DataGridViewTextBoxColumn clnFeedbackFeedback;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackID;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackFeedback;
+        private DataGridViewTextBoxColumn clnFeedforwardConclusionID;
+        private DataGridViewTextBoxColumn clnFeedforwardConclusionConclusion;
+        private DataGridViewTextBoxColumn clnFeedforwardLearnGoalID;
+        private DataGridViewTextBoxColumn clnFeedforwardLearngoal;
+        private DataGridViewTextBoxColumn clnFeedupActivitiesID;
+        private DataGridViewTextBoxColumn clnFeedupActivitiesActivity;
+        private DataGridViewTextBoxColumn clnFeedupLearnGoalID;
+        private DataGridViewTextBoxColumn clnFeedupLearnGoalLearnGoal;
+        private DataGridViewTextBoxColumn clnFeedbackQuestionID;
+        private DataGridViewTextBoxColumn clnFeedbackQuestionQuestion;
+        private DataGridViewTextBoxColumn clnFeedbackFeedbackID;
+        private DataGridViewTextBoxColumn clnFeedbackFeedbackAuthor;
+        private DataGridViewTextBoxColumn clnFeedbackFeedbackFeedback;
+        private DataGridViewTextBoxColumn clnConclusionConclusionID;
+        private DataGridViewTextBoxColumn clnConclusionConclusionConclusion;
     }
 }

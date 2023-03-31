@@ -47,5 +47,10 @@ namespace FeedBUF_Casus.Forms
                 p.Hide();
             }
         }
+
+        private void pnlFeedup_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
