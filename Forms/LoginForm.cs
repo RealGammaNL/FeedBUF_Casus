@@ -37,6 +37,8 @@ namespace FeedBUF_Casus.Forms
                     Hide();
                     found = true;
                     StudentForm studentform = new StudentForm(student);
+                    LoginEmail_Box.Clear();
+                    LoginPassword_Box.Clear();
                     studentform.Show();
                     break;
                 }
@@ -49,6 +51,8 @@ namespace FeedBUF_Casus.Forms
                     Hide();
                     found = true;
                     TeacherForm teacherform = new TeacherForm(teacher);
+                    LoginEmail_Box.Clear();
+                    LoginPassword_Box.Clear();
                     teacherform.Show();
                     break;
                 }
