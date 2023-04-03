@@ -36,10 +36,10 @@ namespace FeedBUF_Casus.Forms
                 {
                     Hide();
                     found = true;
-                    StudentForm studentform = new StudentForm(student);
+                    //StudentForm studentform = new StudentForm(student);
                     LoginEmail_Box.Clear();
                     LoginPassword_Box.Clear();
-                    studentform.Show();
+                    //studentform.Show();
                     break;
                 }
             }
@@ -50,10 +50,10 @@ namespace FeedBUF_Casus.Forms
                 {
                     Hide();
                     found = true;
-                    TeacherForm teacherform = new TeacherForm(teacher);
+                    //TeacherForm teacherform = new TeacherForm(teacher);
                     LoginEmail_Box.Clear();
                     LoginPassword_Box.Clear();
-                    teacherform.Show();
+                    //teacherform.Show();
                     break;
                 }
             }
