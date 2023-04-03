@@ -9,18 +9,6 @@ namespace DOMAIN
     public class User
     {
         public int ID;
-<<<<<<< HEAD
-        public string Name;
-        public string Password;
-        public string Email;
-
-        public User(int id, string name, string password, string email)
-        {
-            ID = id;
-            Name = name;
-            Password = password;
-            Email = email;
-=======
         public int KlasID;
         public string Fullname;
         public string Email;
@@ -33,7 +21,6 @@ namespace DOMAIN
             Fullname = fullname;
             Email = email;
             Password = password;
->>>>>>> StudentBranch
         }
     }
 }
