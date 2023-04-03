@@ -9,11 +9,18 @@ namespace DOMAIN
     public class User
     {
         public int ID;
-        public string Name;
-        public User(int id, string name)
+        public int KlasID;
+        public string Fullname;
+        public string Email;
+        public string Password;
+
+        public User(int id, int klasid, string fullname, string email, string password)
         {
             ID = id;
-            Name = name;
+            KlasID = klasid;
+            Fullname = fullname;
+            Email = email;
+            Password = password;
         }
     }
 }

@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\MAINDAL.cs" />
-    <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="DAL\StudentDAL.cs" />
     <Compile Include="Domain\Activity.cs" />
     <Compile Include="Domain\Class.cs" />
     <Compile Include="Domain\Feedback.cs" />

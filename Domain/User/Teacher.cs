@@ -8,7 +8,7 @@ namespace DOMAIN
 {
     public class Teacher : User
     {
-        public Teacher(int id, string name)
-        : base(id, name) { }
+        public Teacher(int id, int klasid, string fullname, string email, string password)
+        : base(id, klasid, fullname, email, password) { }
     }
 }
