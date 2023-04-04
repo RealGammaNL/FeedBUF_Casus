@@ -1,4 +1,5 @@
-﻿using DOMAIN;
+﻿using DAL;
+using DOMAIN;
 using FeedBUF;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace FeedBUF_Casus.Forms
 {
     public partial class LoginForm : Form
     {
-        public List<Student> Students = new List<Student>();
+        public List<Student> Students = DAL.StudentDAL.GetStudents();
         public List<Teacher> Teachers = new List<Teacher>();
 
 
@@ -24,10 +25,7 @@ namespace FeedBUF_Casus.Forms
         public LoginForm()
         {
             InitializeComponent();
-
-
-            Students.Add(new Student(1, "B1B", "Joop De Bierboot", "joop@mail.net", "123"));
-            Students.Add(new Student(1, "B1C", "Dirk de Kip", "dirk@mail.net", "123"));
+            this.btnPasswordHelp.FlatAppearance.BorderSize = 0;
         }
 
         public void SignInButton_Click(object sender, EventArgs e)
@@ -66,6 +64,46 @@ namespace FeedBUF_Casus.Forms
             {
                 LoginPassword_Box.Clear();
                 IncorrectLabel.Show();
+            }
+        }
+
+        private void btnCreateAccountPanel_Click(object sender, EventArgs e)
+        {
+            LoginPanel.Hide();
+            pnlCreateAccount.Show();
+            lblStatus.Text = "";
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            pnlCreateAccount.Hide();
+            LoginPanel.Show();
+            txbStudentNumber.Clear();
+            txbGroup.Clear();
+            txbName.Clear();
+            txbNewEmail.Clear();
+            txbNewPassword.Clear();
+            txbNewPasswordRepeat.Clear();
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            if (txbNewPassword.Text == txbNewPasswordRepeat.Text)
+            {
+                Student student = new Student(Int32.Parse(txbStudentNumber.Text), txbGroup.Text, txbName.Text, txbNewEmail.Text, txbNewPasswordRepeat.Text);
+                StudentDAL.AddStudent(student);
+                txbStudentNumber.Clear();
+                txbGroup.Clear();
+                txbName.Clear();
+                txbNewEmail.Clear();
+                txbNewPassword.Clear();
+                txbNewPasswordRepeat.Clear();
+                lblStatus.Text = "Gelukt!";
+                Students.Add(student);
+            }
+            else
+            {
+                lblStatus.Text = "Wachtwoord komt niet overeen";
             }
         }
     }
