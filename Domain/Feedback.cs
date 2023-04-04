@@ -46,7 +46,7 @@ namespace DOMAIN
 
         }
 
-        public List<Feedback> GetFeedback()
+        public static List<Feedback> GetFeedback()
         {
             return DAL.FeedbackDAL.GetFeedback();
         }

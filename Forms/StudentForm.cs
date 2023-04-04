@@ -14,10 +14,12 @@ namespace FeedBUF_Casus.Forms
     public partial class StudentForm : Form
     {
         public Student CurrentStudent;
-        public Feedback feedback = new Feedback();
+        public static string FeedbackSelection;
         public StudentForm(Student student)
         {
             InitializeComponent();
+
+            SyncFeedback();
 
             CurrentStudent = student;
             LoginStudent(student);
@@ -33,8 +35,18 @@ namespace FeedBUF_Casus.Forms
 
         private void SyncFeedback()
         {
-            List<Feedback> TotalFeedback = feedback.GetFeedback();
+            List<Feedback> TotalFeedback = Feedback.GetFeedback();
+            dgvFeedback.Rows.Clear();
 
+            foreach (Feedback feedback in TotalFeedback)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvFeedback.Rows[0].Clone();
+                row.Cells[0].Value = feedback.FeedbackID;
+                row.Cells[1].Value = feedback.Auteur;
+                row.Cells[2].Value = feedback.Title;
+                row.Cells[3].Value = feedback.Description;
+                dgvFeedback.Rows.Add(row);
+            }
         }
 
         private void LoginStudent(Student student)
@@ -114,12 +126,19 @@ namespace FeedBUF_Casus.Forms
         {
             pnlAskQuestion.Show();
             pnlRegisterFeedback.Hide();
+            FeedbackSelection = "Question";
+            dgvFeedback.ClearSelection();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
         }
 
         private void btnRegisterFeedback_Click(object sender, EventArgs e)
         {
             pnlAskQuestion.Hide();
             pnlRegisterFeedback.Show();
+            FeedbackSelection = "Register";
+            dgvFeedback.ClearSelection();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -128,6 +147,29 @@ namespace FeedBUF_Casus.Forms
             this.Close();
             LoginForm loginform = new LoginForm();
             loginform.Show();
+        }
+
+        private void dgvFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
+            {
+                if (FeedbackSelection == "Question")
+                {
+                    txbQuestionTitle.Text = (string)row.Cells[2].Value;
+                    txbQuestionDescription.Text = (string)row.Cells[3].Value;
+                    lblQuestionTeacher.Text = (string)row.Cells[1].Value;
+                }
+
+                if (FeedbackSelection == "Register")
+                {
+
+                }
+            }
+        }
+
+        private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
