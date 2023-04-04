@@ -67,10 +67,6 @@ namespace FeedBUF_Casus.Forms
             this.btnVraagStellen = new System.Windows.Forms.Button();
             this.btnRegisterFeedback = new System.Windows.Forms.Button();
             this.dgvFeedback = new System.Windows.Forms.DataGridView();
-            this.clnFeedbackFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackFeedbackAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedbackFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedback = new System.Windows.Forms.Label();
             this.pnlAskQuestion = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -113,6 +109,10 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.FeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackTeacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -516,7 +516,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.Location = new System.Drawing.Point(9, 85);
             this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedback.Name = "pnlFeedback";
-            this.pnlFeedback.Size = new System.Drawing.Size(1406, 743);
+            this.pnlFeedback.Size = new System.Drawing.Size(1414, 743);
             this.pnlFeedback.TabIndex = 4;
             this.pnlFeedback.Visible = false;
             // 
@@ -544,9 +544,9 @@ namespace FeedBUF_Casus.Forms
             // 
             this.dgvFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnFeedbackFeedbackID,
-            this.clnFeedbackFeedbackAuthor,
-            this.clnFeedbackFeedbackFeedback,
+            this.FeedbackID,
+            this.FeedbackTeacher,
+            this.FeedbackTitle,
             this.FeedbackDescription});
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
@@ -556,32 +556,6 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
             this.dgvFeedback.TabIndex = 2;
-            // 
-            // clnFeedbackFeedbackID
-            // 
-            this.clnFeedbackFeedbackID.HeaderText = "ID";
-            this.clnFeedbackFeedbackID.MinimumWidth = 6;
-            this.clnFeedbackFeedbackID.Name = "clnFeedbackFeedbackID";
-            this.clnFeedbackFeedbackID.Width = 50;
-            // 
-            // clnFeedbackFeedbackAuthor
-            // 
-            this.clnFeedbackFeedbackAuthor.HeaderText = "Auteur";
-            this.clnFeedbackFeedbackAuthor.MinimumWidth = 6;
-            this.clnFeedbackFeedbackAuthor.Name = "clnFeedbackFeedbackAuthor";
-            // 
-            // clnFeedbackFeedbackFeedback
-            // 
-            this.clnFeedbackFeedbackFeedback.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnFeedbackFeedbackFeedback.HeaderText = "Feedback";
-            this.clnFeedbackFeedbackFeedback.MinimumWidth = 6;
-            this.clnFeedbackFeedbackFeedback.Name = "clnFeedbackFeedbackFeedback";
-            // 
-            // FeedbackDescription
-            // 
-            this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FeedbackDescription.HeaderText = "Beschrijving";
-            this.FeedbackDescription.Name = "FeedbackDescription";
             // 
             // lblFeedback
             // 
@@ -1028,11 +1002,31 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
+            // FeedbackID
+            // 
+            this.FeedbackID.HeaderText = "ID";
+            this.FeedbackID.Name = "FeedbackID";
+            // 
+            // FeedbackTeacher
+            // 
+            this.FeedbackTeacher.HeaderText = "Auteur";
+            this.FeedbackTeacher.Name = "FeedbackTeacher";
+            // 
+            // FeedbackTitle
+            // 
+            this.FeedbackTitle.HeaderText = "Titel";
+            this.FeedbackTitle.Name = "FeedbackTitle";
+            // 
+            // FeedbackDescription
+            // 
+            this.FeedbackDescription.HeaderText = "Descriptie";
+            this.FeedbackDescription.Name = "FeedbackDescription";
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 839);
+            this.ClientSize = new System.Drawing.Size(1455, 839);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
@@ -1153,9 +1147,9 @@ namespace FeedBUF_Casus.Forms
         private Label label14;
         private Label label10;
         private Label label13;
-        private DataGridViewTextBoxColumn clnFeedbackFeedbackID;
-        private DataGridViewTextBoxColumn clnFeedbackFeedbackAuthor;
-        private DataGridViewTextBoxColumn clnFeedbackFeedbackFeedback;
+        private DataGridViewTextBoxColumn FeedbackID;
+        private DataGridViewTextBoxColumn FeedbackTeacher;
+        private DataGridViewTextBoxColumn FeedbackTitle;
         private DataGridViewTextBoxColumn FeedbackDescription;
     }
 }

@@ -14,6 +14,7 @@ namespace FeedBUF_Casus.Forms
     public partial class StudentForm : Form
     {
         public Student CurrentStudent;
+        public Feedback feedback = new Feedback();
         public StudentForm(Student student)
         {
             InitializeComponent();
@@ -29,6 +30,12 @@ namespace FeedBUF_Casus.Forms
 
         public List<Panel> panels = new List<Panel>() { };
         // aanpassen met de panels in de form
+
+        private void SyncFeedback()
+        {
+            List<Feedback> TotalFeedback = feedback.GetFeedback();
+
+        }
 
         private void LoginStudent(Student student)
         {
