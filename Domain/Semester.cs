@@ -9,6 +9,5 @@ namespace DOMAIN
     public class Semester
     {
         public List<Subject> Subjects;
-        public List<Class> Classes;
     }
 }

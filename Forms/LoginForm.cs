@@ -24,6 +24,10 @@ namespace FeedBUF_Casus.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+
+            Students.Add(new Student(1, "B1B", "Joop De Bierboot", "joop@mail.net", "123"));
+            Students.Add(new Student(1, "B1C", "Dirk de Kip", "dirk@mail.net", "123"));
         }
 
         public void SignInButton_Click(object sender, EventArgs e)
@@ -34,12 +38,12 @@ namespace FeedBUF_Casus.Forms
             {
                 if (student.Email == LoginEmail_Box.Text && student.Password == LoginPassword_Box.Text)
                 {
-                    Hide();
+                    this.Hide();
                     found = true;
-                    //StudentForm studentform = new StudentForm(student);
+                    StudentForm studentform = new StudentForm(student);
                     LoginEmail_Box.Clear();
                     LoginPassword_Box.Clear();
-                    //studentform.Show();
+                    studentform.Show();
                     break;
                 }
             }

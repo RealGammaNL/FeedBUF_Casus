@@ -17,12 +17,12 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "INSERT INTO STUDENT (StudentID, KlasID, Fullname, Email, Password) VALUES (@StudentID, @KlasID, @Fullname, @Email, @Password)";
+                    string sql = "INSERT INTO STUDENT (StudentID, GroupID, Fullname, Email, Password) VALUES (@StudentID, @GroupID, @Fullname, @Email, @Password)";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@StudentID", student.ID);
-                        command.Parameters.AddWithValue("@KlasID", student.KlasID);
+                        command.Parameters.AddWithValue("@GroupID", student.GroupID);
                         command.Parameters.AddWithValue("@Fullname", student.Fullname);
                         command.Parameters.AddWithValue("@Email", student.Email);
                         command.Parameters.AddWithValue("@Password", student.Password);
@@ -57,12 +57,12 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "UPDATE STUDENT SET (StudentID = @StudentID, KlasID = @KlasID, Fullname = @Fullname, Email = @Email, Password = @Password) WHERE StudentID = @StudentID";
+                    string sql = "UPDATE STUDENT SET (StudentID = @StudentID, GroupID = @GroupID, Fullname = @Fullname, Email = @Email, Password = @Password) WHERE StudentID = @StudentID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@StudentID", student.ID);
-                        command.Parameters.AddWithValue("@KlasID", student.KlasID);
+                        command.Parameters.AddWithValue("@GroupID", student.GroupID);
                         command.Parameters.AddWithValue("@Fullname", student.Fullname);
                         command.Parameters.AddWithValue("@Email", student.Email);
                         command.Parameters.AddWithValue("@Password", student.Password);
@@ -90,7 +90,7 @@ namespace DAL
                             while (reader.Read())
                             {
                                 students.Add(new Student((int)reader["StudentID"]
-                                                    , (int)reader["KlasID"]
+                                                    , reader["GroupID"].ToString()
                                                     , reader["Fullname"].ToString()
                                                     , reader["Email"].ToString()
                                                     , reader["Password"].ToString()

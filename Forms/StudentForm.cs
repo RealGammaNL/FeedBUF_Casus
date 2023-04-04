@@ -13,9 +13,14 @@ namespace FeedBUF_Casus.Forms
 {
     public partial class StudentForm : Form
     {
-        public StudentForm()
+        public Student CurrentStudent;
+        public StudentForm(Student student)
         {
             InitializeComponent();
+
+            CurrentStudent = student;
+            LoginStudent(student);
+
             panels.Add(pnlFeedback);
             panels.Add(pnlFeedforward);
             panels.Add(pnlFeedup);
@@ -25,6 +30,11 @@ namespace FeedBUF_Casus.Forms
         public List<Panel> panels = new List<Panel>() { };
         // aanpassen met de panels in de form
 
+        private void LoginStudent(Student student)
+        {
+            lblStudentName.Text = student.Fullname;
+            lblStudentClass.Text = student.GroupID;
+        }
         private void Switchpanel(object sender, EventArgs e)
         {
             string selectedChoice = cbxPanelSwitch.Text;
@@ -103,6 +113,14 @@ namespace FeedBUF_Casus.Forms
         {
             pnlAskQuestion.Hide();
             pnlRegisterFeedback.Show();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            // Closes the studentform
+            this.Close();
+            LoginForm loginform = new LoginForm();
+            loginform.Show();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DAL
 {
     public class MAINDAL
     {
-        string connectionstring = "";
+        string connectionstring;
 
         public string test(int testgetal)
         {
