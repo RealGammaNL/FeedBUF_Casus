@@ -10,7 +10,7 @@ namespace DAL
 {
     public class StudentDAL : MAINDAL
     {
-        private static string ConnectionString = "Data Source= tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = GIGASOFTDB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
+        private static string ConnectionString = "Data Source=tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = FeedBUF_DB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
         public static void AddStudent(Student student)
         {
             try
