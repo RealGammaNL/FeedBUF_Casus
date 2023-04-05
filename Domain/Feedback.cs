@@ -27,6 +27,10 @@ namespace DOMAIN
         public int Weeknr;
         public string Auteur;
 
+        //Information about feedback
+        public string Question;
+        public string Note;
+
 
         public Feedback()
         {
@@ -41,9 +45,23 @@ namespace DOMAIN
             Description= description;
         }
 
-        public void FindTeacher()
+        public Feedback(int feedbackid, string auteur, string title, string description, string question)
         {
+            FeedbackID = feedbackid;
+            Auteur = auteur;
+            Title = title;
+            Description = description;
+            Question = question;
+        }
 
+        public Feedback(int feedbackid, string auteur, string title, string description, string question, string note)
+        {
+            FeedbackID = feedbackid;
+            Auteur = auteur;
+            Title = title;
+            Description = description;
+            Question = question;
+            Note = note;
         }
 
         public static List<Feedback> GetFeedback()
