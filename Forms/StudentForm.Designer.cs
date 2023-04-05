@@ -31,9 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -79,8 +79,8 @@ namespace FeedBUF_Casus.Forms
             this.btnFeedbackAdd = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbxActivity = new System.Windows.Forms.ComboBox();
+            this.cbxLearnGoal = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblFeedbackAuteur = new System.Windows.Forms.Label();
@@ -117,6 +117,15 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlHome = new System.Windows.Forms.Panel();
+            this.dgvSubjects = new System.Windows.Forms.DataGridView();
+            this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Following = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblNewSubject = new System.Windows.Forms.Label();
+            this.txbSubject = new System.Windows.Forms.TextBox();
+            this.btnAddSubject = new System.Windows.Forms.Button();
+            this.lblBeheerVakken = new System.Windows.Forms.Label();
+            this.lblHome = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -135,6 +144,8 @@ namespace FeedBUF_Casus.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgvLearnGoals2)).BeginInit();
             this.pnlConclusion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.pnlHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHome
@@ -200,10 +211,6 @@ namespace FeedBUF_Casus.Forms
             this.cbxSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSubject.FormattingEnabled = true;
-            this.cbxSubject.Items.AddRange(new object[] {
-            "Introduction to Development",
-            "Datastructure Basics",
-            "Project Management"});
             this.cbxSubject.Location = new System.Drawing.Point(317, 33);
             this.cbxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSubject.Name = "cbxSubject";
@@ -218,7 +225,24 @@ namespace FeedBUF_Casus.Forms
             this.cbxWeek.Items.AddRange(new object[] {
             "Week 1 ",
             "Week 2 ",
-            "Week 3 "});
+            "Week 3",
+            "Week 4",
+            "Week 5",
+            "Week 6",
+            "Week 7 ",
+            "Week 8",
+            "Week 9",
+            "Week 10",
+            "Week 11",
+            "Week 12",
+            "Week 13",
+            "Week 14",
+            "Week 15",
+            "Week 16",
+            "Week 17 ",
+            "Week 18",
+            "Week 19",
+            "Week 20"});
             this.cbxWeek.Location = new System.Drawing.Point(212, 33);
             this.cbxWeek.Margin = new System.Windows.Forms.Padding(2);
             this.cbxWeek.Name = "cbxWeek";
@@ -268,7 +292,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Size = new System.Drawing.Size(1406, 743);
             this.pnlFeedup.TabIndex = 3;
             this.pnlFeedup.Visible = false;
-            this.pnlFeedup.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFeedup_Paint);
             // 
             // btnFeedup_SwitchActivity
             // 
@@ -553,21 +576,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
@@ -583,7 +606,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // FeedbackTeacher
             // 
-            this.FeedbackTeacher.HeaderText = "Auteur";
+            this.FeedbackTeacher.HeaderText = "Teacher";
             this.FeedbackTeacher.Name = "FeedbackTeacher";
             // 
             // FeedbackTitle
@@ -595,8 +618,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.Name = "FeedbackDescription";
@@ -619,8 +642,8 @@ namespace FeedBUF_Casus.Forms
             this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackAdd);
             this.pnlRegisterFeedback.Controls.Add(this.label7);
             this.pnlRegisterFeedback.Controls.Add(this.label6);
-            this.pnlRegisterFeedback.Controls.Add(this.comboBox4);
-            this.pnlRegisterFeedback.Controls.Add(this.comboBox3);
+            this.pnlRegisterFeedback.Controls.Add(this.cbxActivity);
+            this.pnlRegisterFeedback.Controls.Add(this.cbxLearnGoal);
             this.pnlRegisterFeedback.Controls.Add(this.label5);
             this.pnlRegisterFeedback.Controls.Add(this.label4);
             this.pnlRegisterFeedback.Controls.Add(this.lblFeedbackAuteur);
@@ -666,23 +689,39 @@ namespace FeedBUF_Casus.Forms
             this.label6.TabIndex = 12;
             this.label6.Text = "Leerdoel";
             // 
-            // comboBox4
+            // cbxActivity
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(284, 91);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(225, 32);
-            this.comboBox4.TabIndex = 11;
+            this.cbxActivity.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3"});
+            this.cbxActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxActivity.FormattingEnabled = true;
+            this.cbxActivity.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbxActivity.Location = new System.Drawing.Point(284, 91);
+            this.cbxActivity.Name = "cbxActivity";
+            this.cbxActivity.Size = new System.Drawing.Size(225, 32);
+            this.cbxActivity.TabIndex = 11;
             // 
-            // comboBox3
+            // cbxLearnGoal
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(37, 92);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(225, 32);
-            this.comboBox3.TabIndex = 10;
+            this.cbxLearnGoal.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3"});
+            this.cbxLearnGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxLearnGoal.FormattingEnabled = true;
+            this.cbxLearnGoal.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbxLearnGoal.Location = new System.Drawing.Point(37, 92);
+            this.cbxLearnGoal.Name = "cbxLearnGoal";
+            this.cbxLearnGoal.Size = new System.Drawing.Size(225, 32);
+            this.cbxLearnGoal.TabIndex = 10;
             // 
             // label5
             // 
@@ -788,9 +827,9 @@ namespace FeedBUF_Casus.Forms
             this.lblQuestionTeacher.Location = new System.Drawing.Point(529, 53);
             this.lblQuestionTeacher.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuestionTeacher.Name = "lblQuestionTeacher";
-            this.lblQuestionTeacher.Size = new System.Drawing.Size(82, 29);
+            this.lblQuestionTeacher.Size = new System.Drawing.Size(103, 29);
             this.lblQuestionTeacher.TabIndex = 13;
-            this.lblQuestionTeacher.Text = "Auteur";
+            this.lblQuestionTeacher.Text = "Teacher";
             // 
             // label14
             // 
@@ -1063,12 +1102,119 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
+            // pnlHome
+            // 
+            this.pnlHome.Controls.Add(this.dgvSubjects);
+            this.pnlHome.Controls.Add(this.lblNewSubject);
+            this.pnlHome.Controls.Add(this.txbSubject);
+            this.pnlHome.Controls.Add(this.btnAddSubject);
+            this.pnlHome.Controls.Add(this.lblBeheerVakken);
+            this.pnlHome.Controls.Add(this.lblHome);
+            this.pnlHome.Location = new System.Drawing.Point(9, 85);
+            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHome.Name = "pnlHome";
+            this.pnlHome.Size = new System.Drawing.Size(1414, 743);
+            this.pnlHome.TabIndex = 8;
+            this.pnlHome.Visible = false;
+            // 
+            // dgvSubjects
+            // 
+            this.dgvSubjects.AllowUserToAddRows = false;
+            this.dgvSubjects.AllowUserToDeleteRows = false;
+            this.dgvSubjects.AllowUserToResizeColumns = false;
+            this.dgvSubjects.AllowUserToResizeRows = false;
+            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SubjectName,
+            this.Following});
+            this.dgvSubjects.Location = new System.Drawing.Point(907, 45);
+            this.dgvSubjects.MultiSelect = false;
+            this.dgvSubjects.Name = "dgvSubjects";
+            this.dgvSubjects.RowHeadersVisible = false;
+            this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSubjects.Size = new System.Drawing.Size(259, 396);
+            this.dgvSubjects.TabIndex = 8;
+            this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgSubjects_CellContentClick);
+            this.dgvSubjects.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvSubjects_CurrentCellDirtyStateChanged);
+            // 
+            // SubjectName
+            // 
+            this.SubjectName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubjectName.HeaderText = "Vaknaam";
+            this.SubjectName.Name = "SubjectName";
+            // 
+            // Following
+            // 
+            this.Following.HeaderText = "Volgend";
+            this.Following.Name = "Following";
+            this.Following.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Following.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Following.Width = 60;
+            // 
+            // lblNewSubject
+            // 
+            this.lblNewSubject.AutoSize = true;
+            this.lblNewSubject.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblNewSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewSubject.ForeColor = System.Drawing.Color.Black;
+            this.lblNewSubject.Location = new System.Drawing.Point(13, 45);
+            this.lblNewSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewSubject.Name = "lblNewSubject";
+            this.lblNewSubject.Size = new System.Drawing.Size(101, 24);
+            this.lblNewSubject.TabIndex = 6;
+            this.lblNewSubject.Text = "Nieuw Vak";
+            // 
+            // txbSubject
+            // 
+            this.txbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbSubject.Location = new System.Drawing.Point(18, 73);
+            this.txbSubject.Name = "txbSubject";
+            this.txbSubject.Size = new System.Drawing.Size(161, 26);
+            this.txbSubject.TabIndex = 5;
+            // 
+            // btnAddSubject
+            // 
+            this.btnAddSubject.Location = new System.Drawing.Point(199, 73);
+            this.btnAddSubject.Name = "btnAddSubject";
+            this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
+            this.btnAddSubject.TabIndex = 4;
+            this.btnAddSubject.Text = "Add";
+            this.btnAddSubject.UseVisualStyleBackColor = true;
+            this.btnAddSubject.Click += new System.EventHandler(this.btnAddSubject_Click);
+            // 
+            // lblBeheerVakken
+            // 
+            this.lblBeheerVakken.AutoSize = true;
+            this.lblBeheerVakken.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblBeheerVakken.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBeheerVakken.ForeColor = System.Drawing.Color.Orange;
+            this.lblBeheerVakken.Location = new System.Drawing.Point(902, 11);
+            this.lblBeheerVakken.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBeheerVakken.Name = "lblBeheerVakken";
+            this.lblBeheerVakken.Size = new System.Drawing.Size(177, 29);
+            this.lblBeheerVakken.TabIndex = 2;
+            this.lblBeheerVakken.Text = "Beheer Vakken";
+            // 
+            // lblHome
+            // 
+            this.lblHome.AutoSize = true;
+            this.lblHome.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHome.ForeColor = System.Drawing.Color.Orange;
+            this.lblHome.Location = new System.Drawing.Point(13, 11);
+            this.lblHome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHome.Name = "lblHome";
+            this.lblHome.Size = new System.Drawing.Size(78, 29);
+            this.lblHome.TabIndex = 1;
+            this.lblHome.Text = "Home";
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 839);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlFeedup);
@@ -1105,6 +1251,9 @@ namespace FeedBUF_Casus.Forms
             this.pnlConclusion.ResumeLayout(false);
             this.pnlConclusion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.pnlHome.ResumeLayout(false);
+            this.pnlHome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1160,8 +1309,8 @@ namespace FeedBUF_Casus.Forms
         private Label label1;
         private Label label7;
         private Label label6;
-        private ComboBox comboBox4;
-        private ComboBox comboBox3;
+        private ComboBox cbxActivity;
+        private ComboBox cbxLearnGoal;
         private Label label5;
         private Label label4;
         private Label lblFeedbackAuteur;
@@ -1194,5 +1343,14 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn FeedbackTitle;
         private DataGridViewTextBoxColumn FeedbackDescription;
         private Label lblQuestionTeacher;
+        private Panel pnlHome;
+        private Label lblNewSubject;
+        private TextBox txbSubject;
+        private Button btnAddSubject;
+        private Label lblBeheerVakken;
+        private Label lblHome;
+        private DataGridView dgvSubjects;
+        private DataGridViewTextBoxColumn SubjectName;
+        private DataGridViewCheckBoxColumn Following;
     }
 }
