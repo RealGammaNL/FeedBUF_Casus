@@ -13,6 +13,7 @@ namespace DOMAIN
         public string SubjectCode;
         public int WeekNr;
         public string Goal;
+        public string Note;
 
         public LearnGoal(int learngoalid, int studentid, string subjectcode, int weeknr, string goal)
         {
@@ -22,6 +23,15 @@ namespace DOMAIN
             WeekNr = weeknr;
             Goal = goal;
         }
+
+        public LearnGoal(int learngoalid, int studentid, string subjectcode, int weeknr, string goal, string note)
+        {
+            LearnGoalID = learngoalid;
+            StudentID = studentid;
+            SubjectCode = subjectcode;
+            WeekNr = weeknr;
+            Goal = goal;
+            Note = note;
+        }
     }
-    
 }

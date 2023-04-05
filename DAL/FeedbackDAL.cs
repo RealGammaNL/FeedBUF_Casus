@@ -92,39 +92,41 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
-    }
+    
 
     
 
-    public static List<LearnGoal> GetLearnGoals(Student student)
-    {
-        List<LearnGoal> learngoals = new List<LearnGoal>();
-
-        try
+        public static List<LearnGoal> GetLearnGoals(Student student)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                string sql = "SELECT * FROM LEARNGOAL WHERE StudentID = @StudentID";
+            List<LearnGoal> learngoals = new List<LearnGoal>();
 
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(sql, connection))
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string sql = "SELECT * FROM LEARNGOAL WHERE StudentID = @StudentID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            learngoals.Add(new LearnGoal((int)reader["FeedbackID"]
-                                                , reader["Name"].ToString()
-                                                , reader["Title"].ToString()
-                                                , reader["Description"].ToString()
-                                                ));
+                            while (reader.Read())
+                            {
+                                learngoals.Add(new LearnGoal((int)reader["LearnGoalID"]
+                                                    , (int)(int)reader["StudentID"]
+                                                    , reader["SubjectCode"].ToString()
+                                                    , (int)reader["WeekNr"]
+                                                    , reader["Learngoal"].ToString()
+                                                    , reader["Note"].ToString()
+                                                    ));
+                            }
                         }
                     }
                 }
+                return learngoals;
             }
-            return learngoals;
+            catch (SqlException ex) { throw ex; }
         }
-        catch (SqlException ex) { throw ex; }
     }
-}
 }
