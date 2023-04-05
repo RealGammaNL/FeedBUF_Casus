@@ -25,7 +25,7 @@ namespace DOMAIN
 
         //When was it given/by who
         public int Weeknr;
-        public string Auteur;
+        public string Teacher;
 
         //Information about feedback
         public string Question;
@@ -37,27 +37,48 @@ namespace DOMAIN
 
         }
 
-        public Feedback(int feedbackid, string auteur, string title, string description) 
+        // Feedback on an activity paired with a learngoal.
+        public Feedback (int studentid, int learngoalid, int activityid, string teacher, string title, string description)
+        {
+            StudentID = studentid;
+            LearngoalID = learngoalid;
+            ActivityID = activityid;
+            Teacher = teacher;
+            Title = title;
+            Description = description;
+        }
+
+        // Feedback on an learngoal, without a paired activity
+        public Feedback(int studentid, int learngoalid, string teacher, string title, string description)
+        {
+            StudentID = studentid;
+            LearngoalID = learngoalid;
+            Teacher = teacher;
+            Title = title;
+            Description = description;
+        }
+
+        public Feedback(int feedbackid, string teacher, string title, string description) 
         {
             FeedbackID = feedbackid;
-            Auteur = auteur;
+            Teacher = teacher;
             Title = title;
             Description= description;
         }
 
-        public Feedback(int feedbackid, string auteur, string title, string description, string question)
+        public Feedback(int feedbackid, string teacher, string title, string description, string question)
         {
             FeedbackID = feedbackid;
-            Auteur = auteur;
+            Teacher = teacher;
             Title = title;
             Description = description;
             Question = question;
         }
 
-        public Feedback(int feedbackid, string auteur, string title, string description, string question, string note)
+        public Feedback(int feedbackid, string teacher, string title, string description, string question, string note)
         {
             FeedbackID = feedbackid;
-            Auteur = auteur;
+            Teacher = teacher;
             Title = title;
             Description = description;
             Question = question;
@@ -67,6 +88,11 @@ namespace DOMAIN
         public static List<Feedback> GetFeedback()
         {
             return DAL.FeedbackDAL.GetFeedback();
+        }
+
+        public static void AddFeedback(Feedback feedback)
+        {
+            DAL.FeedbackDAL.AddFeedback(feedback);
         }
     }
 }

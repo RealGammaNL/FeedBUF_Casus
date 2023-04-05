@@ -17,15 +17,23 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "INSERT INTO FEEDBACK (StudentID, TeacherID, LearnGoalID, Activity, WeekNr, Title, Description) VALUES (@StudentID, @TeacherID, @LearnGoalID, @Activity, @WeekNr, @Title, @Description)";
+                    string sql = "INSERT INTO FEEDBACK (StudentID, Teacher, ActivityID, LearnGoalID, Title, Description) VALUES (@StudentID, @Teacher, @ActivityID, @LearnGoalID, @Title, @Description)";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@StudentID", feedback.StudentID);
-                        command.Parameters.AddWithValue("@TeacherID", feedback.TeacherID);
+                        command.Parameters.AddWithValue("@Teacher", feedback.Teacher);
                         command.Parameters.AddWithValue("@LearngoalID", feedback.LearngoalID);
-                        command.Parameters.AddWithValue("@Activity", feedback.ActivityID);
-                        command.Parameters.AddWithValue("@WeekNr", feedback.Weeknr);
+
+                        if (feedback.ActivityID == 0)
+                        {
+                            command.Parameters.AddWithValue("@ActivityID", null);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@ActivityID", feedback.ActivityID);
+                        }
+
                         command.Parameters.AddWithValue("@Title", feedback.Title);
                         command.Parameters.AddWithValue("@Description", feedback.Description);
                         command.ExecuteNonQuery();
@@ -41,7 +49,8 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "UPDATE STUDENT SET (StudentID = @StudentID, TeacherID = @TeacherID, LearnGoalID = @LearnGoalID, Activity = @Activity, WeekNr = @WeekNr, Title = @Title, Description = @Description) WHERE FeedbackID = @FeedbackID";
+                    string sql = "UPDATE STUDENT SET (StudentID = @StudentID, TeacherID = @TeacherID, LearnGoalID = @LearnGoalID, Activity = @Activity, WeekNr = @WeekNr, Title = @Title, Description = @Description) " +
+                        "WHERE FeedbackID = @FeedbackID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -68,9 +77,8 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "SELECT FEEDBACK.FeedbackID, FEEDBACK.Title, FEEDBACK.Description, TEACHER.Name " +
-                                 "FROM dbo.FEEDBACK, dbo.TEACHER " +
-                                 "WHERE FEEDBACK.TeacherID = TEACHER.TeacherID";
+                    string sql = "SELECT FeedbackID, Title, Description, Teacher " +
+                                 "FROM FEEDBACK";
 
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -80,7 +88,7 @@ namespace DAL
                             while (reader.Read())
                             {
                                 feedbacks.Add(new Feedback((int)reader["FeedbackID"]
-                                                    , reader["Name"].ToString()
+                                                    , reader["Teacher"].ToString()
                                                     , reader["Title"].ToString()
                                                     , reader["Description"].ToString()
                                                     ));

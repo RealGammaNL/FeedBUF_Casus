@@ -103,5 +103,77 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
+
+        public static void AddSubject(Student student, Subject subject)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "INSERT INTO SUBJECTS (StudentID, Subject, Following) VALUES (@StudentID, @Subject, @Following)";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+                        command.Parameters.AddWithValue("Subject", subject.Name);
+                        command.Parameters.AddWithValue("@Following", subject.Following);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static List<Subject> GetSubjects(Student student)
+        {
+            List<Subject> subjects = new List<Subject>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "SELECT Subject, Following FROM SUBJECTS WHERE StudentID = @StudentID";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                subjects.Add(new Subject(reader["Subject"].ToString()
+                                                    , (bool)reader["Following"]
+                                                    ));
+                            }
+                        }
+                    }
+                }
+                return subjects;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static void UpdateSubjects(Student student, Subject subject)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "UPDATE SUBJECTS SET Following = @Following WHERE StudentID = @StudentID AND Subject = @Subjectname";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+                        command.Parameters.AddWithValue("@Subjectname", subject.Name);
+                        command.Parameters.AddWithValue("@Following", subject.Following);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
     }
 }

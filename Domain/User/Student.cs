@@ -12,5 +12,8 @@ namespace DOMAIN
         public Student(int id, string groupid, string fullname, string email, string password)
         : base(id, groupid, fullname, email, password) { }
 
+
+
+
     }
 }

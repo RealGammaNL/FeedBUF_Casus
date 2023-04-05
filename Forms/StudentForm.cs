@@ -23,11 +23,10 @@ namespace FeedBUF_Casus.Forms
 
             CurrentStudent = student;
             LoginStudent(student);
+            dgvSubjects_Sync();
 
-            panels.Add(pnlFeedback);
-            panels.Add(pnlFeedforward);
-            panels.Add(pnlFeedup);
-            panels.Add(pnlConclusion);
+
+            panels.AddRange(new Panel[] { pnlFeedback, pnlFeedforward, pnlFeedup, pnlConclusion, pnlHome });
         }
 
         public List<Panel> panels = new List<Panel>() { };
@@ -42,7 +41,7 @@ namespace FeedBUF_Casus.Forms
             {
                 DataGridViewRow row = (DataGridViewRow)dgvFeedback.Rows[0].Clone();
                 row.Cells[0].Value = feedback.FeedbackID;
-                row.Cells[1].Value = feedback.Auteur;
+                row.Cells[1].Value = feedback.Teacher;
                 row.Cells[2].Value = feedback.Title;
                 row.Cells[3].Value = feedback.Description;
                 dgvFeedback.Rows.Add(row);
@@ -77,14 +76,11 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void pnlFeedup_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
-
+            cbxPanelSwitch.SelectedItem = null;
+            HidePanels();
+            pnlHome.Show();
         }
 
         private void txbFeedbackDescription_TextChanged(object sender, EventArgs e)
@@ -117,9 +113,31 @@ namespace FeedBUF_Casus.Forms
 
         private void btnFeedbackAdd_Click(object sender, EventArgs e)
         {
-            string Teacher = txbFeedbackTeacher.Text;
+            int StudentID = CurrentStudent.ID;
+            int LearnGoalID = Int32.Parse(cbxLearnGoal.Text.ToString());
+            string Auteur = txbFeedbackTeacher.Text;
             string Title = txbFeedbackTitle.Text;
             string Description = txbFeedbackDescription.Text;
+
+            txbFeedbackTeacher.Clear();
+            txbFeedbackTitle.Clear();
+            txbFeedbackDescription.Clear();
+
+            // If there is an activity selected.
+            if (cbxActivity.Text != "")
+            {
+                int ActivityID = Int32.Parse(cbxActivity.Text.ToString());
+                Feedback feedback = new Feedback(StudentID, LearnGoalID, ActivityID, Auteur, Title, Description);
+
+                DAL.FeedbackDAL.AddFeedback(feedback);
+            }
+
+            // If there isn't an activity selected.
+            if (cbxActivity.Text == "")
+            {
+                Feedback feedback = new Feedback(StudentID, LearnGoalID, 0, Auteur, Title, Description);
+                DAL.FeedbackDAL.AddFeedback(feedback);
+            }
         }
 
         private void btnVraagStellen_Click(object sender, EventArgs e)
@@ -130,7 +148,7 @@ namespace FeedBUF_Casus.Forms
             dgvFeedback.ClearSelection();
             txbQuestionTitle.Clear();
             txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
+            lblQuestionTeacher.Text = "Teacher";
         }
 
         private void btnRegisterFeedback_Click(object sender, EventArgs e)
@@ -144,7 +162,7 @@ namespace FeedBUF_Casus.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             // Closes the studentform
-            this.Close();
+            this.Hide();
             LoginForm loginform = new LoginForm();
             loginform.Show();
         }
@@ -171,6 +189,74 @@ namespace FeedBUF_Casus.Forms
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAddSubject_Click(object sender, EventArgs e)
+        {
+            string name = txbSubject.Text;
+            txbSubject.Clear();
+            Subject Subject = new Subject(name, false);
+            Subject.AddSubject(CurrentStudent, Subject);
+            dgvSubjects_Sync();
+        }
+
+        private void dgvSubjects_Sync()
+        {
+            List<Subject> TotalSubjects = Subject.GetSubjects(CurrentStudent);
+            dgvSubjects.Rows.Clear();
+            cbxSubject.Items.Clear();
+
+            foreach (Subject subject in TotalSubjects)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = subject.Name });
+                row.Cells.Add(new DataGridViewCheckBoxCell { Value = subject.Following });
+
+                dgvSubjects.Rows.Add(row);
+
+                //Add it to the UI subject selection combobox on the main header
+                if (subject.Following == true)
+                {
+                    cbxSubject.Items.Add(subject.Name);
+                }
+            }
+        }
+
+        private void dvgSubjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Checks if the current cell selection is a dgvCheckBox
+            if (dgvSubjects.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            {
+                //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
+                //Rowindex being the current row and column being which column.
+                //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+
+                DataGridViewCheckBoxCell checkboxCell = (DataGridViewCheckBoxCell)dgvSubjects.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                DataGridViewTextBoxCell textboxCell = (DataGridViewTextBoxCell)dgvSubjects.Rows[e.RowIndex].Cells[e.ColumnIndex- 1];
+
+                //textboxCell is the cell which contains the name of the subject you've just selected.
+                //CurrentSubject gets found by the method written in the Subject Class in combination with the StudentDAL.
+
+                Subject CurrentSubject = Subject.findSubjectByName(CurrentStudent, textboxCell.Value.ToString());
+
+                //CheckboxCell contains a boolean, either true or false. This represents either checked or not checked.
+
+                CurrentSubject.Following = (bool)checkboxCell.Value;
+                Subject.UpdateSubjects(CurrentStudent, CurrentSubject);
+                dgvSubjects_Sync();
+            }
+        }
+
+        //This was found on the internet, it solves the problem that when you are changing the checkbox state.
+        //Say you would change the checkbox state twice, then the database wouldn't process the change correctly.
+        //This code forces a change to happen immediately which prevents it from having an unprocessed change.
+        private void dgvSubjects_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvSubjects.IsCurrentCellDirty)
+            {
+                dgvSubjects.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }
