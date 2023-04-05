@@ -48,6 +48,42 @@ namespace FeedBUF_Casus.Forms
                 dgvFeedback.Rows.Add(row);
             }
         }
+        private void SyncLearngoals(Student student)
+        {
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            string Subjectname = cbxSubject.Text;
+            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(student, weeknumber, Subjectname);
+            dgvLearnGoals.Rows.Clear();
+
+            foreach (LearnGoal goal in TotalLearngoal)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                row.Cells[0].Value = goal.LearnGoalID;
+                row.Cells[1].Value = goal.Goal;
+                dgvLearnGoals.Rows.Add(row);
+            }
+        }
+        private void SyncActivities(Student student)
+        {
+            DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            List<Activity> TotalActivity = Activity.GetActivity(learngoalid);
+            dgvActivities.Rows.Clear();
+
+            foreach (Activity activity in TotalActivity)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvActivities.Rows[0].Clone();
+                row.Cells[0].Value = activity.ActivityID;
+                row.Cells[1].Value = activity.ActivityText;
+                row.Cells[2].Value = activity.TimeEstimate;
+                dgvActivities.Rows.Add(row);
+                if(activity.TimeSpent != "")
+                {
+                    row.Cells[3].Value = true;
+                }
+            }
+        }
 
         private void LoginStudent(Student student)
         {
@@ -96,23 +132,41 @@ namespace FeedBUF_Casus.Forms
         {
             pnlActivity.Hide();
             pnlLearngoal.Show();
+            pnlTimeSpent.Hide();
         }
 
         private void btnFeedup_SwitchActivity_Click(object sender, EventArgs e)
         {
             pnlActivity.Show();
             pnlLearngoal.Hide();
+            pnlTimeSpent.Hide();
         }
 
         private void btnAddLearnGoal_Click(object sender, EventArgs e)
         {
             string learngoal = txbFeedup_Learngoal.Text;
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
+            DAL.FeedupDAL.AddLearngoal(learnGoal);
+            txbFeedup_Learngoal.Text = "";
+            SyncLearngoals(CurrentStudent);
         }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
-            string Activity = txbFeedup_Activitity.Text;
-            string TimeEstimation = txbFeedup_TimeEstimation.Text;
+            if (dgvLearnGoals.CurrentRow != null)
+            {
+                string Activity = txbFeedup_Activitity.Text;
+                string TimeEstimation = txbFeedup_TimeEstimation.Text;
+                DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Activity activity = new Activity(learngoalid, Activity, TimeEstimation);
+                DAL.FeedupDAL.AddActivity(activity);
+                txbFeedup_Activitity.Text = "";
+                txbFeedup_TimeEstimation.Text = "";
+                SyncActivities(CurrentStudent);
+            }
         }
 
         private void btnFeedbackAdd_Click(object sender, EventArgs e)
@@ -171,6 +225,40 @@ namespace FeedBUF_Casus.Forms
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void WeekChanged(object sender, EventArgs e)
+        {
+            SyncLearngoals(CurrentStudent);
+            dgvActivities.Rows.Clear();
+        }
+
+        private void SubjectChanged(object sender, EventArgs e)
+        {
+            SyncLearngoals(CurrentStudent);
+            dgvActivities.Rows.Clear();
+        }
+
+        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SyncActivities(CurrentStudent);
+        }
+
+        private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pnlActivity.Hide();
+            pnlLearngoal.Hide();
+            pnlTimeSpent.Show();
+        }
+
+        private void btnSaveTimeSpent_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string TimeSpent = txbTimeSpent.Text;
+            Activity.InsertTimeSpent(activityid, TimeSpent);
+            pnlTimeSpent.Visible = false;
+            pnlLearngoal.Show();
         }
     }
 }
