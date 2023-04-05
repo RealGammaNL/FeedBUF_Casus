@@ -151,6 +151,7 @@ namespace FeedBUF_Casus.Forms
 
         private void dgvFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Fills the questionpanel and feedbackpanel
             foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
             {
                 if (FeedbackSelection == "Question")
