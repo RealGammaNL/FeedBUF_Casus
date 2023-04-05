@@ -10,7 +10,7 @@ namespace DAL
 {
     public class FeedbackDAL : MAINDAL
     {
-        private static string ConnectionString = "Data Source= tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = GIGASOFTDB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
+        private static string ConnectionString = "Data Source=tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = FeedBUF_DB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
         public static void AddFeedback(Feedback feedback)
         {
             try
@@ -68,8 +68,8 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "SELECT FEEDBACK.FeedbackID, FEEDBACK.Title, FEEDBACK.Description, TEACHER.Name" +
-                                 "FROM dbo.FEEDBACK, dbo.TEACHER" +
+                    string sql = "SELECT FEEDBACK.FeedbackID, FEEDBACK.Title, FEEDBACK.Description, TEACHER.Name " +
+                                 "FROM dbo.FEEDBACK, dbo.TEACHER " +
                                  "WHERE FEEDBACK.TeacherID = TEACHER.TeacherID";
 
                     connection.Open();
@@ -80,9 +80,9 @@ namespace DAL
                             while (reader.Read())
                             {
                                 feedbacks.Add(new Feedback((int)reader["FeedbackID"]
+                                                    , reader["Name"].ToString()
                                                     , reader["Title"].ToString()
                                                     , reader["Description"].ToString()
-                                                    , reader["Name"].ToString()
                                                     ));
                             }
                         }
@@ -93,4 +93,38 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
     }
+
+    
+
+    public static List<LearnGoal> GetLearnGoals(Student student)
+    {
+        List<LearnGoal> learngoals = new List<LearnGoal>();
+
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                string sql = "SELECT * FROM LEARNGOAL WHERE StudentID = @StudentID";
+
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            learngoals.Add(new LearnGoal((int)reader["FeedbackID"]
+                                                , reader["Name"].ToString()
+                                                , reader["Title"].ToString()
+                                                , reader["Description"].ToString()
+                                                ));
+                        }
+                    }
+                }
+            }
+            return learngoals;
+        }
+        catch (SqlException ex) { throw ex; }
+    }
+}
 }

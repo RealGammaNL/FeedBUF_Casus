@@ -31,6 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -67,16 +70,11 @@ namespace FeedBUF_Casus.Forms
             this.btnVraagStellen = new System.Windows.Forms.Button();
             this.btnRegisterFeedback = new System.Windows.Forms.Button();
             this.dgvFeedback = new System.Windows.Forms.DataGridView();
+            this.FeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackTeacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedback = new System.Windows.Forms.Label();
-            this.pnlAskQuestion = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txbQuestion = new System.Windows.Forms.TextBox();
-            this.txbQuestionDescription = new System.Windows.Forms.TextBox();
-            this.txbQuestionTitle = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlRegisterFeedback = new System.Windows.Forms.Panel();
             this.btnFeedbackAdd = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -91,6 +89,16 @@ namespace FeedBUF_Casus.Forms
             this.txbFeedbackDescription = new System.Windows.Forms.TextBox();
             this.txbFeedbackTitle = new System.Windows.Forms.TextBox();
             this.lblRegisterFeedback = new System.Windows.Forms.Label();
+            this.pnlAskQuestion = new System.Windows.Forms.Panel();
+            this.lblQuestionTeacher = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txbQuestion = new System.Windows.Forms.TextBox();
+            this.txbQuestionDescription = new System.Windows.Forms.TextBox();
+            this.txbQuestionTitle = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
             this.dgvFeedback2 = new System.Windows.Forms.DataGridView();
             this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,10 +117,6 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.FeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FeedbackTeacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -121,10 +125,10 @@ namespace FeedBUF_Casus.Forms
             this.pnlLearngoal.SuspendLayout();
             this.pnlFeedback.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback)).BeginInit();
-            this.pnlAskQuestion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlRegisterFeedback.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbUserIcon)).BeginInit();
+            this.pnlAskQuestion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlFeedforward.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -511,8 +515,8 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.Controls.Add(this.btnRegisterFeedback);
             this.pnlFeedback.Controls.Add(this.dgvFeedback);
             this.pnlFeedback.Controls.Add(this.lblFeedback);
-            this.pnlFeedback.Controls.Add(this.pnlAskQuestion);
             this.pnlFeedback.Controls.Add(this.pnlRegisterFeedback);
+            this.pnlFeedback.Controls.Add(this.pnlAskQuestion);
             this.pnlFeedback.Location = new System.Drawing.Point(9, 85);
             this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedback.Name = "pnlFeedback";
@@ -542,20 +546,60 @@ namespace FeedBUF_Casus.Forms
             // 
             // dgvFeedback
             // 
-            this.dgvFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFeedback.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FeedbackID,
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFeedback.RowTemplate.Height = 24;
+            this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
             this.dgvFeedback.TabIndex = 2;
+            this.dgvFeedback.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFeedback_CellClick);
+            // 
+            // FeedbackID
+            // 
+            this.FeedbackID.FillWeight = 30F;
+            this.FeedbackID.HeaderText = "ID";
+            this.FeedbackID.Name = "FeedbackID";
+            this.FeedbackID.Width = 50;
+            // 
+            // FeedbackTeacher
+            // 
+            this.FeedbackTeacher.HeaderText = "Auteur";
+            this.FeedbackTeacher.Name = "FeedbackTeacher";
+            // 
+            // FeedbackTitle
+            // 
+            this.FeedbackTitle.HeaderText = "Titel";
+            this.FeedbackTitle.Name = "FeedbackTitle";
+            this.FeedbackTitle.Width = 150;
+            // 
+            // FeedbackDescription
+            // 
+            this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle1;
+            this.FeedbackDescription.FillWeight = 5F;
+            this.FeedbackDescription.HeaderText = "Descriptie";
+            this.FeedbackDescription.Name = "FeedbackDescription";
             // 
             // lblFeedback
             // 
@@ -569,99 +613,6 @@ namespace FeedBUF_Casus.Forms
             this.lblFeedback.Size = new System.Drawing.Size(121, 29);
             this.lblFeedback.TabIndex = 0;
             this.lblFeedback.Text = "Feedback";
-            // 
-            // pnlAskQuestion
-            // 
-            this.pnlAskQuestion.Controls.Add(this.label14);
-            this.pnlAskQuestion.Controls.Add(this.label10);
-            this.pnlAskQuestion.Controls.Add(this.label13);
-            this.pnlAskQuestion.Controls.Add(this.pictureBox1);
-            this.pnlAskQuestion.Controls.Add(this.txbQuestion);
-            this.pnlAskQuestion.Controls.Add(this.txbQuestionDescription);
-            this.pnlAskQuestion.Controls.Add(this.txbQuestionTitle);
-            this.pnlAskQuestion.Controls.Add(this.label1);
-            this.pnlAskQuestion.Location = new System.Drawing.Point(642, 68);
-            this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlAskQuestion.Name = "pnlAskQuestion";
-            this.pnlAskQuestion.Size = new System.Drawing.Size(752, 644);
-            this.pnlAskQuestion.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(38, 290);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 24);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Vraag";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(37, 125);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 24);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Beschrijving";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(37, 62);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 24);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Titel";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(534, 91);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 178);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // txbQuestion
-            // 
-            this.txbQuestion.Location = new System.Drawing.Point(40, 317);
-            this.txbQuestion.Multiline = true;
-            this.txbQuestion.Name = "txbQuestion";
-            this.txbQuestion.Size = new System.Drawing.Size(692, 272);
-            this.txbQuestion.TabIndex = 4;
-            // 
-            // txbQuestionDescription
-            // 
-            this.txbQuestionDescription.Location = new System.Drawing.Point(41, 159);
-            this.txbQuestionDescription.Multiline = true;
-            this.txbQuestionDescription.Name = "txbQuestionDescription";
-            this.txbQuestionDescription.Size = new System.Drawing.Size(472, 110);
-            this.txbQuestionDescription.TabIndex = 3;
-            // 
-            // txbQuestionTitle
-            // 
-            this.txbQuestionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbQuestionTitle.Location = new System.Drawing.Point(40, 89);
-            this.txbQuestionTitle.Name = "txbQuestionTitle";
-            this.txbQuestionTitle.Size = new System.Drawing.Size(472, 29);
-            this.txbQuestionTitle.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Orange;
-            this.label1.Location = new System.Drawing.Point(35, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Vraag Stellen";
             // 
             // pnlRegisterFeedback
             // 
@@ -683,6 +634,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlRegisterFeedback.Name = "pnlRegisterFeedback";
             this.pnlRegisterFeedback.Size = new System.Drawing.Size(752, 644);
             this.pnlRegisterFeedback.TabIndex = 5;
+            this.pnlRegisterFeedback.Visible = false;
             // 
             // btnFeedbackAdd
             // 
@@ -809,6 +761,115 @@ namespace FeedBUF_Casus.Forms
             this.lblRegisterFeedback.Size = new System.Drawing.Size(240, 29);
             this.lblRegisterFeedback.TabIndex = 1;
             this.lblRegisterFeedback.Text = "Registreer Feedback";
+            // 
+            // pnlAskQuestion
+            // 
+            this.pnlAskQuestion.Controls.Add(this.lblQuestionTeacher);
+            this.pnlAskQuestion.Controls.Add(this.label14);
+            this.pnlAskQuestion.Controls.Add(this.label10);
+            this.pnlAskQuestion.Controls.Add(this.label13);
+            this.pnlAskQuestion.Controls.Add(this.pictureBox1);
+            this.pnlAskQuestion.Controls.Add(this.txbQuestion);
+            this.pnlAskQuestion.Controls.Add(this.txbQuestionDescription);
+            this.pnlAskQuestion.Controls.Add(this.txbQuestionTitle);
+            this.pnlAskQuestion.Controls.Add(this.label1);
+            this.pnlAskQuestion.Location = new System.Drawing.Point(642, 68);
+            this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlAskQuestion.Name = "pnlAskQuestion";
+            this.pnlAskQuestion.Size = new System.Drawing.Size(752, 644);
+            this.pnlAskQuestion.TabIndex = 6;
+            this.pnlAskQuestion.Visible = false;
+            // 
+            // lblQuestionTeacher
+            // 
+            this.lblQuestionTeacher.AutoSize = true;
+            this.lblQuestionTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestionTeacher.ForeColor = System.Drawing.Color.Orange;
+            this.lblQuestionTeacher.Location = new System.Drawing.Point(529, 53);
+            this.lblQuestionTeacher.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuestionTeacher.Name = "lblQuestionTeacher";
+            this.lblQuestionTeacher.Size = new System.Drawing.Size(82, 29);
+            this.lblQuestionTeacher.TabIndex = 13;
+            this.lblQuestionTeacher.Text = "Auteur";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(38, 290);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 24);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Vraag";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(37, 125);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(112, 24);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Beschrijving";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(37, 62);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 24);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Titel";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(534, 91);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(180, 178);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txbQuestion
+            // 
+            this.txbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbQuestion.Location = new System.Drawing.Point(40, 317);
+            this.txbQuestion.Multiline = true;
+            this.txbQuestion.Name = "txbQuestion";
+            this.txbQuestion.Size = new System.Drawing.Size(692, 272);
+            this.txbQuestion.TabIndex = 4;
+            // 
+            // txbQuestionDescription
+            // 
+            this.txbQuestionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbQuestionDescription.Location = new System.Drawing.Point(41, 159);
+            this.txbQuestionDescription.Multiline = true;
+            this.txbQuestionDescription.Name = "txbQuestionDescription";
+            this.txbQuestionDescription.Size = new System.Drawing.Size(472, 110);
+            this.txbQuestionDescription.TabIndex = 3;
+            // 
+            // txbQuestionTitle
+            // 
+            this.txbQuestionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbQuestionTitle.Location = new System.Drawing.Point(40, 89);
+            this.txbQuestionTitle.Name = "txbQuestionTitle";
+            this.txbQuestionTitle.Size = new System.Drawing.Size(472, 29);
+            this.txbQuestionTitle.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Orange;
+            this.label1.Location = new System.Drawing.Point(35, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Vraag Stellen";
             // 
             // pnlFeedforward
             // 
@@ -1002,26 +1063,6 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
-            // FeedbackID
-            // 
-            this.FeedbackID.HeaderText = "ID";
-            this.FeedbackID.Name = "FeedbackID";
-            // 
-            // FeedbackTeacher
-            // 
-            this.FeedbackTeacher.HeaderText = "Auteur";
-            this.FeedbackTeacher.Name = "FeedbackTeacher";
-            // 
-            // FeedbackTitle
-            // 
-            this.FeedbackTitle.HeaderText = "Titel";
-            this.FeedbackTitle.Name = "FeedbackTitle";
-            // 
-            // FeedbackDescription
-            // 
-            this.FeedbackDescription.HeaderText = "Descriptie";
-            this.FeedbackDescription.Name = "FeedbackDescription";
-            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1036,6 +1077,7 @@ namespace FeedBUF_Casus.Forms
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StudentForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pnlFeedup.ResumeLayout(false);
@@ -1049,12 +1091,12 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.ResumeLayout(false);
             this.pnlFeedback.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback)).EndInit();
-            this.pnlAskQuestion.ResumeLayout(false);
-            this.pnlAskQuestion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlRegisterFeedback.ResumeLayout(false);
             this.pnlRegisterFeedback.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbUserIcon)).EndInit();
+            this.pnlAskQuestion.ResumeLayout(false);
+            this.pnlAskQuestion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlFeedforward.ResumeLayout(false);
             this.pnlFeedforward.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback2)).EndInit();
@@ -1151,5 +1193,6 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn FeedbackTeacher;
         private DataGridViewTextBoxColumn FeedbackTitle;
         private DataGridViewTextBoxColumn FeedbackDescription;
+        private Label lblQuestionTeacher;
     }
 }
