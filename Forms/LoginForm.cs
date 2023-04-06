@@ -17,7 +17,7 @@ namespace FeedBUF_Casus.Forms
 {
     public partial class LoginForm : Form
     {
-        public List<Student> Students = DAL.StudentDAL.GetStudents();
+        public List<Student> Students = StudentDAL.GetStudents();
         public List<Teacher> Teachers = new List<Teacher>();
 
 
