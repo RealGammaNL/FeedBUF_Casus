@@ -31,6 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -532,6 +535,13 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -545,6 +555,8 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvFeedback.RowTemplate.Height = 24;
@@ -574,6 +586,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle19;
             this.FeedbackDescription.FillWeight = 5F;
@@ -1042,6 +1056,111 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
+            // pnlHome
+            // 
+            this.pnlHome.Controls.Add(this.dgvSubjects);
+            this.pnlHome.Controls.Add(this.lblNewSubject);
+            this.pnlHome.Controls.Add(this.txbSubject);
+            this.pnlHome.Controls.Add(this.btnAddSubject);
+            this.pnlHome.Controls.Add(this.lblBeheerVakken);
+            this.pnlHome.Controls.Add(this.lblHome);
+            this.pnlHome.Location = new System.Drawing.Point(9, 85);
+            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHome.Name = "pnlHome";
+            this.pnlHome.Size = new System.Drawing.Size(1414, 743);
+            this.pnlHome.TabIndex = 8;
+            this.pnlHome.Visible = false;
+            // 
+            // dgvSubjects
+            // 
+            this.dgvSubjects.AllowUserToAddRows = false;
+            this.dgvSubjects.AllowUserToDeleteRows = false;
+            this.dgvSubjects.AllowUserToResizeColumns = false;
+            this.dgvSubjects.AllowUserToResizeRows = false;
+            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SubjectName,
+            this.Following});
+            this.dgvSubjects.Location = new System.Drawing.Point(907, 45);
+            this.dgvSubjects.MultiSelect = false;
+            this.dgvSubjects.Name = "dgvSubjects";
+            this.dgvSubjects.RowHeadersVisible = false;
+            this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSubjects.Size = new System.Drawing.Size(259, 396);
+            this.dgvSubjects.TabIndex = 8;
+            this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgSubjects_CellContentClick);
+            this.dgvSubjects.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvSubjects_CurrentCellDirtyStateChanged);
+            // 
+            // SubjectName
+            // 
+            this.SubjectName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubjectName.HeaderText = "Vaknaam";
+            this.SubjectName.Name = "SubjectName";
+            // 
+            // Following
+            // 
+            this.Following.HeaderText = "Volgend";
+            this.Following.Name = "Following";
+            this.Following.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Following.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Following.Width = 60;
+            // 
+            // lblNewSubject
+            // 
+            this.lblNewSubject.AutoSize = true;
+            this.lblNewSubject.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblNewSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewSubject.ForeColor = System.Drawing.Color.Black;
+            this.lblNewSubject.Location = new System.Drawing.Point(13, 45);
+            this.lblNewSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewSubject.Name = "lblNewSubject";
+            this.lblNewSubject.Size = new System.Drawing.Size(101, 24);
+            this.lblNewSubject.TabIndex = 6;
+            this.lblNewSubject.Text = "Nieuw Vak";
+            // 
+            // txbSubject
+            // 
+            this.txbSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbSubject.Location = new System.Drawing.Point(18, 73);
+            this.txbSubject.Name = "txbSubject";
+            this.txbSubject.Size = new System.Drawing.Size(161, 26);
+            this.txbSubject.TabIndex = 5;
+            // 
+            // btnAddSubject
+            // 
+            this.btnAddSubject.Location = new System.Drawing.Point(185, 74);
+            this.btnAddSubject.Name = "btnAddSubject";
+            this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
+            this.btnAddSubject.TabIndex = 4;
+            this.btnAddSubject.Text = "Add";
+            this.btnAddSubject.UseVisualStyleBackColor = true;
+            this.btnAddSubject.Click += new System.EventHandler(this.btnAddSubject_Click);
+            // 
+            // lblBeheerVakken
+            // 
+            this.lblBeheerVakken.AutoSize = true;
+            this.lblBeheerVakken.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblBeheerVakken.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBeheerVakken.ForeColor = System.Drawing.Color.Orange;
+            this.lblBeheerVakken.Location = new System.Drawing.Point(902, 11);
+            this.lblBeheerVakken.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBeheerVakken.Name = "lblBeheerVakken";
+            this.lblBeheerVakken.Size = new System.Drawing.Size(177, 29);
+            this.lblBeheerVakken.TabIndex = 2;
+            this.lblBeheerVakken.Text = "Beheer Vakken";
+            // 
+            // lblHome
+            // 
+            this.lblHome.AutoSize = true;
+            this.lblHome.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHome.ForeColor = System.Drawing.Color.Orange;
+            this.lblHome.Location = new System.Drawing.Point(13, 11);
+            this.lblHome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHome.Name = "lblHome";
+            this.lblHome.Size = new System.Drawing.Size(78, 29);
+            this.lblHome.TabIndex = 1;
+            this.lblHome.Text = "Home";
             // clnFeedupLearnGoalLearnGoal
             // 
             this.clnFeedupLearnGoalLearnGoal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
