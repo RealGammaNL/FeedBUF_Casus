@@ -48,18 +48,21 @@ namespace FeedBUF_Casus.Forms
         }
         private void SyncLearngoals()
         {
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            string Subjectname = cbxSubject.Text;
-            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
-            dgvLearnGoals.Rows.Clear();
-
-            foreach (LearnGoal goal in TotalLearngoal)
+            if (cbxWeek.Text != "")
             {
-                DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
-                row.Cells[0].Value = goal.LearnGoalID;
-                row.Cells[1].Value = goal.Goal;
-                dgvLearnGoals.Rows.Add(row);
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                string Subjectname = cbxSubject.Text;
+                List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
+                dgvLearnGoals.Rows.Clear();
+
+                foreach (LearnGoal goal in TotalLearngoal)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                    row.Cells[0].Value = goal.LearnGoalID;
+                    row.Cells[1].Value = goal.Goal;
+                    dgvLearnGoals.Rows.Add(row);
+                }
             }
         }
         private void SyncActivities()
@@ -114,8 +117,11 @@ namespace FeedBUF_Casus.Forms
         private void btnHome_Click(object sender, EventArgs e)
         {
             cbxPanelSwitch.SelectedItem = null;
+            cbxWeek.SelectedItem = null;
+            cbxSubject.SelectedItem = null;
             HidePanels();
             pnlHome.Show();
+            dgvLearnGoals.Rows.Clear();
         }
 
         private void pnlFeedup_Paint(object sender, PaintEventArgs e)
@@ -159,11 +165,11 @@ namespace FeedBUF_Casus.Forms
         {
             if (dgvLearnGoals.CurrentRow != null)
             {
-                string ActivityStr = txbFeedup_Activitity.Text;
-                string TimeEstimation = txbFeedup_TimeEstimation.Text;
+                string activityStr = txbFeedup_Activitity.Text;
+                string timeEstimation = txbFeedup_TimeEstimation.Text;
                 DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
                 int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity activity = new Activity(learngoalid, ActivityStr, TimeEstimation);
+                Activity activity = new Activity(learngoalid, activityStr, timeEstimation);
                 Activity.AddActivity(activity);
                 txbFeedup_Activitity.Clear();
                 txbFeedup_TimeEstimation.Clear();
