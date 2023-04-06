@@ -37,6 +37,9 @@ namespace FeedBUF_Casus.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -116,7 +119,6 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlHome = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Following = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -560,11 +562,21 @@ namespace FeedBUF_Casus.Forms
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -596,6 +608,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -1068,7 +1082,6 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlHome
             // 
-            this.pnlHome.Controls.Add(this.button1);
             this.pnlHome.Controls.Add(this.dgvSubjects);
             this.pnlHome.Controls.Add(this.lblNewSubject);
             this.pnlHome.Controls.Add(this.txbSubject);
@@ -1081,15 +1094,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlHome.Size = new System.Drawing.Size(1414, 743);
             this.pnlHome.TabIndex = 8;
             this.pnlHome.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(199, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // dgvSubjects
             // 
