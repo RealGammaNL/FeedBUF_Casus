@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\FeedforwardDAL.cs" />
     <Compile Include="DAL\FeedupDAL.cs" />
     <Compile Include="DAL\MAINDAL.cs" />
     <Compile Include="DAL\FeedbackDAL.cs" />
