@@ -12,20 +12,41 @@ namespace DOMAIN
         public int LearnGoalID;
         public string ActivityText;
         public string Note;
+        public string TimeEstimate;
+        public string TimeSpent;
 
-        public Activity(int activityid, int learngoalid, string activitytext)
+        public Activity(int learngoalid, string activitytext, string timeEstimate)
         {
-            ActivityID = activityid;
             LearnGoalID = learngoalid;
             ActivityText = activitytext;
+            TimeEstimate = timeEstimate;
         }
 
-        public Activity(int activityid, int learngoalid, string activitytext, string note) 
+        public Activity(int activityid, int learngoalid, string activitytext, string timeEstimate, string note) 
         { 
             ActivityID = activityid;
             LearnGoalID = learngoalid;  
             ActivityText = activitytext;
+            TimeEstimate = timeEstimate;
             Note = note;
+        }
+        public Activity(int activityid, int learngoalid, string activitytext, string timeEstimate, string timeSpent, string note)
+        {
+            ActivityID = activityid;
+            LearnGoalID = learngoalid;
+            ActivityText = activitytext;
+            TimeEstimate = timeEstimate;
+            TimeSpent = timeSpent;
+            Note = note;
+        }
+        public static List<Activity> GetActivity(int learngoal)
+        {
+            return DAL.FeedupDAL.GetActivity(learngoal);
+        }
+
+        public static void InsertTimeSpent(int activityid, string TimeSpent)
+        {
+            DAL.FeedupDAL.TimeSpent(activityid, TimeSpent);
         }
     }
 }
