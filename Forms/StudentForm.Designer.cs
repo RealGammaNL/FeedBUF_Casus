@@ -115,6 +115,16 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlHome = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvSubjects = new System.Windows.Forms.DataGridView();
+            this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Following = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblNewSubject = new System.Windows.Forms.Label();
+            this.txbSubject = new System.Windows.Forms.TextBox();
+            this.btnAddSubject = new System.Windows.Forms.Button();
+            this.lblBeheerVakken = new System.Windows.Forms.Label();
+            this.lblHome = new System.Windows.Forms.Label();
             this.clnFeedupLearnGoalLearnGoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnFeedupLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTimeSpent = new System.Windows.Forms.Panel();
@@ -1058,6 +1068,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlHome
             // 
+            this.pnlHome.Controls.Add(this.button1);
             this.pnlHome.Controls.Add(this.dgvSubjects);
             this.pnlHome.Controls.Add(this.lblNewSubject);
             this.pnlHome.Controls.Add(this.txbSubject);
@@ -1070,6 +1081,15 @@ namespace FeedBUF_Casus.Forms
             this.pnlHome.Size = new System.Drawing.Size(1414, 743);
             this.pnlHome.TabIndex = 8;
             this.pnlHome.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(199, 165);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dgvSubjects
             // 
@@ -1128,7 +1148,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // btnAddSubject
             // 
-            this.btnAddSubject.Location = new System.Drawing.Point(185, 74);
+            this.btnAddSubject.Location = new System.Drawing.Point(185, 73);
             this.btnAddSubject.Name = "btnAddSubject";
             this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
             this.btnAddSubject.TabIndex = 4;
@@ -1370,6 +1390,16 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn FeedbackTitle;
         private DataGridViewTextBoxColumn FeedbackDescription;
         private Label lblQuestionTeacher;
+        private Panel pnlHome;
+        private Label lblNewSubject;
+        private TextBox txbSubject;
+        private Button btnAddSubject;
+        private Label lblBeheerVakken;
+        private Label lblHome;
+        private DataGridView dgvSubjects;
+        private DataGridViewTextBoxColumn SubjectName;
+        private DataGridViewCheckBoxColumn Following;
+        private Button button1;
         private DataGridViewTextBoxColumn clnFeedupLearnGoalID;
         private DataGridViewTextBoxColumn clnFeedupLearnGoalLearnGoal;
         private Panel pnlTimeSpent;
