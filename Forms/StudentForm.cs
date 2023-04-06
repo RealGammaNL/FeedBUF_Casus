@@ -46,12 +46,12 @@ namespace FeedBUF_Casus.Forms
                 dgvFeedback.Rows.Add(row);
             }
         }
-        private void SyncLearngoals(Student student)
+        private void SyncLearngoals()
         {
             string[] attributes = cbxWeek.Text.Split(' ');
             int weeknumber = Int32.Parse(attributes[1]);
             string Subjectname = cbxSubject.Text;
-            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(student, weeknumber, Subjectname);
+            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
             dgvLearnGoals.Rows.Clear();
 
             foreach (LearnGoal goal in TotalLearngoal)
@@ -151,22 +151,22 @@ namespace FeedBUF_Casus.Forms
             int weeknumber = Int32.Parse(attributes[1]);
             LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
             DAL.FeedupDAL.AddLearngoal(learnGoal);
-            txbFeedup_Learngoal.Text = "";
-            SyncLearngoals(CurrentStudent);
+            txbFeedup_Learngoal.Clear();
+            SyncLearngoals();
         }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
             if (dgvLearnGoals.CurrentRow != null)
             {
-                string Activity = txbFeedup_Activitity.Text;
+                string ActivityStr = txbFeedup_Activitity.Text;
                 string TimeEstimation = txbFeedup_TimeEstimation.Text;
                 DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
                 int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity activity = new Activity(learngoalid, Activity, TimeEstimation);
-                DAL.FeedupDAL.AddActivity(activity);
-                txbFeedup_Activitity.Text = "";
-                txbFeedup_TimeEstimation.Text = "";
+                Activity activity = new Activity(learngoalid, ActivityStr, TimeEstimation);
+                Activity.AddActivity(activity);
+                txbFeedup_Activitity.Clear();
+                txbFeedup_TimeEstimation.Clear();
                 SyncActivities();
             }
         }
@@ -251,15 +251,17 @@ namespace FeedBUF_Casus.Forms
             Application.Exit();
         }
 
+
+        // Eventhandler for SelectionChanged on the cbxWeek
         private void WeekChanged(object sender, EventArgs e)
         {
-            SyncLearngoals(CurrentStudent);
+            SyncLearngoals();
             dgvActivities.Rows.Clear();
         }
 
         private void SubjectChanged(object sender, EventArgs e)
         {
-            SyncLearngoals(CurrentStudent);
+            SyncLearngoals();
             dgvActivities.Rows.Clear();
         }
 
@@ -270,9 +272,17 @@ namespace FeedBUF_Casus.Forms
 
         private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            pnlActivity.Hide();
-            pnlLearngoal.Hide();
-            pnlTimeSpent.Show();
+            //Checks if the current cell selection is a dgvCheckBox
+            if (dgvActivities.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            {
+                //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
+                //Rowindex being the current row and column being which column.
+                //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+
+                pnlActivity.Hide();
+                pnlLearngoal.Hide();
+                pnlTimeSpent.Show();
+            }
         }
 
         private void btnSaveTimeSpent_Click(object sender, EventArgs e)

@@ -48,5 +48,10 @@ namespace DOMAIN
         {
             DAL.FeedupDAL.TimeSpent(activityid, TimeSpent);
         }
+
+        public static void AddActivity(Activity activity)
+        {
+            DAL.FeedupDAL.AddActivity(activity);
+        }
     }
 }
