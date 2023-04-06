@@ -64,7 +64,7 @@ namespace FeedBUF_Casus.Forms
                 dgvLearnGoals.Rows.Add(row);
             }
         }
-        private void SyncActivities(Student student)
+        private void SyncActivities()
         {
             DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
             int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
@@ -165,7 +165,7 @@ namespace FeedBUF_Casus.Forms
                 DAL.FeedupDAL.AddActivity(activity);
                 txbFeedup_Activitity.Text = "";
                 txbFeedup_TimeEstimation.Text = "";
-                SyncActivities(CurrentStudent);
+                SyncActivities();
             }
         }
 
@@ -241,7 +241,7 @@ namespace FeedBUF_Casus.Forms
 
         private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SyncActivities(CurrentStudent);
+            SyncActivities();
         }
 
         private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
