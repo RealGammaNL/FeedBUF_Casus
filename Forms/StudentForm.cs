@@ -25,10 +25,7 @@ namespace FeedBUF_Casus.Forms
             LoginStudent(student);
             dgvSubjects_Sync();
 
-            panels.Add(pnlFeedback);
-            panels.Add(pnlFeedforward);
-            panels.Add(pnlFeedup);
-            panels.Add(pnlConclusion);
+            panels.AddRange(new Panel[] { pnlFeedback, pnlFeedforward, pnlFeedup, pnlConclusion, pnlHome });
         }
 
         public List<Panel> panels = new List<Panel>() { };
@@ -290,8 +287,8 @@ namespace FeedBUF_Casus.Forms
 
         private void btnAddSubject_Click(object sender, EventArgs e)
         {
-            string name = txbSubject.Text;
-            txbSubject.Clear();
+            string name = txbAddSubject.Text;
+            txbAddSubject.Clear();
             Subject Subject = new Subject(name, false);
             Subject.AddSubject(CurrentStudent, Subject);
             dgvSubjects_Sync();

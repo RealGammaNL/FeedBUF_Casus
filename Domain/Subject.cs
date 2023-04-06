@@ -39,7 +39,7 @@ namespace DOMAIN
             }
             return null;
         }
-
+        
         public static void UpdateSubjects(Student student, Subject subject)
         {
             DAL.StudentDAL.UpdateSubjects(student, subject);

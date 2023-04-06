@@ -31,9 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -122,24 +122,21 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.pnlHome = new System.Windows.Forms.Panel();
-            this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.SubjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Following = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblNewSubject = new System.Windows.Forms.Label();
             this.txbSubject = new System.Windows.Forms.TextBox();
-            this.btnAddSubject = new System.Windows.Forms.Button();
             this.lblBeheerVakken = new System.Windows.Forms.Label();
             this.lblHome = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.pnlHome = new System.Windows.Forms.Panel();
+            this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblNewSubject_ = new System.Windows.Forms.Label();
+            this.txbAddSubject = new System.Windows.Forms.TextBox();
+            this.btnAddSubject = new System.Windows.Forms.Button();
+            this.lblManageSubjects = new System.Windows.Forms.Label();
+            this.lblHome_ = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
@@ -161,8 +158,6 @@ namespace FeedBUF_Casus.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.pnlHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHome
@@ -635,21 +630,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
@@ -677,8 +672,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle10;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.Name = "FeedbackDescription";
@@ -1145,39 +1140,6 @@ namespace FeedBUF_Casus.Forms
             this.label2.TabIndex = 0;
             this.label2.Text = "Conclusie";
             // 
-            // pnlHome
-            // 
-            this.pnlHome.Controls.Add(this.dgvSubjects);
-            this.pnlHome.Controls.Add(this.lblNewSubject);
-            this.pnlHome.Controls.Add(this.txbSubject);
-            this.pnlHome.Controls.Add(this.btnAddSubject);
-            this.pnlHome.Controls.Add(this.lblBeheerVakken);
-            this.pnlHome.Controls.Add(this.lblHome);
-            this.pnlHome.Location = new System.Drawing.Point(9, 85);
-            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(1414, 743);
-            this.pnlHome.TabIndex = 8;
-            this.pnlHome.Visible = false;
-            // 
-            // dgvSubjects
-            // 
-            this.dgvSubjects.AllowUserToAddRows = false;
-            this.dgvSubjects.AllowUserToDeleteRows = false;
-            this.dgvSubjects.AllowUserToResizeColumns = false;
-            this.dgvSubjects.AllowUserToResizeRows = false;
-            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SubjectName,
-            this.Following});
-            this.dgvSubjects.Location = new System.Drawing.Point(907, 45);
-            this.dgvSubjects.MultiSelect = false;
-            this.dgvSubjects.Name = "dgvSubjects";
-            this.dgvSubjects.RowHeadersVisible = false;
-            this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSubjects.Size = new System.Drawing.Size(259, 396);
-            this.dgvSubjects.TabIndex = 8;
-            // 
             // SubjectName
             // 
             this.SubjectName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1213,15 +1175,6 @@ namespace FeedBUF_Casus.Forms
             this.txbSubject.Size = new System.Drawing.Size(161, 26);
             this.txbSubject.TabIndex = 5;
             // 
-            // btnAddSubject
-            // 
-            this.btnAddSubject.Location = new System.Drawing.Point(185, 73);
-            this.btnAddSubject.Name = "btnAddSubject";
-            this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
-            this.btnAddSubject.TabIndex = 4;
-            this.btnAddSubject.Text = "Add";
-            this.btnAddSubject.UseVisualStyleBackColor = true;
-            // 
             // lblBeheerVakken
             // 
             this.lblBeheerVakken.AutoSize = true;
@@ -1248,38 +1201,40 @@ namespace FeedBUF_Casus.Forms
             this.lblHome.TabIndex = 1;
             this.lblHome.Text = "Home";
             // 
-            // panel1
+            // pnlHome
             // 
-            this.panel1.Controls.Add(this.dataGridView2);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Location = new System.Drawing.Point(9, 85);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1414, 743);
-            this.panel1.TabIndex = 9;
-            this.panel1.Visible = false;
+            this.pnlHome.Controls.Add(this.dgvSubjects);
+            this.pnlHome.Controls.Add(this.lblNewSubject_);
+            this.pnlHome.Controls.Add(this.txbAddSubject);
+            this.pnlHome.Controls.Add(this.btnAddSubject);
+            this.pnlHome.Controls.Add(this.lblManageSubjects);
+            this.pnlHome.Controls.Add(this.lblHome_);
+            this.pnlHome.Location = new System.Drawing.Point(9, 85);
+            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlHome.Name = "pnlHome";
+            this.pnlHome.Size = new System.Drawing.Size(1414, 743);
+            this.pnlHome.TabIndex = 9;
+            this.pnlHome.Visible = false;
             // 
-            // dataGridView2
+            // dgvSubjects
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSubjects.AllowUserToAddRows = false;
+            this.dgvSubjects.AllowUserToDeleteRows = false;
+            this.dgvSubjects.AllowUserToResizeColumns = false;
+            this.dgvSubjects.AllowUserToResizeRows = false;
+            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewCheckBoxColumn1});
-            this.dataGridView2.Location = new System.Drawing.Point(907, 45);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(259, 396);
-            this.dataGridView2.TabIndex = 8;
+            this.dgvSubjects.Location = new System.Drawing.Point(907, 45);
+            this.dgvSubjects.MultiSelect = false;
+            this.dgvSubjects.Name = "dgvSubjects";
+            this.dgvSubjects.RowHeadersVisible = false;
+            this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSubjects.Size = new System.Drawing.Size(259, 396);
+            this.dgvSubjects.TabIndex = 8;
+            this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgSubjects_CellContentClick);
+            this.dgvSubjects.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvSubjects_CurrentCellDirtyStateChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1295,61 +1250,62 @@ namespace FeedBUF_Casus.Forms
             this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewCheckBoxColumn1.Width = 60;
             // 
-            // label15
+            // lblNewSubject_
             // 
-            this.label15.AutoSize = true;
-            this.label15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(13, 45);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 24);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Nieuw Vak";
+            this.lblNewSubject_.AutoSize = true;
+            this.lblNewSubject_.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblNewSubject_.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewSubject_.ForeColor = System.Drawing.Color.Black;
+            this.lblNewSubject_.Location = new System.Drawing.Point(13, 45);
+            this.lblNewSubject_.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewSubject_.Name = "lblNewSubject_";
+            this.lblNewSubject_.Size = new System.Drawing.Size(101, 24);
+            this.lblNewSubject_.TabIndex = 6;
+            this.lblNewSubject_.Text = "Nieuw Vak";
             // 
-            // textBox1
+            // txbAddSubject
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(18, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 26);
-            this.textBox1.TabIndex = 5;
+            this.txbAddSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbAddSubject.Location = new System.Drawing.Point(18, 73);
+            this.txbAddSubject.Name = "txbAddSubject";
+            this.txbAddSubject.Size = new System.Drawing.Size(161, 26);
+            this.txbAddSubject.TabIndex = 5;
             // 
-            // button2
+            // btnAddSubject
             // 
-            this.button2.Location = new System.Drawing.Point(185, 73);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 26);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddSubject.Location = new System.Drawing.Point(185, 73);
+            this.btnAddSubject.Name = "btnAddSubject";
+            this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
+            this.btnAddSubject.TabIndex = 4;
+            this.btnAddSubject.Text = "Add";
+            this.btnAddSubject.UseVisualStyleBackColor = true;
+            this.btnAddSubject.Click += new System.EventHandler(this.btnAddSubject_Click);
             // 
-            // label16
+            // lblManageSubjects
             // 
-            this.label16.AutoSize = true;
-            this.label16.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Orange;
-            this.label16.Location = new System.Drawing.Point(902, 11);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(177, 29);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Beheer Vakken";
+            this.lblManageSubjects.AutoSize = true;
+            this.lblManageSubjects.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblManageSubjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManageSubjects.ForeColor = System.Drawing.Color.Orange;
+            this.lblManageSubjects.Location = new System.Drawing.Point(902, 11);
+            this.lblManageSubjects.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblManageSubjects.Name = "lblManageSubjects";
+            this.lblManageSubjects.Size = new System.Drawing.Size(177, 29);
+            this.lblManageSubjects.TabIndex = 2;
+            this.lblManageSubjects.Text = "Beheer Vakken";
             // 
-            // label17
+            // lblHome_
             // 
-            this.label17.AutoSize = true;
-            this.label17.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Orange;
-            this.label17.Location = new System.Drawing.Point(13, 11);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 29);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Home";
+            this.lblHome_.AutoSize = true;
+            this.lblHome_.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblHome_.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHome_.ForeColor = System.Drawing.Color.Orange;
+            this.lblHome_.Location = new System.Drawing.Point(13, 11);
+            this.lblHome_.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHome_.Name = "lblHome_";
+            this.lblHome_.Size = new System.Drawing.Size(78, 29);
+            this.lblHome_.TabIndex = 1;
+            this.lblHome_.Text = "Home";
             // 
             // StudentForm
             // 
@@ -1357,7 +1313,7 @@ namespace FeedBUF_Casus.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 839);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlFeedup);
             this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
@@ -1399,9 +1355,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1486,13 +1439,10 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn FeedbackTitle;
         private DataGridViewTextBoxColumn FeedbackDescription;
         private Label lblQuestionTeacher;
-        private Panel pnlHome;
         private Label lblNewSubject;
         private TextBox txbSubject;
-        private Button btnAddSubject;
         private Label lblBeheerVakken;
         private Label lblHome;
-        private DataGridView dgvSubjects;
         private DataGridViewTextBoxColumn SubjectName;
         private DataGridViewCheckBoxColumn Following;
         private Button button1;
@@ -1506,14 +1456,14 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn clnFeedupActivitiesActivity;
         private DataGridViewTextBoxColumn dgcTimeEstimation;
         private DataGridViewCheckBoxColumn Completed;
-        private Panel panel1;
-        private DataGridView dataGridView2;
+        private Panel pnlHome;
+        private DataGridView dgvSubjects;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private Label label15;
-        private TextBox textBox1;
-        private Button button2;
-        private Label label16;
-        private Label label17;
+        private Label lblNewSubject_;
+        private TextBox txbAddSubject;
+        private Button btnAddSubject;
+        private Label lblManageSubjects;
+        private Label lblHome_;
     }
 }
