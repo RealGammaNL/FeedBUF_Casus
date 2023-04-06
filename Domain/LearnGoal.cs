@@ -10,28 +10,39 @@ namespace DOMAIN
     {
         public int LearnGoalID;
         public int StudentID;
-        public string SubjectCode;
+        public string SubjectName;
         public int WeekNr;
         public string Goal;
         public string Note;
 
-        public LearnGoal(int learngoalid, int studentid, string subjectcode, int weeknr, string goal)
+        public LearnGoal(int learngoalid, int studentid, string subjectname, int weeknr, string goal)
         {
             LearnGoalID = learngoalid;
             StudentID = studentid;
-            SubjectCode = subjectcode;
+            SubjectName = subjectname;
             WeekNr = weeknr;
             Goal = goal;
         }
 
-        public LearnGoal(int learngoalid, int studentid, string subjectcode, int weeknr, string goal, string note)
+        public LearnGoal(int learngoalid, int studentid, string subjectname, int weeknr, string goal, string note)
         {
             LearnGoalID = learngoalid;
             StudentID = studentid;
-            SubjectCode = subjectcode;
+            SubjectName = subjectname;
             WeekNr = weeknr;
             Goal = goal;
             Note = note;
+        }
+        public LearnGoal(int studentid, string subjectname, int weeknr, string goal)
+        {
+            StudentID = studentid;
+            SubjectName = subjectname;
+            WeekNr = weeknr;
+            Goal = goal;
+        }
+        public static List<LearnGoal> GetLearnGoals(Student student, int Weeknumber, string Subjectname)
+        {
+            return DAL.FeedupDAL.GetLearnGoals(student, Weeknumber, Subjectname);
         }
     }
 }

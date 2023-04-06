@@ -23,10 +23,11 @@ namespace FeedBUF_Casus.Forms
 
             CurrentStudent = student;
             LoginStudent(student);
-            dgvSubjects_Sync();
 
-
-            panels.AddRange(new Panel[] { pnlFeedback, pnlFeedforward, pnlFeedup, pnlConclusion, pnlHome });
+            panels.Add(pnlFeedback);
+            panels.Add(pnlFeedforward);
+            panels.Add(pnlFeedup);
+            panels.Add(pnlConclusion);
         }
 
         public List<Panel> panels = new List<Panel>() { };
@@ -41,10 +42,46 @@ namespace FeedBUF_Casus.Forms
             {
                 DataGridViewRow row = (DataGridViewRow)dgvFeedback.Rows[0].Clone();
                 row.Cells[0].Value = feedback.FeedbackID;
-                row.Cells[1].Value = feedback.Teacher;
+                row.Cells[1].Value = feedback.Auteur;
                 row.Cells[2].Value = feedback.Title;
                 row.Cells[3].Value = feedback.Description;
                 dgvFeedback.Rows.Add(row);
+            }
+        }
+        private void SyncLearngoals(Student student)
+        {
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            string Subjectname = cbxSubject.Text;
+            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(student, weeknumber, Subjectname);
+            dgvLearnGoals.Rows.Clear();
+
+            foreach (LearnGoal goal in TotalLearngoal)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                row.Cells[0].Value = goal.LearnGoalID;
+                row.Cells[1].Value = goal.Goal;
+                dgvLearnGoals.Rows.Add(row);
+            }
+        }
+        private void SyncActivities()
+        {
+            DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            List<Activity> TotalActivity = Activity.GetActivity(learngoalid);
+            dgvActivities.Rows.Clear();
+
+            foreach (Activity activity in TotalActivity)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvActivities.Rows[0].Clone();
+                row.Cells[0].Value = activity.ActivityID;
+                row.Cells[1].Value = activity.ActivityText;
+                row.Cells[2].Value = activity.TimeEstimate;
+                dgvActivities.Rows.Add(row);
+                if(activity.TimeSpent != "")
+                {
+                    row.Cells[3].Value = true;
+                }
             }
         }
 
@@ -76,11 +113,14 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
+        private void pnlFeedup_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void btnHome_Click(object sender, EventArgs e)
         {
-            cbxPanelSwitch.SelectedItem = null;
-            HidePanels();
-            pnlHome.Show();
+
         }
 
         private void txbFeedbackDescription_TextChanged(object sender, EventArgs e)
@@ -92,52 +132,48 @@ namespace FeedBUF_Casus.Forms
         {
             pnlActivity.Hide();
             pnlLearngoal.Show();
+            pnlTimeSpent.Hide();
         }
 
         private void btnFeedup_SwitchActivity_Click(object sender, EventArgs e)
         {
             pnlActivity.Show();
             pnlLearngoal.Hide();
+            pnlTimeSpent.Hide();
         }
 
         private void btnAddLearnGoal_Click(object sender, EventArgs e)
         {
             string learngoal = txbFeedup_Learngoal.Text;
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
+            DAL.FeedupDAL.AddLearngoal(learnGoal);
+            txbFeedup_Learngoal.Text = "";
+            SyncLearngoals(CurrentStudent);
         }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
-            string Activity = txbFeedup_Activitity.Text;
-            string TimeEstimation = txbFeedup_TimeEstimation.Text;
+            if (dgvLearnGoals.CurrentRow != null)
+            {
+                string Activity = txbFeedup_Activitity.Text;
+                string TimeEstimation = txbFeedup_TimeEstimation.Text;
+                DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Activity activity = new Activity(learngoalid, Activity, TimeEstimation);
+                DAL.FeedupDAL.AddActivity(activity);
+                txbFeedup_Activitity.Text = "";
+                txbFeedup_TimeEstimation.Text = "";
+                SyncActivities();
+            }
         }
 
         private void btnFeedbackAdd_Click(object sender, EventArgs e)
         {
-            int StudentID = CurrentStudent.ID;
-            int LearnGoalID = Int32.Parse(cbxLearnGoal.Text.ToString());
-            string Auteur = txbFeedbackTeacher.Text;
+            string Teacher = txbFeedbackTeacher.Text;
             string Title = txbFeedbackTitle.Text;
             string Description = txbFeedbackDescription.Text;
-
-            txbFeedbackTeacher.Clear();
-            txbFeedbackTitle.Clear();
-            txbFeedbackDescription.Clear();
-
-            // If there is an activity selected.
-            if (cbxActivity.Text != "")
-            {
-                int ActivityID = Int32.Parse(cbxActivity.Text.ToString());
-                Feedback feedback = new Feedback(StudentID, LearnGoalID, ActivityID, Auteur, Title, Description);
-
-                DAL.FeedbackDAL.AddFeedback(feedback);
-            }
-
-            // If there isn't an activity selected.
-            if (cbxActivity.Text == "")
-            {
-                Feedback feedback = new Feedback(StudentID, LearnGoalID, 0, Auteur, Title, Description);
-                DAL.FeedbackDAL.AddFeedback(feedback);
-            }
         }
 
         private void btnVraagStellen_Click(object sender, EventArgs e)
@@ -148,7 +184,7 @@ namespace FeedBUF_Casus.Forms
             dgvFeedback.ClearSelection();
             txbQuestionTitle.Clear();
             txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Teacher";
+            lblQuestionTeacher.Text = "Auteur";
         }
 
         private void btnRegisterFeedback_Click(object sender, EventArgs e)
@@ -162,7 +198,7 @@ namespace FeedBUF_Casus.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             // Closes the studentform
-            this.Hide();
+            this.Close();
             LoginForm loginform = new LoginForm();
             loginform.Show();
         }
@@ -191,72 +227,38 @@ namespace FeedBUF_Casus.Forms
             Application.Exit();
         }
 
-        private void btnAddSubject_Click(object sender, EventArgs e)
+        private void WeekChanged(object sender, EventArgs e)
         {
-            string name = txbSubject.Text;
-            txbSubject.Clear();
-            Subject Subject = new Subject(name, false);
-            Subject.AddSubject(CurrentStudent, Subject);
-            dgvSubjects_Sync();
+            SyncLearngoals(CurrentStudent);
+            dgvActivities.Rows.Clear();
         }
 
-        private void dgvSubjects_Sync()
+        private void SubjectChanged(object sender, EventArgs e)
         {
-            List<Subject> TotalSubjects = Subject.GetSubjects(CurrentStudent);
-            dgvSubjects.Rows.Clear();
-            cbxSubject.Items.Clear();
-
-            foreach (Subject subject in TotalSubjects)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = subject.Name });
-                row.Cells.Add(new DataGridViewCheckBoxCell { Value = subject.Following });
-
-                dgvSubjects.Rows.Add(row);
-
-                //Add it to the UI subject selection combobox on the main header
-                if (subject.Following == true)
-                {
-                    cbxSubject.Items.Add(subject.Name);
-                }
-            }
+            SyncLearngoals(CurrentStudent);
+            dgvActivities.Rows.Clear();
         }
 
-        private void dvgSubjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Checks if the current cell selection is a dgvCheckBox
-            if (dgvSubjects.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
-            {
-                //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
-                //Rowindex being the current row and column being which column.
-                //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
-
-                DataGridViewCheckBoxCell checkboxCell = (DataGridViewCheckBoxCell)dgvSubjects.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                DataGridViewTextBoxCell textboxCell = (DataGridViewTextBoxCell)dgvSubjects.Rows[e.RowIndex].Cells[e.ColumnIndex- 1];
-
-                //textboxCell is the cell which contains the name of the subject you've just selected.
-                //CurrentSubject gets found by the method written in the Subject Class in combination with the StudentDAL.
-
-                Subject CurrentSubject = Subject.findSubjectByName(CurrentStudent, textboxCell.Value.ToString());
-
-                //CheckboxCell contains a boolean, either true or false. This represents either checked or not checked.
-
-                CurrentSubject.Following = (bool)checkboxCell.Value;
-                Subject.UpdateSubjects(CurrentStudent, CurrentSubject);
-                dgvSubjects_Sync();
-            }
+            SyncActivities();
         }
 
-        //This was found on the internet, it solves the problem that when you are changing the checkbox state.
-        //Say you would change the checkbox state twice, then the database wouldn't process the change correctly.
-        //This code forces a change to happen immediately which prevents it from having an unprocessed change.
-        private void dgvSubjects_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubjects.IsCurrentCellDirty)
-            {
-                dgvSubjects.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
+            pnlActivity.Hide();
+            pnlLearngoal.Hide();
+            pnlTimeSpent.Show();
+        }
+
+        private void btnSaveTimeSpent_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string TimeSpent = txbTimeSpent.Text;
+            Activity.InsertTimeSpent(activityid, TimeSpent);
+            pnlTimeSpent.Visible = false;
+            pnlLearngoal.Show();
         }
     }
 }
