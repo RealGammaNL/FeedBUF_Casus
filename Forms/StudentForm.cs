@@ -48,18 +48,21 @@ namespace FeedBUF_Casus.Forms
         }
         private void SyncLearngoals()
         {
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            string Subjectname = cbxSubject.Text;
-            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
-            dgvLearnGoals.Rows.Clear();
-
-            foreach (LearnGoal goal in TotalLearngoal)
+            if (cbxWeek.Text != "")
             {
-                DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
-                row.Cells[0].Value = goal.LearnGoalID;
-                row.Cells[1].Value = goal.Goal;
-                dgvLearnGoals.Rows.Add(row);
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                string Subjectname = cbxSubject.Text;
+                List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
+                dgvLearnGoals.Rows.Clear();
+
+                foreach (LearnGoal goal in TotalLearngoal)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                    row.Cells[0].Value = goal.LearnGoalID;
+                    row.Cells[1].Value = goal.Goal;
+                    dgvLearnGoals.Rows.Add(row);
+                }
             }
         }
         private void SyncActivities()
@@ -79,6 +82,7 @@ namespace FeedBUF_Casus.Forms
                 if(activity.TimeSpent != "")
                 {
                     row.Cells[3].Value = true;
+                    row.Cells[3].ReadOnly = true;
                 }
             }
         }
@@ -114,8 +118,11 @@ namespace FeedBUF_Casus.Forms
         private void btnHome_Click(object sender, EventArgs e)
         {
             cbxPanelSwitch.SelectedItem = null;
+            cbxWeek.SelectedItem = null;
+            cbxSubject.SelectedItem = null;
             HidePanels();
             pnlHome.Show();
+            dgvLearnGoals.Rows.Clear();
         }
 
         private void pnlFeedup_Paint(object sender, PaintEventArgs e)
@@ -159,11 +166,11 @@ namespace FeedBUF_Casus.Forms
         {
             if (dgvLearnGoals.CurrentRow != null)
             {
-                string ActivityStr = txbFeedup_Activitity.Text;
-                string TimeEstimation = txbFeedup_TimeEstimation.Text;
+                string activityStr = txbFeedup_Activitity.Text;
+                string timeEstimation = txbFeedup_TimeEstimation.Text;
                 DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
                 int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity activity = new Activity(learngoalid, ActivityStr, TimeEstimation);
+                Activity activity = new Activity(learngoalid, activityStr, timeEstimation);
                 Activity.AddActivity(activity);
                 txbFeedup_Activitity.Clear();
                 txbFeedup_TimeEstimation.Clear();
@@ -275,15 +282,26 @@ namespace FeedBUF_Casus.Forms
             //Checks if the current cell selection is a dgvCheckBox
             if (dgvActivities.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
             {
-                //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
-                //Rowindex being the current row and column being which column.
-                //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+                if (dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
+                {
+                    //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
+                    //Rowindex being the current row and column being which column.
+                    //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
 
-                pnlActivity.Hide();
-                pnlLearngoal.Hide();
-                pnlTimeSpent.Show();
+                    pnlActivity.Hide();
+                    pnlLearngoal.Hide();
+                    pnlTimeSpent.Show();
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                    // Set the ReadOnly property of the cell to true to prevent the user from unchecking the checkbox
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                }
+                else
+                {
+
+                }
             }
         }
+
 
         private void btnSaveTimeSpent_Click(object sender, EventArgs e)
         {
@@ -293,6 +311,7 @@ namespace FeedBUF_Casus.Forms
             Activity.InsertTimeSpent(activityid, TimeSpent);
             pnlTimeSpent.Visible = false;
             pnlLearngoal.Show();
+            txbTimeSpent.Clear();
         }
 
         private void btnAddSubject_Click(object sender, EventArgs e)
