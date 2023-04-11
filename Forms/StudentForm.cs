@@ -276,6 +276,23 @@ namespace FeedBUF_Casus.Forms
 
                 if (FeedbackSelection == "Register")
                 {
+                    string[] attributes = cbxWeek.Text.Split(' ');
+                    int weeknumber = Int32.Parse(attributes[1]);
+                    int FeedbackID = (int)row.Cells[0].Value;
+
+                    LearnGoal CurrentLearnGoal = Feedback.GetLearnGoalByFeedback(FeedbackID);
+
+                    foreach (var items in cbxLearnGoal.Items)
+                    {
+                        if (items.ToString() == CurrentLearnGoal.Goal)
+                        {
+                            cbxLearnGoal.SelectedItem = items;
+                        }
+                    }
+
+                    Feedback_SyncActivities(CurrentLearnGoal);
+
+                    // If selected then fill the other boxes, also need to check if feedback is even given on an activity.
 
                 }
             }

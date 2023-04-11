@@ -164,5 +164,40 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
+
+        public static LearnGoal GetLearnGoalByFeedback(int FeedbackID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "SELECT LEARNGOAL.LearnGoalID, LEARNGOAL.StudentID, LEARNGOAL.SubjectName, LEARNGOAL.WeekNr, LEARNGOAL.Learngoal, LEARNGOAL.Note FROM LEARNGOAL, FEEDBACK " +
+                        "WHERE LEARNGOAL.LearnGoalID = FEEDBACK.LearnGoalID AND FEEDBACK.FeedbackID = @FeedbackID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeedbackID", FeedbackID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                LearnGoal learnGoal = new LearnGoal((int)reader["LearnGoalID"]
+                                                    , (int)reader["StudentID"]
+                                                    , reader["SubjectName"].ToString()
+                                                    , (int)reader["WeekNr"]
+                                                    , reader["Learngoal"].ToString()
+                                                    , reader["Note"].ToString()
+                                                    );
+                                return learnGoal;
+
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
     }
 }

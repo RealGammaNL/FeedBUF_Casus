@@ -99,5 +99,10 @@ namespace DOMAIN
         {
             DAL.FeedbackDAL.AddQuestion(feedbackID, question);
         }
+
+        public static LearnGoal GetLearnGoalByFeedback(int FeedbackID)
+        {
+            return DAL.FeedbackDAL.GetLearnGoalByFeedback(FeedbackID);
+        }
     }
 }
