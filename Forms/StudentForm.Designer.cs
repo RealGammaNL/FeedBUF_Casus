@@ -50,6 +50,10 @@ namespace FeedBUF_Casus.Forms
             this.btnFeedup_SwitchActivity = new System.Windows.Forms.Button();
             this.btnFeedup_SwitchLearngoal = new System.Windows.Forms.Button();
             this.dgvActivities = new System.Windows.Forms.DataGridView();
+            this.clnFeedupActivitiesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedupActivitiesActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcTimeEstimation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvLearnGoals = new System.Windows.Forms.DataGridView();
             this.clnFeedupLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnFeedupLearnGoalLearnGoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,10 +137,6 @@ namespace FeedBUF_Casus.Forms
             this.btnAddSubject = new System.Windows.Forms.Button();
             this.lblManageSubjects = new System.Windows.Forms.Label();
             this.lblHome_ = new System.Windows.Forms.Label();
-            this.clnFeedupActivitiesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedupActivitiesActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcTimeEstimation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Completed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
@@ -369,6 +369,36 @@ namespace FeedBUF_Casus.Forms
             this.dgvActivities.Size = new System.Drawing.Size(525, 1000);
             this.dgvActivities.TabIndex = 3;
             this.dgvActivities.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivities_CellContentClick);
+            // 
+            // clnFeedupActivitiesID
+            // 
+            this.clnFeedupActivitiesID.HeaderText = "ID";
+            this.clnFeedupActivitiesID.MinimumWidth = 6;
+            this.clnFeedupActivitiesID.Name = "clnFeedupActivitiesID";
+            this.clnFeedupActivitiesID.Width = 50;
+            // 
+            // clnFeedupActivitiesActivity
+            // 
+            this.clnFeedupActivitiesActivity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnFeedupActivitiesActivity.HeaderText = "Activiteit";
+            this.clnFeedupActivitiesActivity.MinimumWidth = 6;
+            this.clnFeedupActivitiesActivity.Name = "clnFeedupActivitiesActivity";
+            this.clnFeedupActivitiesActivity.ReadOnly = true;
+            // 
+            // dgcTimeEstimation
+            // 
+            this.dgcTimeEstimation.HeaderText = "Tijdsinschatting";
+            this.dgcTimeEstimation.MinimumWidth = 8;
+            this.dgcTimeEstimation.Name = "dgcTimeEstimation";
+            this.dgcTimeEstimation.Width = 85;
+            // 
+            // Completed
+            // 
+            this.Completed.HeaderText = "Voltooid";
+            this.Completed.MinimumWidth = 8;
+            this.Completed.Name = "Completed";
+            this.Completed.ToolTipText = "Vink aan als de activiteit voltooid is";
+            this.Completed.Width = 60;
             // 
             // dgvLearnGoals
             // 
@@ -1286,36 +1316,6 @@ namespace FeedBUF_Casus.Forms
             this.lblHome_.TabIndex = 1;
             this.lblHome_.Text = "Home";
             // 
-            // clnFeedupActivitiesID
-            // 
-            this.clnFeedupActivitiesID.HeaderText = "ID";
-            this.clnFeedupActivitiesID.MinimumWidth = 6;
-            this.clnFeedupActivitiesID.Name = "clnFeedupActivitiesID";
-            this.clnFeedupActivitiesID.Width = 50;
-            // 
-            // clnFeedupActivitiesActivity
-            // 
-            this.clnFeedupActivitiesActivity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnFeedupActivitiesActivity.HeaderText = "Activiteit";
-            this.clnFeedupActivitiesActivity.MinimumWidth = 6;
-            this.clnFeedupActivitiesActivity.Name = "clnFeedupActivitiesActivity";
-            this.clnFeedupActivitiesActivity.ReadOnly = true;
-            // 
-            // dgcTimeEstimation
-            // 
-            this.dgcTimeEstimation.HeaderText = "Tijdsinschatting";
-            this.dgcTimeEstimation.MinimumWidth = 8;
-            this.dgcTimeEstimation.Name = "dgcTimeEstimation";
-            this.dgcTimeEstimation.Width = 85;
-            // 
-            // Completed
-            // 
-            this.Completed.HeaderText = "Voltooid";
-            this.Completed.MinimumWidth = 8;
-            this.Completed.Name = "Completed";
-            this.Completed.ToolTipText = "Vink aan als de activiteit voltooid is";
-            this.Completed.Width = 60;
-            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1327,6 +1327,7 @@ namespace FeedBUF_Casus.Forms
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlHome);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentForm";
