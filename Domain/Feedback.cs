@@ -85,14 +85,19 @@ namespace DOMAIN
             Note = note;
         }
 
-        public static List<Feedback> GetFeedback()
+        public static List<Feedback> GetFeedback(Student student, int weeknumber, string subject)
         {
-            return DAL.FeedbackDAL.GetFeedback();
+            return DAL.FeedbackDAL.GetFeedback(student, weeknumber, subject);
         }
 
         public static void AddFeedback(Feedback feedback)
         {
             DAL.FeedbackDAL.AddFeedback(feedback);
+        }
+
+        public static void AddQuestion(int feedbackID, string question)
+        {
+            DAL.FeedbackDAL.AddQuestion(feedbackID, question);
         }
     }
 }

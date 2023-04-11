@@ -27,9 +27,9 @@ namespace DAL
 
                         if (feedback.ActivityID == 0)
                         {
-                            command.Parameters.AddWithValue("@ActivityID", null);
+                            command.Parameters.AddWithValue("@ActivityID", DBNull.Value);
                         }
-                        else
+                        if (feedback.ActivityID != 0)
                         {
                             command.Parameters.AddWithValue("@ActivityID", feedback.ActivityID);
                         }
@@ -54,7 +54,7 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@StudentID", feedback.FeedbackID);
+                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
                         command.Parameters.AddWithValue("@StudentID", feedback.StudentID);
                         command.Parameters.AddWithValue("@TeacherID", feedback.TeacherID);
                         command.Parameters.AddWithValue("@LearngoalID", feedback.LearngoalID);
@@ -69,7 +69,7 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static List<Feedback> GetFeedback()
+        public static List<Feedback> GetFeedback(Student student, int weeknumber, string subject)
         {
             List<Feedback> feedbacks = new List<Feedback>();
 
@@ -77,12 +77,20 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "SELECT FeedbackID, Title, Description, Teacher " +
-                                 "FROM FEEDBACK";
+                    string sql = "SELECT FEEDBACK.FeedbackID, FEEDBACK.Title, FEEDBACK.Description, FEEDBACK.Teacher " +
+                                "FROM FEEDBACK, LEARNGOAL " +
+                                "WHERE FEEDBACK.StudentID = @StudentID " +
+                                "AND FEEDBACK.LearnGoalID = LEARNGOAL.LearnGoalID " +
+                                "AND LEARNGOAL.WeekNr = @WeekNr " +
+                                "AND LEARNGOAL.SubjectName = @Subject";
 
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+                        command.Parameters.AddWithValue("@WeekNr", weeknumber);
+                        command.Parameters.AddWithValue("@Subject", subject);
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -133,6 +141,26 @@ namespace DAL
                     }
                 }
                 return learngoals;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static void AddQuestion(int feedbackID, string question)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "UPDATE FEEDBACK SET Question = @Question WHERE FeedbackID = @FeedbackID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeedbackID", feedbackID);
+                        command.Parameters.AddWithValue("@Question", question);
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (SqlException ex) { throw ex; }
         }

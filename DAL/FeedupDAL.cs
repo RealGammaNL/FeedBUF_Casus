@@ -33,7 +33,7 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
-        public static List<LearnGoal> GetLearnGoals(Student student, int Weeknumber, string Subjectname)
+        public static List<LearnGoal> GetLearnGoals(Student student, int weeknumber, string Subjectname)
         {
             List<LearnGoal> learngoals = new List<LearnGoal>();
 
@@ -46,15 +46,15 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("StudentID", student.ID);
-                        command.Parameters.AddWithValue("WeekNr", Weeknumber);
-                        command.Parameters.AddWithValue("SubjectName", Subjectname);
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+                        command.Parameters.AddWithValue("@WeekNr", weeknumber);
+                        command.Parameters.AddWithValue("@SubjectName", Subjectname);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
                                 learngoals.Add(new LearnGoal((int)reader["LearnGoalID"]
-                                                    , (int)(int)reader["StudentID"]
+                                                    , (int)reader["StudentID"]
                                                     , reader["SubjectName"].ToString()
                                                     , (int)reader["WeekNr"]
                                                     , reader["Learngoal"].ToString()
@@ -68,6 +68,45 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
+
+        //public static LearnGoal GetLearnGoalByName(Student student, int weeknumber, string Subjectname, string learngoaltext)
+        //{
+
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(ConnectionString))
+        //        {
+        //            string sql = "SELECT * FROM LEARNGOAL WHERE StudentID = @StudentID AND WeekNr = @WeekNr AND SubjectName = @SubjectName AND Learngoal = @Learngoal";
+
+        //            connection.Open();
+        //            using (SqlCommand command = new SqlCommand(sql, connection))
+        //            {
+        //                command.Parameters.AddWithValue("StudentID", student.ID);
+        //                command.Parameters.AddWithValue("WeekNr", weeknumber);
+        //                command.Parameters.AddWithValue("SubjectName", Subjectname);
+        //                command.Parameters.AddWithValue("Learngoal", learngoaltext);
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        LearnGoal learngoal = new LearnGoal((int)reader["LearnGoalID"]
+        //                                            , (int)reader["StudentID"]
+        //                                            , reader["SubjectName"].ToString()
+        //                                            , (int)reader["WeekNr"]
+        //                                            , reader["Learngoal"].ToString()
+        //                                            , reader["Note"].ToString()
+        //                                            );
+        //                        return learngoal;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        return null;
+        //    }
+        //    catch (SqlException ex) { throw ex; }
+
+        //}
+
         public static void AddActivity(Activity activity)
         {
             try

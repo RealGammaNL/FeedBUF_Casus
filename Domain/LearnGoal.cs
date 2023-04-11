@@ -40,9 +40,26 @@ namespace DOMAIN
             WeekNr = weeknr;
             Goal = goal;
         }
-        public static List<LearnGoal> GetLearnGoals(Student student, int Weeknumber, string Subjectname)
+        public static List<LearnGoal> GetLearnGoals(Student student, int weeknumber, string Subjectname)
         {
-            return DAL.FeedupDAL.GetLearnGoals(student, Weeknumber, Subjectname);
+            return DAL.FeedupDAL.GetLearnGoals(student, weeknumber, Subjectname);
+        }
+
+        //public static LearnGoal GetLearnGoalByName(Student student, int weeknumber, string Subjectname, string learngoaltext)
+        //{
+        //    return DAL.FeedupDAL.GetLearnGoalByName(student, weeknumber, Subjectname, learngoaltext);
+        //}
+
+        public static LearnGoal GetLearnGoalByName(Student student, int weeknumber, string subject, string learngoaltext)
+        {
+            foreach (LearnGoal learngoal in DAL.FeedupDAL.GetLearnGoals(student, weeknumber, subject))
+            {
+                if (learngoaltext == learngoal.Goal)
+                {
+                    return learngoal;
+                }
+            }
+            return null;
         }
     }
 }
