@@ -31,9 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -106,20 +106,12 @@ namespace FeedBUF_Casus.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
             this.tbxFeedforwardNote = new System.Windows.Forms.TextBox();
-            this.btnFeedforwardAddNote = new System.Windows.Forms.Button();
+            this.btnFeedforwardAddNoteToActivity = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dgvFeedforwardActivities = new System.Windows.Forms.DataGridView();
-            this.clnFeedforwardActivityID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardActivityActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFeedforwardFeedback = new System.Windows.Forms.DataGridView();
-            this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardFeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardFeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedback2 = new System.Windows.Forms.Label();
             this.dgvFeedforwardLearnGoals = new System.Windows.Forms.DataGridView();
-            this.clnFeedforwardLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardLearngoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedforwardNote = new System.Windows.Forms.Label();
             this.lblLearnGoals2 = new System.Windows.Forms.Label();
             this.pnlConclusion = new System.Windows.Forms.Panel();
@@ -142,6 +134,14 @@ namespace FeedBUF_Casus.Forms
             this.btnAddSubject = new System.Windows.Forms.Button();
             this.lblManageSubjects = new System.Windows.Forms.Label();
             this.lblHome_ = new System.Windows.Forms.Label();
+            this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardLearngoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardActivityID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardActivityActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
@@ -639,21 +639,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
@@ -685,8 +685,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle13;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 6;
@@ -965,7 +965,7 @@ namespace FeedBUF_Casus.Forms
             // pnlFeedforward
             // 
             this.pnlFeedforward.Controls.Add(this.tbxFeedforwardNote);
-            this.pnlFeedforward.Controls.Add(this.btnFeedforwardAddNote);
+            this.pnlFeedforward.Controls.Add(this.btnFeedforwardAddNoteToActivity);
             this.pnlFeedforward.Controls.Add(this.label15);
             this.pnlFeedforward.Controls.Add(this.dgvFeedforwardActivities);
             this.pnlFeedforward.Controls.Add(this.dgvFeedforwardFeedback);
@@ -983,20 +983,20 @@ namespace FeedBUF_Casus.Forms
             // 
             // tbxFeedforwardNote
             // 
-            this.tbxFeedforwardNote.Location = new System.Drawing.Point(522, 48);
+            this.tbxFeedforwardNote.Location = new System.Drawing.Point(597, 54);
             this.tbxFeedforwardNote.Multiline = true;
             this.tbxFeedforwardNote.Name = "tbxFeedforwardNote";
             this.tbxFeedforwardNote.Size = new System.Drawing.Size(743, 153);
             this.tbxFeedforwardNote.TabIndex = 9;
             // 
-            // btnFeedforwardAddNote
+            // btnFeedforwardAddNoteToActivity
             // 
-            this.btnFeedforwardAddNote.Location = new System.Drawing.Point(522, 244);
-            this.btnFeedforwardAddNote.Name = "btnFeedforwardAddNote";
-            this.btnFeedforwardAddNote.Size = new System.Drawing.Size(93, 63);
-            this.btnFeedforwardAddNote.TabIndex = 8;
-            this.btnFeedforwardAddNote.Text = "Toevoegen";
-            this.btnFeedforwardAddNote.UseVisualStyleBackColor = true;
+            this.btnFeedforwardAddNoteToActivity.Location = new System.Drawing.Point(597, 253);
+            this.btnFeedforwardAddNoteToActivity.Name = "btnFeedforwardAddNoteToActivity";
+            this.btnFeedforwardAddNoteToActivity.Size = new System.Drawing.Size(93, 63);
+            this.btnFeedforwardAddNoteToActivity.TabIndex = 8;
+            this.btnFeedforwardAddNoteToActivity.Text = "Toevoegen";
+            this.btnFeedforwardAddNoteToActivity.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -1012,6 +1012,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // dgvFeedforwardActivities
             // 
+            this.dgvFeedforwardActivities.AllowUserToAddRows = false;
             this.dgvFeedforwardActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardActivities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardActivityID,
@@ -1019,21 +1020,12 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedforwardActivities.Location = new System.Drawing.Point(30, 259);
             this.dgvFeedforwardActivities.Name = "dgvFeedforwardActivities";
             this.dgvFeedforwardActivities.RowHeadersVisible = false;
-            this.dgvFeedforwardActivities.Size = new System.Drawing.Size(309, 150);
+            this.dgvFeedforwardActivities.Size = new System.Drawing.Size(502, 150);
             this.dgvFeedforwardActivities.TabIndex = 6;
-            // 
-            // clnFeedforwardActivityID
-            // 
-            this.clnFeedforwardActivityID.HeaderText = "ID";
-            this.clnFeedforwardActivityID.Name = "clnFeedforwardActivityID";
-            // 
-            // clnFeedforwardActivityActivity
-            // 
-            this.clnFeedforwardActivityActivity.HeaderText = "Activiteit";
-            this.clnFeedforwardActivityActivity.Name = "clnFeedforwardActivityActivity";
             // 
             // dgvFeedforwardFeedback
             // 
+            this.dgvFeedforwardFeedback.AllowUserToAddRows = false;
             this.dgvFeedforwardFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardFeedbackID,
@@ -1049,30 +1041,6 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedforwardFeedback.Size = new System.Drawing.Size(503, 169);
             this.dgvFeedforwardFeedback.TabIndex = 5;
             // 
-            // clnFeedforwardFeedbackID
-            // 
-            this.clnFeedforwardFeedbackID.HeaderText = "ID";
-            this.clnFeedforwardFeedbackID.MinimumWidth = 6;
-            this.clnFeedforwardFeedbackID.Name = "clnFeedforwardFeedbackID";
-            this.clnFeedforwardFeedbackID.Width = 125;
-            // 
-            // clnFeedforwardFeedbackFeedback
-            // 
-            this.clnFeedforwardFeedbackFeedback.HeaderText = "Feedback";
-            this.clnFeedforwardFeedbackFeedback.MinimumWidth = 6;
-            this.clnFeedforwardFeedbackFeedback.Name = "clnFeedforwardFeedbackFeedback";
-            this.clnFeedforwardFeedbackFeedback.Width = 125;
-            // 
-            // clnFeedforwardFeedbackTitle
-            // 
-            this.clnFeedforwardFeedbackTitle.HeaderText = "Titel";
-            this.clnFeedforwardFeedbackTitle.Name = "clnFeedforwardFeedbackTitle";
-            // 
-            // clnFeedforwardFeedbackDescription
-            // 
-            this.clnFeedforwardFeedbackDescription.HeaderText = "Descriptie";
-            this.clnFeedforwardFeedbackDescription.Name = "clnFeedforwardFeedbackDescription";
-            // 
             // lblFeedback2
             // 
             this.lblFeedback2.AutoSize = true;
@@ -1087,6 +1055,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // dgvFeedforwardLearnGoals
             // 
+            this.dgvFeedforwardLearnGoals.AllowUserToAddRows = false;
             this.dgvFeedforwardLearnGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardLearnGoals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardLearnGoalID,
@@ -1097,30 +1066,16 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedforwardLearnGoals.RowHeadersVisible = false;
             this.dgvFeedforwardLearnGoals.RowHeadersWidth = 51;
             this.dgvFeedforwardLearnGoals.RowTemplate.Height = 24;
-            this.dgvFeedforwardLearnGoals.Size = new System.Drawing.Size(309, 191);
+            this.dgvFeedforwardLearnGoals.Size = new System.Drawing.Size(502, 191);
             this.dgvFeedforwardLearnGoals.TabIndex = 2;
             this.dgvFeedforwardLearnGoals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFeedforwardLearnGoals_CellClick);
-            // 
-            // clnFeedforwardLearnGoalID
-            // 
-            this.clnFeedforwardLearnGoalID.HeaderText = "ID";
-            this.clnFeedforwardLearnGoalID.MinimumWidth = 6;
-            this.clnFeedforwardLearnGoalID.Name = "clnFeedforwardLearnGoalID";
-            this.clnFeedforwardLearnGoalID.Width = 125;
-            // 
-            // clnFeedforwardLearngoal
-            // 
-            this.clnFeedforwardLearngoal.HeaderText = "Leerdoel";
-            this.clnFeedforwardLearngoal.MinimumWidth = 6;
-            this.clnFeedforwardLearngoal.Name = "clnFeedforwardLearngoal";
-            this.clnFeedforwardLearngoal.Width = 125;
             // 
             // lblFeedforwardNote
             // 
             this.lblFeedforwardNote.AutoSize = true;
             this.lblFeedforwardNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeedforwardNote.ForeColor = System.Drawing.Color.Orange;
-            this.lblFeedforwardNote.Location = new System.Drawing.Point(517, 12);
+            this.lblFeedforwardNote.Location = new System.Drawing.Point(592, 18);
             this.lblFeedforwardNote.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeedforwardNote.Name = "lblFeedforwardNote";
             this.lblFeedforwardNote.Size = new System.Drawing.Size(83, 29);
@@ -1366,6 +1321,56 @@ namespace FeedBUF_Casus.Forms
             this.lblHome_.TabIndex = 1;
             this.lblHome_.Text = "Home";
             // 
+            // clnFeedforwardFeedbackID
+            // 
+            this.clnFeedforwardFeedbackID.HeaderText = "ID";
+            this.clnFeedforwardFeedbackID.MinimumWidth = 6;
+            this.clnFeedforwardFeedbackID.Name = "clnFeedforwardFeedbackID";
+            this.clnFeedforwardFeedbackID.Width = 60;
+            // 
+            // clnFeedforwardFeedbackFeedback
+            // 
+            this.clnFeedforwardFeedbackFeedback.HeaderText = "Feedback";
+            this.clnFeedforwardFeedbackFeedback.MinimumWidth = 6;
+            this.clnFeedforwardFeedbackFeedback.Name = "clnFeedforwardFeedbackFeedback";
+            this.clnFeedforwardFeedbackFeedback.Width = 125;
+            // 
+            // clnFeedforwardFeedbackTitle
+            // 
+            this.clnFeedforwardFeedbackTitle.HeaderText = "Titel";
+            this.clnFeedforwardFeedbackTitle.Name = "clnFeedforwardFeedbackTitle";
+            // 
+            // clnFeedforwardFeedbackDescription
+            // 
+            this.clnFeedforwardFeedbackDescription.HeaderText = "Descriptie";
+            this.clnFeedforwardFeedbackDescription.Name = "clnFeedforwardFeedbackDescription";
+            // 
+            // clnFeedforwardLearnGoalID
+            // 
+            this.clnFeedforwardLearnGoalID.HeaderText = "ID";
+            this.clnFeedforwardLearnGoalID.MinimumWidth = 6;
+            this.clnFeedforwardLearnGoalID.Name = "clnFeedforwardLearnGoalID";
+            this.clnFeedforwardLearnGoalID.Width = 60;
+            // 
+            // clnFeedforwardLearngoal
+            // 
+            this.clnFeedforwardLearngoal.HeaderText = "Leerdoel";
+            this.clnFeedforwardLearngoal.MinimumWidth = 6;
+            this.clnFeedforwardLearngoal.Name = "clnFeedforwardLearngoal";
+            this.clnFeedforwardLearngoal.Width = 400;
+            // 
+            // clnFeedforwardActivityID
+            // 
+            this.clnFeedforwardActivityID.HeaderText = "ID";
+            this.clnFeedforwardActivityID.Name = "clnFeedforwardActivityID";
+            this.clnFeedforwardActivityID.Width = 60;
+            // 
+            // clnFeedforwardActivityActivity
+            // 
+            this.clnFeedforwardActivityActivity.HeaderText = "Activiteit";
+            this.clnFeedforwardActivityActivity.Name = "clnFeedforwardActivityActivity";
+            this.clnFeedforwardActivityActivity.Width = 400;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1445,8 +1450,6 @@ namespace FeedBUF_Casus.Forms
         private Panel pnlConclusion;
         private DataGridView dataGridView3;
         private Label label2;
-        private DataGridViewTextBoxColumn clnFeedforwardLearnGoalID;
-        private DataGridViewTextBoxColumn clnFeedforwardLearngoal;
         private DataGridViewTextBoxColumn clnConclusionConclusionID;
         private DataGridViewTextBoxColumn clnConclusionConclusionConclusion;
         private Button btnLogOut;
@@ -1521,13 +1524,15 @@ namespace FeedBUF_Casus.Forms
         private Label lblHome_;
         private Label label15;
         private DataGridView dgvFeedforwardActivities;
-        private Button btnFeedforwardAddNote;
-        private DataGridViewTextBoxColumn clnFeedforwardActivityID;
-        private DataGridViewTextBoxColumn clnFeedforwardActivityActivity;
+        private Button btnFeedforwardAddNoteToActivity;
         private TextBox tbxFeedforwardNote;
         private DataGridViewTextBoxColumn clnFeedforwardFeedbackID;
         private DataGridViewTextBoxColumn clnFeedforwardFeedbackFeedback;
         private DataGridViewTextBoxColumn clnFeedforwardFeedbackTitle;
         private DataGridViewTextBoxColumn clnFeedforwardFeedbackDescription;
+        private DataGridViewTextBoxColumn clnFeedforwardActivityID;
+        private DataGridViewTextBoxColumn clnFeedforwardActivityActivity;
+        private DataGridViewTextBoxColumn clnFeedforwardLearnGoalID;
+        private DataGridViewTextBoxColumn clnFeedforwardLearngoal;
     }
 }

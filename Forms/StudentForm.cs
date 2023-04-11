@@ -54,7 +54,8 @@ namespace FeedBUF_Casus.Forms
 
             foreach (Feedback feedback in TotalFeedback)
             {
-                DataGridViewRow row = (DataGridViewRow)dgvFeedforwardFeedback.Rows[0].Clone();
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvFeedforwardFeedback);
                 row.Cells[0].Value = feedback.FeedbackID;
                 row.Cells[1].Value = feedback.Teacher;
                 row.Cells[2].Value = feedback.Title;
@@ -91,7 +92,8 @@ namespace FeedBUF_Casus.Forms
 
                 foreach (LearnGoal goal in TotalLearngoal)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgvFeedforwardLearnGoals.Rows[0].Clone();
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dgvFeedforwardLearnGoals);
                     row.Cells[0].Value = goal.LearnGoalID;
                     row.Cells[1].Value = goal.Goal;
                     dgvFeedforwardLearnGoals.Rows.Add(row);
@@ -128,7 +130,8 @@ namespace FeedBUF_Casus.Forms
 
             foreach (Activity activity in TotalActivity)
             {
-                DataGridViewRow row = (DataGridViewRow)dgvFeedforwardActivities.Rows[0].Clone();
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvFeedforwardActivities);
                 row.Cells[0].Value = activity.ActivityID;
                 row.Cells[1].Value = activity.ActivityText;
                 dgvFeedforwardActivities.Rows.Add(row);
