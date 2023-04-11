@@ -82,6 +82,7 @@ namespace FeedBUF_Casus.Forms
                 if(activity.TimeSpent != "")
                 {
                     row.Cells[3].Value = true;
+                    row.Cells[3].ReadOnly = true;
                 }
             }
         }
@@ -281,15 +282,26 @@ namespace FeedBUF_Casus.Forms
             //Checks if the current cell selection is a dgvCheckBox
             if (dgvActivities.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
             {
-                //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
-                //Rowindex being the current row and column being which column.
-                //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+                if (dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
+                {
+                    //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
+                    //Rowindex being the current row and column being which column.
+                    //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
 
-                pnlActivity.Hide();
-                pnlLearngoal.Hide();
-                pnlTimeSpent.Show();
+                    pnlActivity.Hide();
+                    pnlLearngoal.Hide();
+                    pnlTimeSpent.Show();
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                    // Set the ReadOnly property of the cell to true to prevent the user from unchecking the checkbox
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                }
+                else
+                {
+
+                }
             }
         }
+
 
         private void btnSaveTimeSpent_Click(object sender, EventArgs e)
         {
@@ -299,6 +311,7 @@ namespace FeedBUF_Casus.Forms
             Activity.InsertTimeSpent(activityid, TimeSpent);
             pnlTimeSpent.Visible = false;
             pnlLearngoal.Show();
+            txbTimeSpent.Clear();
         }
 
         private void btnAddSubject_Click(object sender, EventArgs e)
