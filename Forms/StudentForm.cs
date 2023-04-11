@@ -20,6 +20,7 @@ namespace FeedBUF_Casus.Forms
             InitializeComponent();
 
             SyncFeedback();
+            SyncFeedforwardFeedback();
 
             CurrentStudent = student;
             LoginStudent(student);
@@ -46,6 +47,21 @@ namespace FeedBUF_Casus.Forms
                 dgvFeedback.Rows.Add(row);
             }
         }
+        private void SyncFeedforwardFeedback()
+        {
+            List<Feedback> TotalFeedback = Feedback.GetFeedback();
+            dgvFeedforwardFeedback.Rows.Clear();
+
+            foreach (Feedback feedback in TotalFeedback)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvFeedforwardFeedback.Rows[0].Clone();
+                row.Cells[0].Value = feedback.FeedbackID;
+                row.Cells[1].Value = feedback.Teacher;
+                row.Cells[2].Value = feedback.Title;
+                row.Cells[3].Value = feedback.Description;
+                dgvFeedforwardFeedback.Rows.Add(row);
+            }
+        }
         private void SyncLearngoals(Student student)
         {
             string[] attributes = cbxWeek.Text.Split(' ');
@@ -60,6 +76,26 @@ namespace FeedBUF_Casus.Forms
                 row.Cells[0].Value = goal.LearnGoalID;
                 row.Cells[1].Value = goal.Goal;
                 dgvLearnGoals.Rows.Add(row);
+            }
+        }
+
+        private void SyncFeedforwardLearngoals(Student student)
+        {
+            if (cbxWeek.Text != "")
+                {
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                string Subjectname = cbxSubject.Text;
+                List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(student, weeknumber, Subjectname);
+                dgvFeedforwardLearnGoals.Rows.Clear();
+
+                foreach (LearnGoal goal in TotalLearngoal)
+                {
+                    DataGridViewRow row = (DataGridViewRow)dgvFeedforwardLearnGoals.Rows[0].Clone();
+                    row.Cells[0].Value = goal.LearnGoalID;
+                    row.Cells[1].Value = goal.Goal;
+                    dgvFeedforwardLearnGoals.Rows.Add(row);
+                }
             }
         }
         private void SyncActivities()
@@ -80,6 +116,22 @@ namespace FeedBUF_Casus.Forms
                 {
                     row.Cells[3].Value = true;
                 }
+            }
+        }
+
+        private void SyncFeedforwardActivities()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            List<Activity> TotalActivity = Activity.GetActivity(learngoalid);
+            dgvFeedforwardActivities.Rows.Clear();
+
+            foreach (Activity activity in TotalActivity)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvFeedforwardActivities.Rows[0].Clone();
+                row.Cells[0].Value = activity.ActivityID;
+                row.Cells[1].Value = activity.ActivityText;
+                dgvFeedforwardActivities.Rows.Add(row);
             }
         }
 
@@ -254,18 +306,27 @@ namespace FeedBUF_Casus.Forms
         private void WeekChanged(object sender, EventArgs e)
         {
             SyncLearngoals(CurrentStudent);
+            SyncFeedforwardLearngoals(CurrentStudent);
             dgvActivities.Rows.Clear();
+            dgvFeedforwardActivities.Rows.Clear();
         }
 
         private void SubjectChanged(object sender, EventArgs e)
         {
             SyncLearngoals(CurrentStudent);
+            SyncFeedforwardLearngoals(CurrentStudent);
             dgvActivities.Rows.Clear();
+            dgvFeedforwardActivities.Rows.Clear();
         }
 
         private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SyncActivities();
+        }
+
+        private void dgvFeedforwardLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SyncFeedforwardActivities();
         }
 
         private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -351,6 +412,16 @@ namespace FeedBUF_Casus.Forms
             {
                 dgvSubjects.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void lblNotes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlFeedforward_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

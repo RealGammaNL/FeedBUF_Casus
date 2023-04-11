@@ -105,17 +105,22 @@ namespace FeedBUF_Casus.Forms
             this.txbQuestionTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
-            this.dgvFeedback2 = new System.Windows.Forms.DataGridView();
+            this.tbxFeedforwardNote = new System.Windows.Forms.TextBox();
+            this.btnFeedforwardAddNote = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dgvFeedforwardActivities = new System.Windows.Forms.DataGridView();
+            this.clnFeedforwardActivityID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardActivityActivity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvFeedforwardFeedback = new System.Windows.Forms.DataGridView();
             this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnFeedforwardFeedbackFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnFeedforwardFeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedback2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clnFeedforwardConclusionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnFeedforwardConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvLearnGoals2 = new System.Windows.Forms.DataGridView();
+            this.dgvFeedforwardLearnGoals = new System.Windows.Forms.DataGridView();
             this.clnFeedforwardLearnGoalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnFeedforwardLearngoal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblConclusion = new System.Windows.Forms.Label();
+            this.lblFeedforwardNote = new System.Windows.Forms.Label();
             this.lblLearnGoals2 = new System.Windows.Forms.Label();
             this.pnlConclusion = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -151,9 +156,9 @@ namespace FeedBUF_Casus.Forms
             this.pnlAskQuestion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlFeedforward.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLearnGoals2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardActivities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardFeedback)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardLearnGoals)).BeginInit();
             this.pnlConclusion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.pnlHome.SuspendLayout();
@@ -168,7 +173,7 @@ namespace FeedBUF_Casus.Forms
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Location = new System.Drawing.Point(13, 14);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(50, 57);
             this.btnHome.TabIndex = 0;
@@ -186,9 +191,9 @@ namespace FeedBUF_Casus.Forms
             this.groupBox1.Controls.Add(this.cbxPanelSwitch);
             this.groupBox1.Controls.Add(this.btnHome);
             this.groupBox1.Location = new System.Drawing.Point(-4, -10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(1459, 90);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -201,7 +206,7 @@ namespace FeedBUF_Casus.Forms
             this.btnLogOut.FlatAppearance.BorderSize = 0;
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogOut.Location = new System.Drawing.Point(1369, 19);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(50, 57);
             this.btnLogOut.TabIndex = 6;
@@ -228,7 +233,7 @@ namespace FeedBUF_Casus.Forms
             "Datastructure Basics",
             "Project Management"});
             this.cbxSubject.Location = new System.Drawing.Point(317, 33);
-            this.cbxSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSubject.Name = "cbxSubject";
             this.cbxSubject.Size = new System.Drawing.Size(228, 28);
             this.cbxSubject.TabIndex = 3;
@@ -244,7 +249,7 @@ namespace FeedBUF_Casus.Forms
             "Week 2 ",
             "Week 3 "});
             this.cbxWeek.Location = new System.Drawing.Point(212, 33);
-            this.cbxWeek.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxWeek.Margin = new System.Windows.Forms.Padding(2);
             this.cbxWeek.Name = "cbxWeek";
             this.cbxWeek.Size = new System.Drawing.Size(92, 28);
             this.cbxWeek.TabIndex = 2;
@@ -271,7 +276,7 @@ namespace FeedBUF_Casus.Forms
             "Feedforward",
             "Conclusion"});
             this.cbxPanelSwitch.Location = new System.Drawing.Point(81, 33);
-            this.cbxPanelSwitch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxPanelSwitch.Margin = new System.Windows.Forms.Padding(2);
             this.cbxPanelSwitch.Name = "cbxPanelSwitch";
             this.cbxPanelSwitch.Size = new System.Drawing.Size(120, 28);
             this.cbxPanelSwitch.TabIndex = 1;
@@ -289,7 +294,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Controls.Add(this.pnlLearngoal);
             this.pnlFeedup.Controls.Add(this.pnlActivity);
             this.pnlFeedup.Location = new System.Drawing.Point(9, 85);
-            this.pnlFeedup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFeedup.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedup.Name = "pnlFeedup";
             this.pnlFeedup.Size = new System.Drawing.Size(1406, 743);
             this.pnlFeedup.TabIndex = 3;
@@ -365,7 +370,7 @@ namespace FeedBUF_Casus.Forms
             this.dgcTimeEstimation,
             this.Completed});
             this.dgvActivities.Location = new System.Drawing.Point(420, 68);
-            this.dgvActivities.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvActivities.Margin = new System.Windows.Forms.Padding(2);
             this.dgvActivities.Name = "dgvActivities";
             this.dgvActivities.RowHeadersVisible = false;
             this.dgvActivities.RowHeadersWidth = 51;
@@ -412,7 +417,7 @@ namespace FeedBUF_Casus.Forms
             this.clnFeedupLearnGoalID,
             this.clnFeedupLearnGoalLearnGoal});
             this.dgvLearnGoals.Location = new System.Drawing.Point(29, 68);
-            this.dgvLearnGoals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLearnGoals.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLearnGoals.Name = "dgvLearnGoals";
             this.dgvLearnGoals.RowHeadersVisible = false;
             this.dgvLearnGoals.RowHeadersWidth = 51;
@@ -598,7 +603,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.Controls.Add(this.pnlRegisterFeedback);
             this.pnlFeedback.Controls.Add(this.pnlAskQuestion);
             this.pnlFeedback.Location = new System.Drawing.Point(9, 85);
-            this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedback.Name = "pnlFeedback";
             this.pnlFeedback.Size = new System.Drawing.Size(1414, 743);
             this.pnlFeedback.TabIndex = 4;
@@ -643,7 +648,7 @@ namespace FeedBUF_Casus.Forms
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
-            this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
@@ -716,7 +721,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlRegisterFeedback.Controls.Add(this.txbFeedbackTitle);
             this.pnlRegisterFeedback.Controls.Add(this.lblRegisterFeedback);
             this.pnlRegisterFeedback.Location = new System.Drawing.Point(642, 68);
-            this.pnlRegisterFeedback.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlRegisterFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRegisterFeedback.Name = "pnlRegisterFeedback";
             this.pnlRegisterFeedback.Size = new System.Drawing.Size(752, 644);
             this.pnlRegisterFeedback.TabIndex = 5;
@@ -860,7 +865,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlAskQuestion.Controls.Add(this.txbQuestionTitle);
             this.pnlAskQuestion.Controls.Add(this.label1);
             this.pnlAskQuestion.Location = new System.Drawing.Point(642, 68);
-            this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAskQuestion.Name = "pnlAskQuestion";
             this.pnlAskQuestion.Size = new System.Drawing.Size(752, 644);
             this.pnlAskQuestion.TabIndex = 6;
@@ -959,33 +964,90 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlFeedforward
             // 
-            this.pnlFeedforward.Controls.Add(this.dgvFeedback2);
+            this.pnlFeedforward.Controls.Add(this.tbxFeedforwardNote);
+            this.pnlFeedforward.Controls.Add(this.btnFeedforwardAddNote);
+            this.pnlFeedforward.Controls.Add(this.label15);
+            this.pnlFeedforward.Controls.Add(this.dgvFeedforwardActivities);
+            this.pnlFeedforward.Controls.Add(this.dgvFeedforwardFeedback);
             this.pnlFeedforward.Controls.Add(this.lblFeedback2);
-            this.pnlFeedforward.Controls.Add(this.dataGridView1);
-            this.pnlFeedforward.Controls.Add(this.dgvLearnGoals2);
-            this.pnlFeedforward.Controls.Add(this.lblConclusion);
+            this.pnlFeedforward.Controls.Add(this.dgvFeedforwardLearnGoals);
+            this.pnlFeedforward.Controls.Add(this.lblFeedforwardNote);
             this.pnlFeedforward.Controls.Add(this.lblLearnGoals2);
             this.pnlFeedforward.Location = new System.Drawing.Point(9, 85);
-            this.pnlFeedforward.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFeedforward.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedforward.Name = "pnlFeedforward";
             this.pnlFeedforward.Size = new System.Drawing.Size(1406, 743);
             this.pnlFeedforward.TabIndex = 5;
             this.pnlFeedforward.Visible = false;
+            this.pnlFeedforward.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFeedforward_Paint);
             // 
-            // dgvFeedback2
+            // tbxFeedforwardNote
             // 
-            this.dgvFeedback2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFeedback2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tbxFeedforwardNote.Location = new System.Drawing.Point(522, 48);
+            this.tbxFeedforwardNote.Multiline = true;
+            this.tbxFeedforwardNote.Name = "tbxFeedforwardNote";
+            this.tbxFeedforwardNote.Size = new System.Drawing.Size(743, 153);
+            this.tbxFeedforwardNote.TabIndex = 9;
+            // 
+            // btnFeedforwardAddNote
+            // 
+            this.btnFeedforwardAddNote.Location = new System.Drawing.Point(522, 244);
+            this.btnFeedforwardAddNote.Name = "btnFeedforwardAddNote";
+            this.btnFeedforwardAddNote.Size = new System.Drawing.Size(93, 63);
+            this.btnFeedforwardAddNote.TabIndex = 8;
+            this.btnFeedforwardAddNote.Text = "Toevoegen";
+            this.btnFeedforwardAddNote.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Orange;
+            this.label15.Location = new System.Drawing.Point(25, 227);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(128, 29);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Activiteiten";
+            // 
+            // dgvFeedforwardActivities
+            // 
+            this.dgvFeedforwardActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFeedforwardActivities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnFeedforwardActivityID,
+            this.clnFeedforwardActivityActivity});
+            this.dgvFeedforwardActivities.Location = new System.Drawing.Point(30, 259);
+            this.dgvFeedforwardActivities.Name = "dgvFeedforwardActivities";
+            this.dgvFeedforwardActivities.RowHeadersVisible = false;
+            this.dgvFeedforwardActivities.Size = new System.Drawing.Size(309, 150);
+            this.dgvFeedforwardActivities.TabIndex = 6;
+            // 
+            // clnFeedforwardActivityID
+            // 
+            this.clnFeedforwardActivityID.HeaderText = "ID";
+            this.clnFeedforwardActivityID.Name = "clnFeedforwardActivityID";
+            // 
+            // clnFeedforwardActivityActivity
+            // 
+            this.clnFeedforwardActivityActivity.HeaderText = "Activiteit";
+            this.clnFeedforwardActivityActivity.Name = "clnFeedforwardActivityActivity";
+            // 
+            // dgvFeedforwardFeedback
+            // 
+            this.dgvFeedforwardFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFeedforwardFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardFeedbackID,
-            this.clnFeedforwardFeedbackFeedback});
-            this.dgvFeedback2.Location = new System.Drawing.Point(29, 460);
-            this.dgvFeedback2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvFeedback2.Name = "dgvFeedback2";
-            this.dgvFeedback2.RowHeadersVisible = false;
-            this.dgvFeedback2.RowHeadersWidth = 51;
-            this.dgvFeedback2.RowTemplate.Height = 24;
-            this.dgvFeedback2.Size = new System.Drawing.Size(180, 171);
-            this.dgvFeedback2.TabIndex = 5;
+            this.clnFeedforwardFeedbackFeedback,
+            this.clnFeedforwardFeedbackTitle,
+            this.clnFeedforwardFeedbackDescription});
+            this.dgvFeedforwardFeedback.Location = new System.Drawing.Point(29, 443);
+            this.dgvFeedforwardFeedback.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvFeedforwardFeedback.Name = "dgvFeedforwardFeedback";
+            this.dgvFeedforwardFeedback.RowHeadersVisible = false;
+            this.dgvFeedforwardFeedback.RowHeadersWidth = 51;
+            this.dgvFeedforwardFeedback.RowTemplate.Height = 24;
+            this.dgvFeedforwardFeedback.Size = new System.Drawing.Size(503, 169);
+            this.dgvFeedforwardFeedback.TabIndex = 5;
             // 
             // clnFeedforwardFeedbackID
             // 
@@ -1001,61 +1063,43 @@ namespace FeedBUF_Casus.Forms
             this.clnFeedforwardFeedbackFeedback.Name = "clnFeedforwardFeedbackFeedback";
             this.clnFeedforwardFeedbackFeedback.Width = 125;
             // 
+            // clnFeedforwardFeedbackTitle
+            // 
+            this.clnFeedforwardFeedbackTitle.HeaderText = "Titel";
+            this.clnFeedforwardFeedbackTitle.Name = "clnFeedforwardFeedbackTitle";
+            // 
+            // clnFeedforwardFeedbackDescription
+            // 
+            this.clnFeedforwardFeedbackDescription.HeaderText = "Descriptie";
+            this.clnFeedforwardFeedbackDescription.Name = "clnFeedforwardFeedbackDescription";
+            // 
             // lblFeedback2
             // 
             this.lblFeedback2.AutoSize = true;
             this.lblFeedback2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeedback2.ForeColor = System.Drawing.Color.Orange;
-            this.lblFeedback2.Location = new System.Drawing.Point(25, 428);
+            this.lblFeedback2.Location = new System.Drawing.Point(25, 412);
             this.lblFeedback2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFeedback2.Name = "lblFeedback2";
             this.lblFeedback2.Size = new System.Drawing.Size(121, 29);
             this.lblFeedback2.TabIndex = 4;
             this.lblFeedback2.Text = "Feedback";
             // 
-            // dataGridView1
+            // dgvFeedforwardLearnGoals
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnFeedforwardConclusionID,
-            this.clnFeedforwardConclusionConclusion});
-            this.dataGridView1.Location = new System.Drawing.Point(710, 43);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(180, 171);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // clnFeedforwardConclusionID
-            // 
-            this.clnFeedforwardConclusionID.HeaderText = "ID";
-            this.clnFeedforwardConclusionID.MinimumWidth = 6;
-            this.clnFeedforwardConclusionID.Name = "clnFeedforwardConclusionID";
-            this.clnFeedforwardConclusionID.Width = 125;
-            // 
-            // clnFeedforwardConclusionConclusion
-            // 
-            this.clnFeedforwardConclusionConclusion.HeaderText = "Conclusie";
-            this.clnFeedforwardConclusionConclusion.MinimumWidth = 6;
-            this.clnFeedforwardConclusionConclusion.Name = "clnFeedforwardConclusionConclusion";
-            this.clnFeedforwardConclusionConclusion.Width = 125;
-            // 
-            // dgvLearnGoals2
-            // 
-            this.dgvLearnGoals2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLearnGoals2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvFeedforwardLearnGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFeedforwardLearnGoals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardLearnGoalID,
             this.clnFeedforwardLearngoal});
-            this.dgvLearnGoals2.Location = new System.Drawing.Point(29, 43);
-            this.dgvLearnGoals2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvLearnGoals2.Name = "dgvLearnGoals2";
-            this.dgvLearnGoals2.RowHeadersVisible = false;
-            this.dgvLearnGoals2.RowHeadersWidth = 51;
-            this.dgvLearnGoals2.RowTemplate.Height = 24;
-            this.dgvLearnGoals2.Size = new System.Drawing.Size(180, 171);
-            this.dgvLearnGoals2.TabIndex = 2;
+            this.dgvFeedforwardLearnGoals.Location = new System.Drawing.Point(30, 31);
+            this.dgvFeedforwardLearnGoals.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvFeedforwardLearnGoals.Name = "dgvFeedforwardLearnGoals";
+            this.dgvFeedforwardLearnGoals.RowHeadersVisible = false;
+            this.dgvFeedforwardLearnGoals.RowHeadersWidth = 51;
+            this.dgvFeedforwardLearnGoals.RowTemplate.Height = 24;
+            this.dgvFeedforwardLearnGoals.Size = new System.Drawing.Size(309, 191);
+            this.dgvFeedforwardLearnGoals.TabIndex = 2;
+            this.dgvFeedforwardLearnGoals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFeedforwardLearnGoals_CellClick);
             // 
             // clnFeedforwardLearnGoalID
             // 
@@ -1071,17 +1115,18 @@ namespace FeedBUF_Casus.Forms
             this.clnFeedforwardLearngoal.Name = "clnFeedforwardLearngoal";
             this.clnFeedforwardLearngoal.Width = 125;
             // 
-            // lblConclusion
+            // lblFeedforwardNote
             // 
-            this.lblConclusion.AutoSize = true;
-            this.lblConclusion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConclusion.ForeColor = System.Drawing.Color.Orange;
-            this.lblConclusion.Location = new System.Drawing.Point(705, 11);
-            this.lblConclusion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblConclusion.Name = "lblConclusion";
-            this.lblConclusion.Size = new System.Drawing.Size(120, 29);
-            this.lblConclusion.TabIndex = 1;
-            this.lblConclusion.Text = "Conclusie";
+            this.lblFeedforwardNote.AutoSize = true;
+            this.lblFeedforwardNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedforwardNote.ForeColor = System.Drawing.Color.Orange;
+            this.lblFeedforwardNote.Location = new System.Drawing.Point(517, 12);
+            this.lblFeedforwardNote.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFeedforwardNote.Name = "lblFeedforwardNote";
+            this.lblFeedforwardNote.Size = new System.Drawing.Size(83, 29);
+            this.lblFeedforwardNote.TabIndex = 1;
+            this.lblFeedforwardNote.Text = "Notitie";
+            this.lblFeedforwardNote.Click += new System.EventHandler(this.lblNotes_Click);
             // 
             // lblLearnGoals2
             // 
@@ -1089,7 +1134,7 @@ namespace FeedBUF_Casus.Forms
             this.lblLearnGoals2.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblLearnGoals2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLearnGoals2.ForeColor = System.Drawing.Color.Orange;
-            this.lblLearnGoals2.Location = new System.Drawing.Point(25, 11);
+            this.lblLearnGoals2.Location = new System.Drawing.Point(25, 0);
             this.lblLearnGoals2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLearnGoals2.Name = "lblLearnGoals2";
             this.lblLearnGoals2.Size = new System.Drawing.Size(137, 29);
@@ -1101,7 +1146,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlConclusion.Controls.Add(this.dataGridView3);
             this.pnlConclusion.Controls.Add(this.label2);
             this.pnlConclusion.Location = new System.Drawing.Point(9, 85);
-            this.pnlConclusion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlConclusion.Margin = new System.Windows.Forms.Padding(2);
             this.pnlConclusion.Name = "pnlConclusion";
             this.pnlConclusion.Size = new System.Drawing.Size(1406, 743);
             this.pnlConclusion.TabIndex = 5;
@@ -1114,7 +1159,7 @@ namespace FeedBUF_Casus.Forms
             this.clnConclusionConclusionID,
             this.clnConclusionConclusionConclusion});
             this.dataGridView3.Location = new System.Drawing.Point(29, 68);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 51;
@@ -1221,7 +1266,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlHome.Controls.Add(this.lblManageSubjects);
             this.pnlHome.Controls.Add(this.lblHome_);
             this.pnlHome.Location = new System.Drawing.Point(9, 85);
-            this.pnlHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
             this.pnlHome.Name = "pnlHome";
             this.pnlHome.Size = new System.Drawing.Size(1414, 743);
             this.pnlHome.TabIndex = 9;
@@ -1332,7 +1377,7 @@ namespace FeedBUF_Casus.Forms
             this.Controls.Add(this.pnlFeedup);
             this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentForm";
@@ -1360,9 +1405,9 @@ namespace FeedBUF_Casus.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlFeedforward.ResumeLayout(false);
             this.pnlFeedforward.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLearnGoals2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardActivities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardFeedback)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFeedforwardLearnGoals)).EndInit();
             this.pnlConclusion.ResumeLayout(false);
             this.pnlConclusion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -1393,18 +1438,13 @@ namespace FeedBUF_Casus.Forms
         private DataGridView dgvLearnGoals;
         private Panel pnlFeedforward;
         private Label lblFeedback2;
-        private DataGridView dataGridView1;
-        private DataGridView dgvLearnGoals2;
-        private Label lblConclusion;
+        private DataGridView dgvFeedforwardLearnGoals;
+        private Label lblFeedforwardNote;
         private Label lblLearnGoals2;
-        private DataGridView dgvFeedback2;
+        private DataGridView dgvFeedforwardFeedback;
         private Panel pnlConclusion;
         private DataGridView dataGridView3;
         private Label label2;
-        private DataGridViewTextBoxColumn clnFeedforwardFeedbackID;
-        private DataGridViewTextBoxColumn clnFeedforwardFeedbackFeedback;
-        private DataGridViewTextBoxColumn clnFeedforwardConclusionID;
-        private DataGridViewTextBoxColumn clnFeedforwardConclusionConclusion;
         private DataGridViewTextBoxColumn clnFeedforwardLearnGoalID;
         private DataGridViewTextBoxColumn clnFeedforwardLearngoal;
         private DataGridViewTextBoxColumn clnConclusionConclusionID;
@@ -1479,5 +1519,15 @@ namespace FeedBUF_Casus.Forms
         private Button btnAddSubject;
         private Label lblManageSubjects;
         private Label lblHome_;
+        private Label label15;
+        private DataGridView dgvFeedforwardActivities;
+        private Button btnFeedforwardAddNote;
+        private DataGridViewTextBoxColumn clnFeedforwardActivityID;
+        private DataGridViewTextBoxColumn clnFeedforwardActivityActivity;
+        private TextBox tbxFeedforwardNote;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackID;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackFeedback;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackTitle;
+        private DataGridViewTextBoxColumn clnFeedforwardFeedbackDescription;
     }
 }
