@@ -43,6 +43,9 @@
             this.LoginEmail_Label = new System.Windows.Forms.Label();
             this.LoginEmail_Box = new System.Windows.Forms.TextBox();
             this.pnlCreateAccount = new System.Windows.Forms.Panel();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txbName = new System.Windows.Forms.TextBox();
             this.lblStudentNumber = new System.Windows.Forms.Label();
             this.txbStudentNumber = new System.Windows.Forms.TextBox();
             this.lblGroup = new System.Windows.Forms.Label();
@@ -59,9 +62,6 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.txbNewEmail = new System.Windows.Forms.TextBox();
             this.ttpShowPasswordRequirements = new System.Windows.Forms.ToolTip(this.components);
-            this.lblName = new System.Windows.Forms.Label();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.pnlCreateAccount.SuspendLayout();
             this.SuspendLayout();
@@ -228,6 +228,33 @@
             this.pnlCreateAccount.TabIndex = 43;
             this.pnlCreateAccount.Visible = false;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(1143, 1066);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 26);
+            this.lblStatus.TabIndex = 61;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(1143, 668);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(160, 25);
+            this.lblName.TabIndex = 60;
+            this.lblName.Text = "Volledige naam";
+            // 
+            // txbName
+            // 
+            this.txbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbName.Location = new System.Drawing.Point(1148, 696);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(510, 31);
+            this.txbName.TabIndex = 59;
+            // 
             // lblStudentNumber
             // 
             this.lblStudentNumber.AutoSize = true;
@@ -310,15 +337,14 @@
             // 
             // lblFeedBUF
             // 
-            this.lblFeedBUF.AutoSize = true;
             this.lblFeedBUF.BackColor = System.Drawing.Color.Transparent;
             this.lblFeedBUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeedBUF.ForeColor = System.Drawing.Color.Orange;
-            this.lblFeedBUF.Location = new System.Drawing.Point(1130, 501);
+            this.lblFeedBUF.Image = ((System.Drawing.Image)(resources.GetObject("lblFeedBUF.Image")));
+            this.lblFeedBUF.Location = new System.Drawing.Point(1284, 416);
             this.lblFeedBUF.Name = "lblFeedBUF";
-            this.lblFeedBUF.Size = new System.Drawing.Size(455, 108);
+            this.lblFeedBUF.Size = new System.Drawing.Size(198, 193);
             this.lblFeedBUF.TabIndex = 50;
-            this.lblFeedBUF.Text = "FeedBUF";
             // 
             // btnCreateAccount
             // 
@@ -389,33 +415,6 @@
             this.ttpShowPasswordRequirements.ShowAlways = true;
             this.ttpShowPasswordRequirements.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(1143, 668);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(160, 25);
-            this.lblName.TabIndex = 60;
-            this.lblName.Text = "Volledige naam";
-            // 
-            // txbName
-            // 
-            this.txbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbName.Location = new System.Drawing.Point(1148, 696);
-            this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(510, 31);
-            this.txbName.TabIndex = 59;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(1143, 1066);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 26);
-            this.lblStatus.TabIndex = 61;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -423,6 +422,7 @@
             this.ClientSize = new System.Drawing.Size(2740, 1602);
             this.Controls.Add(this.pnlCreateAccount);
             this.Controls.Add(this.LoginPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
