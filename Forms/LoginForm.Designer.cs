@@ -122,11 +122,11 @@
             // 
             this.lblFeedBuff.AutoSize = true;
             this.lblFeedBuff.BackColor = System.Drawing.Color.Transparent;
-            this.lblFeedBuff.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedBuff.Font = new System.Drawing.Font("Bookman Old Style", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeedBuff.ForeColor = System.Drawing.Color.Orange;
             this.lblFeedBuff.Location = new System.Drawing.Point(1077, 554);
             this.lblFeedBuff.Name = "lblFeedBuff";
-            this.lblFeedBuff.Size = new System.Drawing.Size(455, 108);
+            this.lblFeedBuff.Size = new System.Drawing.Size(478, 113);
             this.lblFeedBuff.TabIndex = 41;
             this.lblFeedBuff.Text = "FeedBUF";
             // 
@@ -337,14 +337,15 @@
             // 
             // lblFeedBUF
             // 
+            this.lblFeedBUF.AutoSize = true;
             this.lblFeedBUF.BackColor = System.Drawing.Color.Transparent;
-            this.lblFeedBUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedBUF.Font = new System.Drawing.Font("Bookman Old Style", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFeedBUF.ForeColor = System.Drawing.Color.Orange;
-            this.lblFeedBUF.Image = ((System.Drawing.Image)(resources.GetObject("lblFeedBUF.Image")));
-            this.lblFeedBUF.Location = new System.Drawing.Point(1284, 416);
+            this.lblFeedBUF.Location = new System.Drawing.Point(1114, 507);
             this.lblFeedBUF.Name = "lblFeedBUF";
-            this.lblFeedBUF.Size = new System.Drawing.Size(198, 193);
+            this.lblFeedBUF.Size = new System.Drawing.Size(478, 113);
             this.lblFeedBUF.TabIndex = 50;
+            this.lblFeedBUF.Text = "FeedBUF";
             // 
             // btnCreateAccount
             // 
@@ -420,8 +421,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2740, 1602);
-            this.Controls.Add(this.pnlCreateAccount);
             this.Controls.Add(this.LoginPanel);
+            this.Controls.Add(this.pnlCreateAccount);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LoginForm";
