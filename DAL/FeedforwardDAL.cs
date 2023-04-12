@@ -11,7 +11,7 @@ namespace DAL
     public class FeedforwardDAL : MAINDAL
     {
         private static string ConnectionString = "Data Source=tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = FeedBUF_DB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
-        public static void AddFeedbackNote(LearnGoal learngoal)
+        public static void AddFeedbackNote(Feedback feedback)
         {
             try
             {
@@ -21,8 +21,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", learngoal.Note);
-                        command.Parameters.AddWithValue("@FeedbackID", learngoal.LearnGoalID);
+                        command.Parameters.AddWithValue("@Note", feedback.Note);
+                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -50,7 +50,7 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static void UpdateFeedbackNote(LearnGoal learngoal)
+        public static void UpdateFeedbackNote(Feedback feedback)
         {
             try
             {
@@ -60,8 +60,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", learngoal.Note);
-                        command.Parameters.AddWithValue("@FeedbackID", learngoal.LearnGoalID);
+                        command.Parameters.AddWithValue("@Note", feedback.Note);
+                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -87,7 +87,7 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
-        public static void DeleteFeedbackNote()
+        public static void DeleteFeedbackNote(Feedback feedback)
         {
             try
             {
@@ -97,6 +97,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("@Note", feedback.Note);
+                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -104,7 +106,7 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static void DeleteActivityNote()
+        public static void DeleteActivityNote(Activity activity)
         {
             try
             {
@@ -114,6 +116,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("@Note", activity.Note);
+                        command.Parameters.AddWithValue("@ActivityID", activity.ActivityID);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -219,7 +223,7 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
-        public static void DeleteLearnGoalNote()
+        public static void DeleteLearnGoalNote(LearnGoal learngoal)
         {
             try
             {
@@ -229,6 +233,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("@Note", learngoal.Note);
+                        command.Parameters.AddWithValue("@LearnGoalID", learngoal.LearnGoalID);
                         command.ExecuteNonQuery();
                     }
                 }
