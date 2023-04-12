@@ -100,9 +100,26 @@ namespace DOMAIN
             DAL.FeedbackDAL.AddQuestion(feedbackID, question);
         }
 
-        public static LearnGoal GetLearnGoalByFeedback(int FeedbackID)
+
+
+        public static Feedback GetFeedBackByID(int FeedbackID)
         {
-            return DAL.FeedbackDAL.GetLearnGoalByFeedback(FeedbackID);
+            return DAL.FeedbackDAL.GetFeedBackByID(FeedbackID);
+        }
+
+        public static void DeleteFeedback(int FeedbackID)
+        {
+            DAL.FeedbackDAL.DeleteFeedback(FeedbackID);
+        }
+
+        public static void UpdateFeedback(Feedback feedback)
+        {
+            DAL.FeedbackDAL.UpdateFeedback(feedback);
+        }
+
+        public static string GetFeedbackQuestion(int feedbackID)
+        {
+            return DAL.FeedbackDAL.GetFeedbackQuestion(feedbackID);
         }
     }
 }

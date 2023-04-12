@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DOMAIN;
 using System.Windows.Forms;
+using DAL;
 
 namespace FeedBUF_Casus.Forms
 {
@@ -251,7 +252,17 @@ namespace FeedBUF_Casus.Forms
             pnlRegisterFeedback.Show();
             FeedbackSelection = "Register";
             dgvFeedback.ClearSelection();
+
+            btnFeedbackAdd.Show();
+            btnFeedbackUpdate.Hide();
+            btnFeedbackDelete.Hide();
+
+            // Reset the panel
             Feedback_SyncLearngoals();
+            cbxActivity.Items.Clear(); cbxActivity.Text = "";
+            txbFeedbackTeacher.Clear();
+            txbFeedbackDescription.Clear();
+            txbFeedbackTitle.Clear();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -262,38 +273,77 @@ namespace FeedBUF_Casus.Forms
             loginform.Show();
         }
 
+
+
         private void dgvFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Fills the questionpanel and feedbackpanel
+            //
+            // This function handles selecting a row in the Feedback Datagridview
+            //
+
             foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
             {
-                if (FeedbackSelection == "Question")
+                int selFeedbackID = selectedFeedbackID();
+
+                if (selFeedbackID != -1)
                 {
-                    txbQuestionTitle.Text = (string)row.Cells[2].Value;
-                    txbQuestionDescription.Text = (string)row.Cells[3].Value;
-                    lblQuestionTeacher.Text = (string)row.Cells[1].Value;
-                }
-
-                if (FeedbackSelection == "Register")
-                {
-                    string[] attributes = cbxWeek.Text.Split(' ');
-                    int weeknumber = Int32.Parse(attributes[1]);
-                    int FeedbackID = (int)row.Cells[0].Value;
-
-                    LearnGoal CurrentLearnGoal = Feedback.GetLearnGoalByFeedback(FeedbackID);
-
-                    foreach (var items in cbxLearnGoal.Items)
+                    // Clever trick where when clicking on "Registreer Feedback" or "Vraag Stellen" it changes the way this function will work.
+                    if (FeedbackSelection == "Question")
                     {
-                        if (items.ToString() == CurrentLearnGoal.Goal)
+                        txbQuestionTitle.Text = (string)row.Cells[2].Value;
+                        txbQuestionDescription.Text = (string)row.Cells[3].Value;
+                        lblQuestionTeacher.Text = (string)row.Cells[1].Value;
+                        txbQuestion.Clear();
+
+                        string question = FeedbackDAL.GetFeedbackQuestion(selFeedbackID);
+
+                        if (question != "") 
                         {
-                            cbxLearnGoal.SelectedItem = items;
+                            btnSubmitQuestion.Hide();
+                            btnUpdateQuestion.Show();
+
+                            txbQuestion.Text = question; 
+                        }
+
+                        else
+                        {
+                            btnSubmitQuestion.Show();
+                            btnUpdateQuestion.Hide();
                         }
                     }
 
-                    Feedback_SyncActivities(CurrentLearnGoal);
+                    if (FeedbackSelection == "Register")
+                    {
+                        Feedback SelectedFeedback = Feedback.GetFeedBackByID(selFeedbackID);
+                        LearnGoal linkedLearnGoal = LearnGoal.GetLearnGoalByID(SelectedFeedback.LearngoalID);
+                        Activity linkedActivity = Activity.GetActivityByID(SelectedFeedback.ActivityID);
 
-                    // If selected then fill the other boxes, also need to check if feedback is even given on an activity.
+                        // Format Learngoal Combobox
+                        cbxLearnGoal.Items.Clear();
+                        cbxLearnGoal.Items.Add(linkedLearnGoal.Goal);
+                        cbxLearnGoal.SelectedItem = cbxLearnGoal.Items[0];
 
+                        if (linkedActivity != null)
+                        {
+                            // Format Activity Combobox
+                            cbxActivity.Items.Clear();
+                            cbxActivity.Items.Add(linkedActivity.ActivityText);
+                            cbxActivity.SelectedItem = cbxActivity.Items[0];
+                        }
+                        else
+                        {
+                            cbxActivity.Items.Clear();
+                        }
+
+                        // Fill in the rest of the textboxes on the screen.
+                        txbFeedbackTeacher.Text = SelectedFeedback.Teacher;
+                        txbFeedbackTitle.Text = SelectedFeedback.Title;
+                        txbFeedbackDescription.Text = SelectedFeedback.Description;
+
+                        btnFeedbackAdd.Hide();
+                        btnFeedbackUpdate.Show();
+                        btnFeedbackDelete.Show();
+                    }
                 }
             }
         }
@@ -313,8 +363,14 @@ namespace FeedBUF_Casus.Forms
             cbxLearnGoal.Text = "";
             cbxActivity.Text = "";
             dgvActivities.Rows.Clear();
+
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
         }
 
+        // Eventhandler for SelectionChanged on the cbxSubject
         private void SubjectChanged(object sender, EventArgs e)
         {
             Feedup_SyncLearngoals();
@@ -322,6 +378,11 @@ namespace FeedBUF_Casus.Forms
             cbxLearnGoal.Text = "";
             cbxActivity.Text = "";
             dgvActivities.Rows.Clear();
+
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
         }
 
         private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -432,16 +493,56 @@ namespace FeedBUF_Casus.Forms
 
         private void btnSubmitQuestion_Click(object sender, EventArgs e)
         {
-            int FeedbackID = -1;
-
-            foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
+            if (selectedFeedbackID() != -1)
             {
-                FeedbackID = (int)row.Cells[0].Value;
-                break;
+                Feedback.AddQuestion(selectedFeedbackID(), txbQuestion.Text.ToString());
             }
 
-            if(-1 != FeedbackID) Feedback.AddQuestion(FeedbackID, txbQuestion.Text.ToString());
-            txbQuestion.Clear();
+            btnSubmitQuestion.Hide();
+            btnUpdateQuestion.Show();
+        }
+
+        private void btnFeedbackDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedFeedbackID() != -1)
+            {
+                Feedback.DeleteFeedback(selectedFeedbackID());
+            }
+
+            // Reset the panel
+            btnRegisterFeedback_Click(sender, e);
+            SyncFeedback();
+        }
+
+        private void btnFeedbackUpdate_Click(object sender, EventArgs e)
+        {
+
+            if (selectedFeedbackID() != -1)
+            {
+                Feedback updatedFeedback = new Feedback(selectedFeedbackID(), txbFeedbackTeacher.Text, txbFeedbackTitle.Text, txbFeedbackDescription.Text);
+                FeedbackDAL.UpdateFeedback(updatedFeedback);
+
+                SyncFeedback();
+            }
+        }
+
+        private int selectedFeedbackID()
+        {
+            // FeedbackID gets assigned to the value in the first CELL of the selected ROW
+            foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
+            {
+                if (row.Cells[0].Value != null) { return (int)row.Cells[0].Value; } 
+            }
+
+            return -1;
+
+            // -1 can't be a number in the database so this is a safe "null" value.
+            // We have to do this because this function returns an int so you cant actually return null.
+        }
+
+        private void btnUpdateQuestion_Click(object sender, EventArgs e)
+        {
+            btnSubmitQuestion_Click(sender, e);
         }
     }
 }

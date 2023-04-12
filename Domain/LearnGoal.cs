@@ -62,5 +62,10 @@ namespace DOMAIN
             return null;
         }
 
+        public static LearnGoal GetLearnGoalByID(int LearnGoalID)
+        {
+            return DAL.FeedbackDAL.GetLearnGoalByID(LearnGoalID);
+        }
+
     }
 }

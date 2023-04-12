@@ -58,5 +58,10 @@ namespace DOMAIN
         //{
         //    return DAL.FeedupDAL.GetActivity(learngoal)
         //}
+
+        public static Activity GetActivityByID(int activityID)
+        {
+            return DAL.FeedbackDAL.GetActivityByID(activityID);
+        }
     }
 }

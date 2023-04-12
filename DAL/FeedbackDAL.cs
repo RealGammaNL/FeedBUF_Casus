@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -49,19 +50,33 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "UPDATE STUDENT SET (StudentID = @StudentID, TeacherID = @TeacherID, LearnGoalID = @LearnGoalID, Activity = @Activity, WeekNr = @WeekNr, Title = @Title, Description = @Description) " +
+                    string sql = "UPDATE FEEDBACK SET Teacher = @Teacher, Title = @Title, Description = @Description " +
                         "WHERE FeedbackID = @FeedbackID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
-                        command.Parameters.AddWithValue("@StudentID", feedback.StudentID);
-                        command.Parameters.AddWithValue("@TeacherID", feedback.TeacherID);
-                        command.Parameters.AddWithValue("@LearngoalID", feedback.LearngoalID);
-                        command.Parameters.AddWithValue("@Activity", feedback.ActivityID);
-                        command.Parameters.AddWithValue("@WeekNr", feedback.Weeknr);
+                        command.Parameters.AddWithValue("@Teacher", feedback.Teacher);
                         command.Parameters.AddWithValue("@Title", feedback.Title);
                         command.Parameters.AddWithValue("@Description", feedback.Description);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static void DeleteFeedback(int FeedbackID)
+        {
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "DELETE FEEDBACK WHERE FeedbackID = @FeedbackID";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeedbackID", FeedbackID);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -157,7 +172,8 @@ namespace DAL
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@FeedbackID", feedbackID);
-                        command.Parameters.AddWithValue("@Question", question);
+                        if (question != "") { command.Parameters.AddWithValue("@Question", question); }
+                        else { command.Parameters.AddWithValue("@Question", DBNull.Value); }
                         command.ExecuteNonQuery();
                     }
                 }
@@ -165,19 +181,18 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static LearnGoal GetLearnGoalByFeedback(int FeedbackID)
+        public static LearnGoal GetLearnGoalByID(int LearnGoalID)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "SELECT LEARNGOAL.LearnGoalID, LEARNGOAL.StudentID, LEARNGOAL.SubjectName, LEARNGOAL.WeekNr, LEARNGOAL.Learngoal, LEARNGOAL.Note FROM LEARNGOAL, FEEDBACK " +
-                        "WHERE LEARNGOAL.LearnGoalID = FEEDBACK.LearnGoalID AND FEEDBACK.FeedbackID = @FeedbackID";
+                    string sql = "SELECT * FROM LEARNGOAL WHERE LearnGoalID = @LearnGoalID";
 
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@FeedbackID", FeedbackID);
+                        command.Parameters.AddWithValue("@LearnGoalID", LearnGoalID);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -190,7 +205,100 @@ namespace DAL
                                                     , reader["Note"].ToString()
                                                     );
                                 return learnGoal;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
 
+        public static Feedback GetFeedBackByID(int feedbackID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "SELECT * FROM FEEDBACK WHERE FeedbackID = @FeedbackID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeedbackID", feedbackID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Feedback feedback = new Feedback((int)reader["StudentID"]
+                                                    , (int)reader["LearnGoalID"]
+                                                    // Inline if statement
+                                                    , reader["ActivityID"] != DBNull.Value ? (int)reader["ActivityID"] : -1
+                                                    , reader["Teacher"].ToString()
+                                                    , reader["Title"].ToString()
+                                                    , reader["Description"].ToString()
+                                                    );
+                                return feedback;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static Activity GetActivityByID(int activityID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "SELECT * FROM ACTIVITY WHERE ActivityID = @ActivityID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@ActivityID", activityID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Activity activity = new Activity((int)reader["ActivityID"]
+                                                    , (int)reader["LearnGoalID"]
+                                                    , reader["Activity"].ToString()
+                                                    , reader["TimeEstimate"].ToString()
+                                                    , reader["TimeSpent"].ToString()
+                                                    , reader["Note"].ToString()
+                                                    );
+                                return activity;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static string GetFeedbackQuestion(int feedbackID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "SELECT Question FROM FEEDBACK WHERE FeedbackID = @FeedbackID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeedbackID", feedbackID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string question = reader["Question"].ToString();
+                                return question;
                             }
                         }
                     }
