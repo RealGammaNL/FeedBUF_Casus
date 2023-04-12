@@ -58,7 +58,8 @@ namespace FeedBUF_Casus.Forms
 
                 foreach (LearnGoal goal in TotalLearngoal)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dgvLearnGoals);
                     row.Cells[0].Value = goal.LearnGoalID;
                     row.Cells[1].Value = goal.Goal;
                     dgvLearnGoals.Rows.Add(row);
@@ -74,7 +75,8 @@ namespace FeedBUF_Casus.Forms
 
             foreach (Activity activity in TotalActivity)
             {
-                DataGridViewRow row = (DataGridViewRow)dgvActivities.Rows[0].Clone();
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvActivities);
                 row.Cells[0].Value = activity.ActivityID;
                 row.Cells[1].Value = activity.ActivityText;
                 row.Cells[2].Value = activity.TimeEstimate;
@@ -153,13 +155,8 @@ namespace FeedBUF_Casus.Forms
 
         private void btnAddLearnGoal_Click(object sender, EventArgs e)
         {
-            string learngoal = txbFeedup_Learngoal.Text;
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
-            DAL.FeedupDAL.AddLearngoal(learnGoal);
-            txbFeedup_Learngoal.Clear();
-            SyncLearngoals();
+            pnlAddLearngoal.Hide();
+            pnlUpdateLearngoal.Show();
         }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
@@ -380,6 +377,23 @@ namespace FeedBUF_Casus.Forms
             {
                 dgvSubjects.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void btnAddLearngoal_Click(object sender, EventArgs e)
+        {
+            string learngoal = txbFeedup_AddLearngoal.Text;
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
+            DAL.FeedupDAL.AddLearngoal(learnGoal);
+            txbFeedup_AddLearngoal.Clear();
+            SyncLearngoals();
+        }
+
+        private void btnBackLearngoal_Click(object sender, EventArgs e)
+        {
+            pnlUpdateLearngoal.Hide();
+            pnlAddLearngoal.Show();
         }
     }
 }
