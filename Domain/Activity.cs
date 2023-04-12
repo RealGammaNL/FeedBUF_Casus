@@ -22,10 +22,10 @@ namespace DOMAIN
             TimeEstimate = timeEstimate;
         }
 
-        public Activity(int activityid, int learngoalid, string activitytext, string timeEstimate, string note) 
-        { 
+        public Activity(int activityid, int learngoalid, string activitytext, string timeEstimate, string note)
+        {
             ActivityID = activityid;
-            LearnGoalID = learngoalid;  
+            LearnGoalID = learngoalid;
             ActivityText = activitytext;
             TimeEstimate = timeEstimate;
             Note = note;
@@ -47,6 +47,10 @@ namespace DOMAIN
         public static void InsertTimeSpent(int activityid, string TimeSpent)
         {
             DAL.FeedupDAL.TimeSpent(activityid, TimeSpent);
+        }
+        public static string GetActivityNote(int activityid)
+        {
+            return DAL.FeedforwardDAL.GetActivityNote(activityid);
         }
     }
 }

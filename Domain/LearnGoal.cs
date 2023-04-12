@@ -44,5 +44,9 @@ namespace DOMAIN
         {
             return DAL.FeedupDAL.GetLearnGoals(student, Weeknumber, Subjectname);
         }
+        public static string GetLearnGoalNote(int learngoalid)
+        {
+            return DAL.FeedforwardDAL.GetLearnGoalNote(learngoalid);
+        }
     }
 }

@@ -330,6 +330,7 @@ namespace FeedBUF_Casus.Forms
         private void dgvFeedforwardLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SyncFeedforwardActivities();
+            SyncLearnGoalNote();
         }
 
         private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -425,6 +426,38 @@ namespace FeedBUF_Casus.Forms
         private void pnlFeedforward_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void SyncFeedbackNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows [dgvFeedforwardFeedback.CurrentCell.RowIndex];
+            int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = Feedback.GetFeedbackNote(feedbackid);
+        }
+        private void SyncLearnGoalNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = LearnGoal.GetLearnGoalNote(learngoalid);
+
+        }
+        private void SyncActivityNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = Activity.GetActivityNote(activityid);
+        }
+
+        private void dgvFeedforwardActivities_Click(object sender, EventArgs e)
+        {
+            SyncActivityNote();
+        }
+
+        private void dgvFeedforwardFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SyncFeedbackNote();
         }
     }
 }
