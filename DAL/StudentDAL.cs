@@ -155,7 +155,7 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static void UpdateSubjects(Student student, Subject subject)
+        public static void UpdateSubjectFollowing(Student student, Subject subject)
         {
             try
             {
@@ -169,6 +169,56 @@ namespace DAL
                         command.Parameters.AddWithValue("@StudentID", student.ID);
                         command.Parameters.AddWithValue("@Subjectname", subject.Name);
                         command.Parameters.AddWithValue("@Following", subject.Following);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+        public static void UpdateSubjectName(Student student, string oldsubject, string newsubject)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "BEGIN TRANSACTION " +
+                                 "UPDATE SUBJECTS SET Subject = @newSubject " +
+                                 "WHERE Subject = @oldSubject " +
+                                 "AND StudentID = @StudentID " +
+                                 "" +
+                                 "UPDATE LEARNGOAL SET SubjectName = @newSubject " +
+                                 "WHERE SubjectName = @oldSubject " +
+                                 "AND StudentID = @StudentID " +
+                                 "COMMIT";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@newSubject", newsubject);
+                        command.Parameters.AddWithValue("@oldSubject", oldsubject);
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+
+        public static void DeleteSubject(Student student, string subjectName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "DELETE SUBJECTS WHERE Subject = @SubjectName AND StudentID = @StudentID";
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@SubjectName", subjectName);
+                        command.Parameters.AddWithValue("@StudentID", student.ID);
                         command.ExecuteNonQuery();
                     }
                 }

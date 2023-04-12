@@ -42,7 +42,17 @@ namespace DOMAIN
         
         public static void UpdateSubjects(Student student, Subject subject)
         {
-            DAL.StudentDAL.UpdateSubjects(student, subject);
+            DAL.StudentDAL.UpdateSubjectFollowing(student, subject);
+        }
+
+        public static void UpdateSubjectName(Student student, string oldsubject, string newsubject)
+        {
+            DAL.StudentDAL.UpdateSubjectName(student, oldsubject, newsubject);
+        }
+
+        public static void DeleteSubject(Student student, string subjectName)
+        {
+            DAL.StudentDAL.DeleteSubject(student, subjectName);
         }
     }
 }

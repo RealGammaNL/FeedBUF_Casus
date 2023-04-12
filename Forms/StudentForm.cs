@@ -466,20 +466,28 @@ namespace FeedBUF_Casus.Forms
 
             foreach (Subject subject in TotalSubjects)
             {
-                DataGridViewRow row = new DataGridViewRow();
-
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = subject.Name });
-                row.Cells.Add(new DataGridViewCheckBoxCell { Value = subject.Following });
-
-                dgvSubjects.Rows.Add(row);
-
-                //Add it to the UI subject selection combobox on the main header
-                if (subject.Following == true)
+                if (subject.Name != "")
                 {
-                    cbxSubject.Items.Add(subject.Name);
+                    DataGridViewRow row = new DataGridViewRow();
+
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = subject.Name });
+                    row.Cells.Add(new DataGridViewCheckBoxCell { Value = subject.Following });
+
+                    dgvSubjects.Rows.Add(row);
+
+                    //Add it to the UI subject selection combobox on the main header
+                    if (subject.Following == true)
+                    {
+                        cbxSubject.Items.Add(subject.Name);
+                    }
                 }
             }
         }
+
+        //
+        // CRUD Operations
+        //
+
 
         private void btnAddSubject_Click(object sender, EventArgs e)
         {
@@ -488,6 +496,33 @@ namespace FeedBUF_Casus.Forms
             Subject Subject = new Subject(name, false);
             Subject.AddSubject(CurrentStudent, Subject);
             dgvSubjects_Sync();
+        }
+
+        private void btnUpdateSubject_Click(object sender, EventArgs e)
+        {
+            if (dgvSubjects.SelectedCells[0] is DataGridViewTextBoxCell)
+            {
+                string oldSubject = dgvSubjects.SelectedCells[0].Value.ToString();
+                string newSubject = txbAddSubject.Text;
+                Subject.UpdateSubjectName(CurrentStudent, oldSubject, newSubject);
+                dgvSubjects_Sync();
+                txbAddSubject.Clear();
+                btnAddSubject.Show();
+                btnUpdateSubject.Hide();
+                dgvSubjects.ClearSelection();
+            }
+        }
+
+        private void btnDeleteSubject_Click(object sender, EventArgs e)
+        {
+            if (dgvSubjects.SelectedCells[0] is DataGridViewTextBoxCell)
+            {
+                string subjectName = dgvSubjects.SelectedCells[0].Value.ToString();
+                Subject.DeleteSubject(CurrentStudent, subjectName); 
+                dgvSubjects_Sync();
+                txbAddSubject.Clear();
+                dgvSubjects.ClearSelection();
+            }
         }
 
         private void dvgSubjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -512,6 +547,13 @@ namespace FeedBUF_Casus.Forms
                 CurrentSubject.Following = (bool)checkboxCell.Value;
                 Subject.UpdateSubjects(CurrentStudent, CurrentSubject);
                 dgvSubjects_Sync();
+            }
+
+            if (dgvSubjects.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn && e.RowIndex >= 0)
+            {
+                txbAddSubject.Text = dgvSubjects.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                btnAddSubject.Hide();
+                btnUpdateSubject.Show();
             }
         }
 
@@ -618,10 +660,17 @@ namespace FeedBUF_Casus.Forms
             HidePanels();
             pnlHome.Show();
             dgvLearnGoals.Rows.Clear();
+
+            txbAddSubject.Clear();
+            btnAddSubject.Show();
+            btnUpdateSubject.Hide();
+            dgvSubjects.ClearSelection();
         }
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
+
     }
 }
