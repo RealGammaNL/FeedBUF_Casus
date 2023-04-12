@@ -16,11 +16,11 @@ namespace FeedBUF_Casus.Forms
     {
         public Student CurrentStudent;
         public static string FeedbackSelection;
+        public List<Panel> panels = new List<Panel>();
+
         public StudentForm(Student student)
         {
             InitializeComponent();
-
-
 
             CurrentStudent = student;
             LoginStudent(student);
@@ -29,33 +29,23 @@ namespace FeedBUF_Casus.Forms
             panels.AddRange(new Panel[] { pnlFeedback, pnlFeedforward, pnlFeedup, pnlConclusion, pnlHome });
         }
 
-        public List<Panel> panels = new List<Panel>() { };
-        // aanpassen met de panels in de form
 
-        private void SyncFeedback()
-        {
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                             Feedup panel code - Vigo                             //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
 
-            List<Feedback> TotalFeedback = Feedback.GetFeedback(CurrentStudent, weeknumber, cbxSubject.Text.ToString());
-            dgvFeedback.Rows.Clear();
 
-            foreach (Feedback feedback in TotalFeedback)
-            {
-                DataGridViewRow row = (DataGridViewRow)dgvFeedback.Rows[0].Clone();
-                row.Cells[0].Value = feedback.FeedbackID;
-                row.Cells[1].Value = feedback.Teacher;
-                row.Cells[2].Value = feedback.Title;
-                row.Cells[3].Value = feedback.Description;
-                dgvFeedback.Rows.Add(row);
-            }
-        }
+        //
+        // Syncing datagridviews
+        //
+
         private void Feedup_SyncLearngoals()
         {
             if (cbxWeek.Text != "")
             {
-                string[] attributes = cbxWeek.Text.Split(' ');
-                int weeknumber = Int32.Parse(attributes[1]);
+                int weeknumber = determinePickedWeek();
                 string Subjectname = cbxSubject.Text;
                 List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
                 dgvLearnGoals.Rows.Clear();
@@ -70,19 +60,7 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void Feedback_SyncLearngoals()
-        {
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            string Subjectname = cbxSubject.Text;
-            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
-            cbxLearnGoal.Items.Clear();
-            cbxLearnGoal.Text = "";
-            foreach (LearnGoal learngoal in TotalLearngoal)
-            {
-                cbxLearnGoal.Items.Add(learngoal.Goal);
-            }
-        }
+
         private void Feedup_SyncActivities()
         {
             DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
@@ -105,54 +83,15 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void Feedback_SyncActivities(LearnGoal learngoal)
+        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            List<Activity> TotalActivity = Activity.GetActivity(learngoal.LearnGoalID);
-            cbxActivity.Items.Clear();
-            cbxActivity.Text = "";
-            foreach (Activity activity in TotalActivity)
-            {
-                cbxActivity.Items.Add(activity.ActivityText);
-            }
+            Feedup_SyncActivities();
         }
 
-        private void LoginStudent(Student student)
-        {
-            lblStudentName.Text = student.Fullname;
-            lblStudentClass.Text = student.GroupID;
-        }
-        private void Switchpanel(object sender, EventArgs e)
-        {
-            string selectedChoice = cbxPanelSwitch.Text;
-            string selectedPnl = "pnl" + selectedChoice;
 
-            HidePanels();
-            foreach (Panel panel in panels)
-            {
-                if (panel.Name == selectedPnl)
-                {
-                    panel.Show();
-                }
-            }
-        }
-
-        private void HidePanels()
-        {
-            foreach (Panel p in panels)
-            {
-                p.Hide();
-            }
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            cbxPanelSwitch.SelectedItem = null;
-            cbxWeek.SelectedItem = null;
-            cbxSubject.SelectedItem = null;
-            HidePanels();
-            pnlHome.Show();
-            dgvLearnGoals.Rows.Clear();
-        }
+        //
+        // Switching panels
+        //
 
         private void btnFeedup_SwitchLearngoal_Click(object sender, EventArgs e)
         {
@@ -168,11 +107,15 @@ namespace FeedBUF_Casus.Forms
             pnlTimeSpent.Hide();
         }
 
+
+        //
+        // CRUD to database
+        //
+
         private void btnAddLearnGoal_Click(object sender, EventArgs e)
         {
             string learngoal = txbFeedup_Learngoal.Text;
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
+            int weeknumber = determinePickedWeek();
             LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
             DAL.FeedupDAL.AddLearngoal(learnGoal);
             txbFeedup_Learngoal.Clear();
@@ -195,63 +138,103 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void btnFeedbackAdd_Click(object sender, EventArgs e)
+        private void btnSaveTimeSpent_Click(object sender, EventArgs e)
         {
-            int StudentID = CurrentStudent.ID;
-            string LearnGoalText = cbxLearnGoal.Text.ToString();
-            string Auteur = txbFeedbackTeacher.Text;
-            string Title = txbFeedbackTitle.Text;
-            string Description = txbFeedbackDescription.Text;
-            string Subject = cbxSubject.Text;
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            int ActivityID = 0;
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string TimeSpent = txbTimeSpent.Text;
+            Activity.InsertTimeSpent(activityid, TimeSpent);
+            pnlTimeSpent.Visible = false;
+            pnlLearngoal.Show();
+            txbTimeSpent.Clear();
+        }
 
+        //
+        // UI interaction in Datagridview
+        //
 
-            txbFeedbackTeacher.Clear();
-            txbFeedbackTitle.Clear();
-            txbFeedbackDescription.Clear();
-
-            LearnGoal CurrentLearnGoal = LearnGoal.GetLearnGoalByName(CurrentStudent, weeknumber, Subject, LearnGoalText);
-
-            // If there is an activity selected.
-            if (cbxActivity.Text != "")
+        private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Checks if the current cell selection is a dgvCheckBox
+            if (dgvActivities.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
             {
-                string activitytext = cbxActivity.Text.ToString();
-
-                List<Activity> activities = Activity.GetActivity(CurrentLearnGoal.LearnGoalID);
-                foreach (Activity activity in activities)
+                if (dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
                 {
-                    if (activitytext == activity.ActivityText)
-                    {
-                        ActivityID = activity.ActivityID;
-                    }
+                    //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
+                    //Rowindex being the current row and column being which column.
+                    //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+
+                    pnlActivity.Hide();
+                    pnlLearngoal.Hide();
+                    pnlTimeSpent.Show();
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                    // Set the ReadOnly property of the cell to true to prevent the user from unchecking the checkbox
+                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
                 }
+                else
+                {
 
-                Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
-                DAL.FeedbackDAL.AddFeedback(feedback);
-                SyncFeedback();
-            }
-
-            // If there isn't an activity selected.
-            if (cbxActivity.Text == "")
-            {
-                Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
-                DAL.FeedbackDAL.AddFeedback(feedback);
+                }
             }
         }
 
-        private void btnVraagStellen_Click(object sender, EventArgs e)
+
+ 
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                             Feedback panel code - Max                            //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
+
+        //
+        // Syncing Datagrids and Comboboxes
+        //
+        private void SyncFeedback()
         {
-            pnlAskQuestion.Show();
-            pnlRegisterFeedback.Hide();
-            FeedbackSelection = "Question";
-            dgvFeedback.ClearSelection();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Teacher";
-            Feedback_SyncLearngoals();
+            int weeknumber = determinePickedWeek();
+
+            List<Feedback> TotalFeedback = Feedback.GetFeedback(CurrentStudent, weeknumber, cbxSubject.Text.ToString());
+            dgvFeedback.Rows.Clear();
+
+            foreach (Feedback feedback in TotalFeedback)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvFeedback.Rows[0].Clone();
+                row.Cells[0].Value = feedback.FeedbackID;
+                row.Cells[1].Value = feedback.Teacher;
+                row.Cells[2].Value = feedback.Title;
+                row.Cells[3].Value = feedback.Description;
+                dgvFeedback.Rows.Add(row);
+            }
         }
+        private void Feedback_SyncLearngoals()
+        {
+            int weeknumber = determinePickedWeek();
+            string Subjectname = cbxSubject.Text;
+            List<LearnGoal> TotalLearngoal = LearnGoal.GetLearnGoals(CurrentStudent, weeknumber, Subjectname);
+            cbxLearnGoal.Items.Clear();
+            cbxLearnGoal.Text = "";
+            foreach (LearnGoal learngoal in TotalLearngoal)
+            {
+                cbxLearnGoal.Items.Add(learngoal.Goal);
+            }
+        }
+
+        private void Feedback_SyncActivities(LearnGoal learngoal)
+        {
+            List<Activity> TotalActivity = Activity.GetActivity(learngoal.LearnGoalID);
+            cbxActivity.Items.Clear();
+            cbxActivity.Text = "";
+            foreach (Activity activity in TotalActivity)
+            {
+                cbxActivity.Items.Add(activity.ActivityText);
+            }
+        }
+
+
+
+        //
+        // Switching between panels and hiding information
+        //
 
         private void btnRegisterFeedback_Click(object sender, EventArgs e)
         {
@@ -272,15 +255,24 @@ namespace FeedBUF_Casus.Forms
             txbFeedbackTitle.Clear();
         }
 
-        private void btnLogOut_Click(object sender, EventArgs e)
+        private void btnVraagStellen_Click(object sender, EventArgs e)
         {
-            // Closes the studentform
-            this.Hide();
-            LoginForm loginform = new LoginForm();
-            loginform.Show();
+            pnlAskQuestion.Show();
+            pnlRegisterFeedback.Hide();
+            FeedbackSelection = "Question";
+            dgvFeedback.ClearSelection();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Teacher";
+            Feedback_SyncLearngoals();
         }
 
-
+        private void cbxLearnGoal_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int weeknumber = determinePickedWeek();
+            LearnGoal CurrentLearnGoal = LearnGoal.GetLearnGoalByName(CurrentStudent, weeknumber, cbxSubject.Text.ToString(), cbxLearnGoal.Text.ToString());
+            Feedback_SyncActivities(CurrentLearnGoal);
+        }
 
         private void dgvFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -290,7 +282,7 @@ namespace FeedBUF_Casus.Forms
 
             foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
             {
-                int selFeedbackID = selectedFeedbackID();
+                int selFeedbackID = determineFeedbackID();
 
                 if (selFeedbackID != -1)
                 {
@@ -304,12 +296,12 @@ namespace FeedBUF_Casus.Forms
 
                         string question = FeedbackDAL.GetFeedbackQuestion(selFeedbackID);
 
-                        if (question != "") 
+                        if (question != "")
                         {
                             btnSubmitQuestion.Hide();
                             btnUpdateQuestion.Show();
 
-                            txbQuestion.Text = question; 
+                            txbQuestion.Text = question;
                         }
 
                         else
@@ -355,93 +347,116 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
+        //
+        // CRUD operations to database
+        //
+
+        private void btnFeedbackAdd_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
+            int StudentID = CurrentStudent.ID;
+            string LearnGoalText = cbxLearnGoal.Text.ToString();
+            string Auteur = txbFeedbackTeacher.Text;
+            string Title = txbFeedbackTitle.Text;
+            string Description = txbFeedbackDescription.Text;
+            string Subject = cbxSubject.Text;
+            int weeknumber = determinePickedWeek();
+            int ActivityID = 0;
 
 
-        // Eventhandler for SelectionChanged on the cbxWeek
-        private void WeekChanged(object sender, EventArgs e)
-        {
-            Feedup_SyncLearngoals();
-            Feedback_SyncLearngoals();
-            SyncFeedback();
-            cbxLearnGoal.Text = "";
-            cbxActivity.Text = "";
-            dgvActivities.Rows.Clear();
+            txbFeedbackTeacher.Clear();
+            txbFeedbackTitle.Clear();
+            txbFeedbackDescription.Clear();
 
-            txbQuestion.Clear();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
-        }
+            LearnGoal CurrentLearnGoal = LearnGoal.GetLearnGoalByName(CurrentStudent, weeknumber, Subject, LearnGoalText);
 
-        // Eventhandler for SelectionChanged on the cbxSubject
-        private void SubjectChanged(object sender, EventArgs e)
-        {
-            Feedup_SyncLearngoals();
-            SyncFeedback();
-            cbxLearnGoal.Text = "";
-            cbxActivity.Text = "";
-            dgvActivities.Rows.Clear();
-
-            txbQuestion.Clear();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
-        }
-
-        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Feedup_SyncActivities();
-        }
-
-        private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Checks if the current cell selection is a dgvCheckBox
-            if (dgvActivities.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            // If there is an activity selected.
+            if (cbxActivity.Text != "")
             {
-                if (dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
-                {
-                    //You can see [e.RowIndex] and [e.Columnindex] as Y, and X Coordinates. 
-                    //Rowindex being the current row and column being which column.
-                    //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
+                string activitytext = cbxActivity.Text.ToString();
 
-                    pnlActivity.Hide();
-                    pnlLearngoal.Hide();
-                    pnlTimeSpent.Show();
-                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
-                    // Set the ReadOnly property of the cell to true to prevent the user from unchecking the checkbox
-                    dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
-                }
-                else
+                List<Activity> activities = Activity.GetActivity(CurrentLearnGoal.LearnGoalID);
+                foreach (Activity activity in activities)
                 {
-
+                    if (activitytext == activity.ActivityText)
+                    {
+                        ActivityID = activity.ActivityID;
+                    }
                 }
+
+                Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
+                DAL.FeedbackDAL.AddFeedback(feedback);
+                SyncFeedback();
+            }
+
+            // If there isn't an activity selected.
+            if (cbxActivity.Text == "")
+            {
+                Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
+                DAL.FeedbackDAL.AddFeedback(feedback);
             }
         }
 
-
-        private void btnSaveTimeSpent_Click(object sender, EventArgs e)
+        private void btnSubmitQuestion_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
-            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-            string TimeSpent = txbTimeSpent.Text;
-            Activity.InsertTimeSpent(activityid, TimeSpent);
-            pnlTimeSpent.Visible = false;
-            pnlLearngoal.Show();
-            txbTimeSpent.Clear();
+            if (determineFeedbackID() != -1)
+            {
+                Feedback.AddQuestion(determineFeedbackID(), txbQuestion.Text.ToString());
+            }
+
+            btnSubmitQuestion.Hide();
+            btnUpdateQuestion.Show();
         }
 
-        private void btnAddSubject_Click(object sender, EventArgs e)
+        private void btnFeedbackDelete_Click(object sender, EventArgs e)
         {
-            string name = txbAddSubject.Text;
-            txbAddSubject.Clear();
-            Subject Subject = new Subject(name, false);
-            Subject.AddSubject(CurrentStudent, Subject);
-            dgvSubjects_Sync();
+            if (determineFeedbackID() != -1)
+            {
+                Feedback.DeleteFeedback(determineFeedbackID());
+            }
+
+            // Reset the panel
+            btnRegisterFeedback_Click(sender, e);
+            SyncFeedback();
         }
+
+        private void btnFeedbackUpdate_Click(object sender, EventArgs e)
+        {
+
+            if (determineFeedbackID() != -1)
+            {
+                Feedback updatedFeedback = new Feedback(determineFeedbackID(), txbFeedbackTeacher.Text, txbFeedbackTitle.Text, txbFeedbackDescription.Text);
+                FeedbackDAL.UpdateFeedback(updatedFeedback);
+
+                SyncFeedback();
+            }
+        }
+
+        private void btnUpdateQuestion_Click(object sender, EventArgs e)
+        {
+            btnSubmitQuestion_Click(sender, e);
+        }
+
+        private int determineFeedbackID()
+        {
+            // FeedbackID gets assigned to the value in the first CELL of the selected ROW
+            foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
+            {
+                if (row.Cells[0].Value != null) { return (int)row.Cells[0].Value; }
+            }
+
+            return -1;
+
+            // -1 can't be a number in the database so this is a safe "null" value.
+            // We have to do this because this function returns an int so you cant actually return null.
+        }
+
+
+
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                               Home panel code - Max                              //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
 
         private void dgvSubjects_Sync()
         {
@@ -464,6 +479,15 @@ namespace FeedBUF_Casus.Forms
                     cbxSubject.Items.Add(subject.Name);
                 }
             }
+        }
+
+        private void btnAddSubject_Click(object sender, EventArgs e)
+        {
+            string name = txbAddSubject.Text;
+            txbAddSubject.Clear();
+            Subject Subject = new Subject(name, false);
+            Subject.AddSubject(CurrentStudent, Subject);
+            dgvSubjects_Sync();
         }
 
         private void dvgSubjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -502,66 +526,102 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void cbxLearnGoal_SelectedValueChanged(object sender, EventArgs e)
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                              Header panel code - Max                             //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
+        private int determinePickedWeek()
         {
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            LearnGoal CurrentLearnGoal = LearnGoal.GetLearnGoalByName(CurrentStudent, weeknumber, cbxSubject.Text.ToString(), cbxLearnGoal.Text.ToString());
-            Feedback_SyncActivities(CurrentLearnGoal);
+            if (cbxWeek.Text != "")
+            {
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                return weeknumber;
+            }
+            else { return -1; }
         }
 
-        private void btnSubmitQuestion_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
-            if (selectedFeedbackID() != -1)
-            {
-                Feedback.AddQuestion(selectedFeedbackID(), txbQuestion.Text.ToString());
-            }
-
-            btnSubmitQuestion.Hide();
-            btnUpdateQuestion.Show();
+            // Closes the studentform
+            this.Hide();
+            LoginForm loginform = new LoginForm();
+            loginform.Show();
         }
 
-        private void btnFeedbackDelete_Click(object sender, EventArgs e)
-        {
-            if (selectedFeedbackID() != -1)
-            {
-                Feedback.DeleteFeedback(selectedFeedbackID());
-            }
 
-            // Reset the panel
-            btnRegisterFeedback_Click(sender, e);
+        // Eventhandler for SelectionChanged on the cbxWeek
+        private void WeekChanged(object sender, EventArgs e)
+        {
+            Feedup_SyncLearngoals();
+            Feedback_SyncLearngoals();
             SyncFeedback();
+            cbxLearnGoal.Text = "";
+            cbxActivity.Text = "";
+            dgvActivities.Rows.Clear();
+
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
         }
 
-        private void btnFeedbackUpdate_Click(object sender, EventArgs e)
+        // Eventhandler for SelectionChanged on the cbxSubject
+        private void SubjectChanged(object sender, EventArgs e)
         {
+            Feedup_SyncLearngoals();
+            SyncFeedback();
+            cbxLearnGoal.Text = "";
+            cbxActivity.Text = "";
+            dgvActivities.Rows.Clear();
 
-            if (selectedFeedbackID() != -1)
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
+        }
+
+        private void LoginStudent(Student student)
+        {
+            lblStudentName.Text = student.Fullname;
+            lblStudentClass.Text = student.GroupID;
+        }
+        private void Switchpanel(object sender, EventArgs e)
+        {
+            string selectedChoice = cbxPanelSwitch.Text;
+            string selectedPnl = "pnl" + selectedChoice;
+
+            HidePanels();
+            foreach (Panel panel in panels)
             {
-                Feedback updatedFeedback = new Feedback(selectedFeedbackID(), txbFeedbackTeacher.Text, txbFeedbackTitle.Text, txbFeedbackDescription.Text);
-                FeedbackDAL.UpdateFeedback(updatedFeedback);
-
-                SyncFeedback();
+                if (panel.Name == selectedPnl)
+                {
+                    panel.Show();
+                }
             }
         }
 
-        private int selectedFeedbackID()
+        private void HidePanels()
         {
-            // FeedbackID gets assigned to the value in the first CELL of the selected ROW
-            foreach (DataGridViewRow row in dgvFeedback.SelectedRows)
+            foreach (Panel p in panels)
             {
-                if (row.Cells[0].Value != null) { return (int)row.Cells[0].Value; } 
+                p.Hide();
             }
-
-            return -1;
-
-            // -1 can't be a number in the database so this is a safe "null" value.
-            // We have to do this because this function returns an int so you cant actually return null.
         }
 
-        private void btnUpdateQuestion_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            btnSubmitQuestion_Click(sender, e);
+            cbxPanelSwitch.SelectedItem = null;
+            cbxWeek.SelectedItem = null;
+            cbxSubject.SelectedItem = null;
+            HidePanels();
+            pnlHome.Show();
+            dgvLearnGoals.Rows.Clear();
+        }
+        private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

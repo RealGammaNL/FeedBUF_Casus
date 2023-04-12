@@ -18,15 +18,18 @@ namespace FeedBUF_Casus.Forms
     public partial class LoginForm : Form
     {
         public List<Student> Students = StudentDAL.GetStudents();
-        public List<Teacher> Teachers = new List<Teacher>();
-
-
 
         public LoginForm()
         {
             InitializeComponent();
             this.btnPasswordHelp.FlatAppearance.BorderSize = 0;
         }
+
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                                  Login code - Max                                //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
 
         public void SignInButton_Click(object sender, EventArgs e)
         {
@@ -45,20 +48,6 @@ namespace FeedBUF_Casus.Forms
                     break;
                 }
             }
-              
-            foreach (Teacher teacher in Teachers) 
-            {
-                if (teacher.Email == LoginEmail_Box.Text && teacher.Password == LoginPassword_Box.Text)
-                {
-                    Hide();
-                    found = true;
-                    //TeacherForm teacherform = new TeacherForm(teacher);
-                    LoginEmail_Box.Clear();
-                    LoginPassword_Box.Clear();
-                    //teacherform.Show();
-                    break;
-                }
-            }
 
             if (!found)
             {
@@ -67,24 +56,11 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void btnCreateAccountPanel_Click(object sender, EventArgs e)
-        {
-            LoginPanel.Hide();
-            pnlCreateAccount.Show();
-            lblStatus.Text = "";
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            pnlCreateAccount.Hide();
-            LoginPanel.Show();
-            txbStudentNumber.Clear();
-            txbGroup.Clear();
-            txbName.Clear();
-            txbNewEmail.Clear();
-            txbNewPassword.Clear();
-            txbNewPasswordRepeat.Clear();
-        }
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                              Account creation code - Vigo                        //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
@@ -105,6 +81,25 @@ namespace FeedBUF_Casus.Forms
             {
                 lblStatus.Text = "Wachtwoord komt niet overeen";
             }
+        }
+
+        private void btnCreateAccountPanel_Click(object sender, EventArgs e)
+        {
+            LoginPanel.Hide();
+            pnlCreateAccount.Show();
+            lblStatus.Text = "";
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            pnlCreateAccount.Hide();
+            LoginPanel.Show();
+            txbStudentNumber.Clear();
+            txbGroup.Clear();
+            txbName.Clear();
+            txbNewEmail.Clear();
+            txbNewPassword.Clear();
+            txbNewPasswordRepeat.Clear();
         }
     }
 }
