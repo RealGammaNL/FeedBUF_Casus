@@ -53,5 +53,15 @@ namespace DOMAIN
         {
             DAL.FeedupDAL.AddActivity(activity);
         }
+
+        //public static Activity GetActivityByName(LearnGoal learngoal)
+        //{
+        //    return DAL.FeedupDAL.GetActivity(learngoal)
+        //}
+
+        public static Activity GetActivityByID(int activityID)
+        {
+            return DAL.FeedbackDAL.GetActivityByID(activityID);
+        }
     }
 }

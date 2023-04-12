@@ -85,14 +85,41 @@ namespace DOMAIN
             Note = note;
         }
 
-        public static List<Feedback> GetFeedback()
+        public static List<Feedback> GetFeedback(Student student, int weeknumber, string subject)
         {
-            return DAL.FeedbackDAL.GetFeedback();
+            return DAL.FeedbackDAL.GetFeedback(student, weeknumber, subject);
         }
 
         public static void AddFeedback(Feedback feedback)
         {
             DAL.FeedbackDAL.AddFeedback(feedback);
+        }
+
+        public static void AddQuestion(int feedbackID, string question)
+        {
+            DAL.FeedbackDAL.AddQuestion(feedbackID, question);
+        }
+
+
+
+        public static Feedback GetFeedBackByID(int FeedbackID)
+        {
+            return DAL.FeedbackDAL.GetFeedBackByID(FeedbackID);
+        }
+
+        public static void DeleteFeedback(int FeedbackID)
+        {
+            DAL.FeedbackDAL.DeleteFeedback(FeedbackID);
+        }
+
+        public static void UpdateFeedback(Feedback feedback)
+        {
+            DAL.FeedbackDAL.UpdateFeedback(feedback);
+        }
+
+        public static string GetFeedbackQuestion(int feedbackID)
+        {
+            return DAL.FeedbackDAL.GetFeedbackQuestion(feedbackID);
         }
     }
 }

@@ -31,6 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -81,6 +84,8 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFeedback = new System.Windows.Forms.Label();
             this.pnlRegisterFeedback = new System.Windows.Forms.Panel();
+            this.btnFeedbackUpdate = new System.Windows.Forms.Button();
+            this.btnFeedbackDelete = new System.Windows.Forms.Button();
             this.btnFeedbackAdd = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -95,6 +100,7 @@ namespace FeedBUF_Casus.Forms
             this.txbFeedbackTitle = new System.Windows.Forms.TextBox();
             this.lblRegisterFeedback = new System.Windows.Forms.Label();
             this.pnlAskQuestion = new System.Windows.Forms.Panel();
+            this.btnSubmitQuestion = new System.Windows.Forms.Button();
             this.lblQuestionTeacher = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -137,6 +143,7 @@ namespace FeedBUF_Casus.Forms
             this.btnAddSubject = new System.Windows.Forms.Button();
             this.lblManageSubjects = new System.Windows.Forms.Label();
             this.lblHome_ = new System.Windows.Forms.Label();
+            this.btnUpdateQuestion = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
@@ -197,7 +204,8 @@ namespace FeedBUF_Casus.Forms
             this.btnLogOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogOut.FlatAppearance.BorderSize = 0;
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Location = new System.Drawing.Point(2054, 29);
+            this.btnLogOut.Location = new System.Drawing.Point(1398, 19);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(75, 88);
             this.btnLogOut.TabIndex = 6;
@@ -207,7 +215,8 @@ namespace FeedBUF_Casus.Forms
             // lblStudentClass
             // 
             this.lblStudentClass.AutoSize = true;
-            this.lblStudentClass.Location = new System.Drawing.Point(1906, 72);
+            this.lblStudentClass.Location = new System.Drawing.Point(1300, 47);
+            this.lblStudentClass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStudentClass.Name = "lblStudentClass";
             this.lblStudentClass.Size = new System.Drawing.Size(39, 20);
             this.lblStudentClass.TabIndex = 5;
@@ -236,17 +245,26 @@ namespace FeedBUF_Casus.Forms
             this.cbxWeek.Items.AddRange(new object[] {
             "Week 1 ",
             "Week 2 ",
-            "Week 3 "});
-            this.cbxWeek.Location = new System.Drawing.Point(318, 51);
+            "Week 3 ",
+            "Week 4",
+            "Week 5",
+            "Week 6 ",
+            "Week 7 ",
+            "Week 8 ",
+            "Week 9 ",
+            "Week 10"});
+            this.cbxWeek.Location = new System.Drawing.Point(212, 33);
+            this.cbxWeek.Margin = new System.Windows.Forms.Padding(2);
             this.cbxWeek.Name = "cbxWeek";
             this.cbxWeek.Size = new System.Drawing.Size(136, 37);
             this.cbxWeek.TabIndex = 2;
-            this.cbxWeek.SelectedIndexChanged += new System.EventHandler(this.WeekChanged);
+            this.cbxWeek.SelectedValueChanged += new System.EventHandler(this.WeekChanged);
             // 
             // lblStudentName
             // 
             this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Location = new System.Drawing.Point(1906, 51);
+            this.lblStudentName.Location = new System.Drawing.Point(1300, 33);
+            this.lblStudentName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStudentName.Name = "lblStudentName";
             this.lblStudentName.Size = new System.Drawing.Size(106, 20);
             this.lblStudentName.TabIndex = 4;
@@ -284,7 +302,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Size = new System.Drawing.Size(2109, 1143);
             this.pnlFeedup.TabIndex = 3;
             this.pnlFeedup.Visible = false;
-            this.pnlFeedup.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFeedup_Paint);
             // 
             // pnlTimeSpent
             // 
@@ -589,9 +606,10 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.Controls.Add(this.btnRegisterFeedback);
             this.pnlFeedback.Controls.Add(this.dgvFeedback);
             this.pnlFeedback.Controls.Add(this.lblFeedback);
-            this.pnlFeedback.Controls.Add(this.pnlRegisterFeedback);
             this.pnlFeedback.Controls.Add(this.pnlAskQuestion);
-            this.pnlFeedback.Location = new System.Drawing.Point(14, 131);
+            this.pnlFeedback.Controls.Add(this.pnlRegisterFeedback);
+            this.pnlFeedback.Location = new System.Drawing.Point(9, 85);
+            this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedback.Name = "pnlFeedback";
             this.pnlFeedback.Size = new System.Drawing.Size(2121, 1143);
             this.pnlFeedback.TabIndex = 4;
@@ -629,20 +647,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvFeedback.Location = new System.Drawing.Point(44, 105);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
+            this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(844, 837);
@@ -674,8 +693,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 8;
@@ -695,6 +714,8 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlRegisterFeedback
             // 
+            this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackUpdate);
+            this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackDelete);
             this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackAdd);
             this.pnlRegisterFeedback.Controls.Add(this.label7);
             this.pnlRegisterFeedback.Controls.Add(this.label6);
@@ -713,6 +734,28 @@ namespace FeedBUF_Casus.Forms
             this.pnlRegisterFeedback.Size = new System.Drawing.Size(1128, 991);
             this.pnlRegisterFeedback.TabIndex = 5;
             this.pnlRegisterFeedback.Visible = false;
+            // 
+            // btnFeedbackUpdate
+            // 
+            this.btnFeedbackUpdate.Location = new System.Drawing.Point(534, 275);
+            this.btnFeedbackUpdate.Name = "btnFeedbackUpdate";
+            this.btnFeedbackUpdate.Size = new System.Drawing.Size(180, 133);
+            this.btnFeedbackUpdate.TabIndex = 17;
+            this.btnFeedbackUpdate.Text = "Bewerk Feedback";
+            this.btnFeedbackUpdate.UseVisualStyleBackColor = true;
+            this.btnFeedbackUpdate.Visible = false;
+            this.btnFeedbackUpdate.Click += new System.EventHandler(this.btnFeedbackUpdate_Click);
+            // 
+            // btnFeedbackDelete
+            // 
+            this.btnFeedbackDelete.Location = new System.Drawing.Point(535, 527);
+            this.btnFeedbackDelete.Name = "btnFeedbackDelete";
+            this.btnFeedbackDelete.Size = new System.Drawing.Size(180, 76);
+            this.btnFeedbackDelete.TabIndex = 16;
+            this.btnFeedbackDelete.Text = "Verwijder Feedback";
+            this.btnFeedbackDelete.UseVisualStyleBackColor = true;
+            this.btnFeedbackDelete.Visible = false;
+            this.btnFeedbackDelete.Click += new System.EventHandler(this.btnFeedbackDelete_Click);
             // 
             // btnFeedbackAdd
             // 
@@ -766,6 +809,7 @@ namespace FeedBUF_Casus.Forms
             this.cbxLearnGoal.Name = "cbxLearnGoal";
             this.cbxLearnGoal.Size = new System.Drawing.Size(336, 41);
             this.cbxLearnGoal.TabIndex = 10;
+            this.cbxLearnGoal.SelectedValueChanged += new System.EventHandler(this.cbxLearnGoal_SelectedValueChanged);
             // 
             // label5
             // 
@@ -829,7 +873,6 @@ namespace FeedBUF_Casus.Forms
             this.txbFeedbackDescription.Name = "txbFeedbackDescription";
             this.txbFeedbackDescription.Size = new System.Drawing.Size(706, 202);
             this.txbFeedbackDescription.TabIndex = 3;
-            this.txbFeedbackDescription.TextChanged += new System.EventHandler(this.txbFeedbackDescription_TextChanged);
             // 
             // txbFeedbackTitle
             // 
@@ -853,6 +896,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlAskQuestion
             // 
+            this.pnlAskQuestion.Controls.Add(this.btnSubmitQuestion);
             this.pnlAskQuestion.Controls.Add(this.lblQuestionTeacher);
             this.pnlAskQuestion.Controls.Add(this.label14);
             this.pnlAskQuestion.Controls.Add(this.label10);
@@ -862,11 +906,23 @@ namespace FeedBUF_Casus.Forms
             this.pnlAskQuestion.Controls.Add(this.txbQuestionDescription);
             this.pnlAskQuestion.Controls.Add(this.txbQuestionTitle);
             this.pnlAskQuestion.Controls.Add(this.label1);
-            this.pnlAskQuestion.Location = new System.Drawing.Point(963, 105);
+            this.pnlAskQuestion.Controls.Add(this.btnUpdateQuestion);
+            this.pnlAskQuestion.Location = new System.Drawing.Point(642, 68);
+            this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAskQuestion.Name = "pnlAskQuestion";
             this.pnlAskQuestion.Size = new System.Drawing.Size(1128, 991);
             this.pnlAskQuestion.TabIndex = 6;
             this.pnlAskQuestion.Visible = false;
+            // 
+            // btnSubmitQuestion
+            // 
+            this.btnSubmitQuestion.Location = new System.Drawing.Point(42, 559);
+            this.btnSubmitQuestion.Name = "btnSubmitQuestion";
+            this.btnSubmitQuestion.Size = new System.Drawing.Size(150, 53);
+            this.btnSubmitQuestion.TabIndex = 8;
+            this.btnSubmitQuestion.Text = "Toevoegen";
+            this.btnSubmitQuestion.UseVisualStyleBackColor = true;
+            this.btnSubmitQuestion.Click += new System.EventHandler(this.btnSubmitQuestion_Click);
             // 
             // lblQuestionTeacher
             // 
@@ -931,7 +987,7 @@ namespace FeedBUF_Casus.Forms
             this.txbQuestion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbQuestion.Multiline = true;
             this.txbQuestion.Name = "txbQuestion";
-            this.txbQuestion.Size = new System.Drawing.Size(1036, 416);
+            this.txbQuestion.Size = new System.Drawing.Size(692, 227);
             this.txbQuestion.TabIndex = 4;
             // 
             // txbQuestionDescription
@@ -1239,7 +1295,7 @@ namespace FeedBUF_Casus.Forms
             this.dgvSubjects.RowHeadersVisible = false;
             this.dgvSubjects.RowHeadersWidth = 62;
             this.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSubjects.Size = new System.Drawing.Size(388, 609);
+            this.dgvSubjects.Size = new System.Drawing.Size(259, 635);
             this.dgvSubjects.TabIndex = 8;
             this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgSubjects_CellContentClick);
             this.dgvSubjects.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvSubjects_CurrentCellDirtyStateChanged);
@@ -1316,18 +1372,29 @@ namespace FeedBUF_Casus.Forms
             this.lblHome_.TabIndex = 1;
             this.lblHome_.Text = "Home";
             // 
+            // btnUpdateQuestion
+            // 
+            this.btnUpdateQuestion.Location = new System.Drawing.Point(42, 559);
+            this.btnUpdateQuestion.Name = "btnUpdateQuestion";
+            this.btnUpdateQuestion.Size = new System.Drawing.Size(150, 53);
+            this.btnUpdateQuestion.TabIndex = 14;
+            this.btnUpdateQuestion.Text = "Bewerk";
+            this.btnUpdateQuestion.UseVisualStyleBackColor = true;
+            this.btnUpdateQuestion.Visible = false;
+            this.btnUpdateQuestion.Click += new System.EventHandler(this.btnUpdateQuestion_Click);
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2182, 1291);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pnlFeedup);
-            this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlHome);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Controls.Add(this.pnlFeedup);
+            this.Controls.Add(this.pnlConclusion);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentForm";
@@ -1470,6 +1537,10 @@ namespace FeedBUF_Casus.Forms
         private Button btnAddSubject;
         private Label lblManageSubjects;
         private Label lblHome_;
+        private Button btnSubmitQuestion;
+        private Button btnFeedbackUpdate;
+        private Button btnFeedbackDelete;
+        private Button btnUpdateQuestion;
         private DataGridViewTextBoxColumn clnFeedupActivitiesID;
         private DataGridViewTextBoxColumn clnFeedupActivitiesActivity;
         private DataGridViewTextBoxColumn dgcTimeEstimation;
