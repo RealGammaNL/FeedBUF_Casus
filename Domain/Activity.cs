@@ -53,5 +53,13 @@ namespace DOMAIN
         {
             DAL.FeedupDAL.AddActivity(activity);
         }
+        public static void RemoveActivity(int activityID)
+        {
+            DAL.FeedupDAL.DeleteActivity(activityID);
+        }
+        public static void UpdateActivity(int  activityID, string activity)
+        {
+            DAL.FeedupDAL.UpdateActivity(activityID, activity);
+        }
     }
 }

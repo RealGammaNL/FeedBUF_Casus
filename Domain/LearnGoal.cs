@@ -44,5 +44,13 @@ namespace DOMAIN
         {
             return DAL.FeedupDAL.GetLearnGoals(student, Weeknumber, Subjectname);
         }
+        public static void UpdateLearngoal(int LearngoalID, string learngoal)
+        {
+            DAL.FeedupDAL.UpdateLearngoal(LearngoalID, learngoal);
+        }
+        public static void DeleteLearngoal(int learngoalID)
+        {
+            DAL.FeedupDAL.DeleteLearngoal(learngoalID);
+        }
     }
 }
