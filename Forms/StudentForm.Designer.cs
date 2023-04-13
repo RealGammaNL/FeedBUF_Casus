@@ -31,8 +31,8 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@ namespace FeedBUF_Casus.Forms
             this.txbFeedup_SelectedActivitity = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlNewActivity = new System.Windows.Forms.Panel();
+            this.lblFeedupTimeEstimate = new System.Windows.Forms.Label();
             this.txbFeedup_TimeEstimation = new System.Windows.Forms.TextBox();
             this.btnNewActivity = new System.Windows.Forms.Button();
             this.lblNewActivity = new System.Windows.Forms.Label();
@@ -163,7 +164,6 @@ namespace FeedBUF_Casus.Forms
             this.lblManageSubjects = new System.Windows.Forms.Label();
             this.lblHome_ = new System.Windows.Forms.Label();
             this.btnUpdateSubject = new System.Windows.Forms.Button();
-            this.lblFeedupTimeEstimate = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -476,8 +476,8 @@ namespace FeedBUF_Casus.Forms
             // 
             this.pnlActivity.Controls.Add(this.lblActivity);
             this.pnlActivity.Controls.Add(this.btnUpdateActivity);
-            this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
             this.pnlActivity.Controls.Add(this.pnlNewActivity);
+            this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
             this.pnlActivity.Location = new System.Drawing.Point(845, 59);
             this.pnlActivity.Margin = new System.Windows.Forms.Padding(2);
             this.pnlActivity.Name = "pnlActivity";
@@ -592,6 +592,18 @@ namespace FeedBUF_Casus.Forms
             this.pnlNewActivity.Size = new System.Drawing.Size(418, 202);
             this.pnlNewActivity.TabIndex = 13;
             // 
+            // lblFeedupTimeEstimate
+            // 
+            this.lblFeedupTimeEstimate.AutoSize = true;
+            this.lblFeedupTimeEstimate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedupTimeEstimate.ForeColor = System.Drawing.Color.Black;
+            this.lblFeedupTimeEstimate.Location = new System.Drawing.Point(-3, 62);
+            this.lblFeedupTimeEstimate.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblFeedupTimeEstimate.Name = "lblFeedupTimeEstimate";
+            this.lblFeedupTimeEstimate.Size = new System.Drawing.Size(139, 24);
+            this.lblFeedupTimeEstimate.TabIndex = 10;
+            this.lblFeedupTimeEstimate.Text = "Tijdsinschatting";
+            // 
             // txbFeedup_TimeEstimation
             // 
             this.txbFeedup_TimeEstimation.Location = new System.Drawing.Point(1, 92);
@@ -610,7 +622,7 @@ namespace FeedBUF_Casus.Forms
             this.btnNewActivity.TabIndex = 9;
             this.btnNewActivity.Text = "Toevoegen";
             this.btnNewActivity.UseVisualStyleBackColor = false;
-            this.btnNewActivity.Click += new System.EventHandler(this.btnSaveActivity_Click);
+            this.btnNewActivity.Click += new System.EventHandler(this.btnNewActivity_Click);
             // 
             // lblNewActivity
             // 
@@ -891,8 +903,8 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(614, 534);
@@ -924,8 +936,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle1;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 8;
@@ -1731,18 +1743,6 @@ namespace FeedBUF_Casus.Forms
             this.btnUpdateSubject.Text = "Bewerk";
             this.btnUpdateSubject.UseVisualStyleBackColor = true;
             this.btnUpdateSubject.Click += new System.EventHandler(this.btnUpdateSubject_Click);
-            // 
-            // lblFeedupTimeEstimate
-            // 
-            this.lblFeedupTimeEstimate.AutoSize = true;
-            this.lblFeedupTimeEstimate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFeedupTimeEstimate.ForeColor = System.Drawing.Color.Black;
-            this.lblFeedupTimeEstimate.Location = new System.Drawing.Point(-3, 62);
-            this.lblFeedupTimeEstimate.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblFeedupTimeEstimate.Name = "lblFeedupTimeEstimate";
-            this.lblFeedupTimeEstimate.Size = new System.Drawing.Size(139, 24);
-            this.lblFeedupTimeEstimate.TabIndex = 10;
-            this.lblFeedupTimeEstimate.Text = "Tijdsinschatting";
             // 
             // StudentForm
             // 
