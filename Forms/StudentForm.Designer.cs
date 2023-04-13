@@ -72,7 +72,6 @@ namespace FeedBUF_Casus.Forms
             this.btnSaveTimeSpent = new System.Windows.Forms.Button();
             this.txbTimeSpent = new System.Windows.Forms.TextBox();
             this.lblCompleted = new System.Windows.Forms.Label();
-            this.pnlActivity = new System.Windows.Forms.Panel();
             this.btnUpdateActivity = new System.Windows.Forms.Button();
             this.pnlUpdateActivity = new System.Windows.Forms.Panel();
             this.btnActivityBack = new System.Windows.Forms.Button();
@@ -86,7 +85,6 @@ namespace FeedBUF_Casus.Forms
             this.btnNewActivity = new System.Windows.Forms.Button();
             this.lblNewActivity = new System.Windows.Forms.Label();
             this.tbxNewActivity = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlFeedback = new System.Windows.Forms.Panel();
             this.btnVraagStellen = new System.Windows.Forms.Button();
             this.btnRegisterFeedback = new System.Windows.Forms.Button();
@@ -167,7 +165,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlAddLearngoal.SuspendLayout();
             this.pnlUpdateLearngoal.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
-            this.pnlActivity.SuspendLayout();
             this.pnlUpdateActivity.SuspendLayout();
             this.pnlNewActivity.SuspendLayout();
             this.pnlFeedback.SuspendLayout();
@@ -320,7 +317,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Controls.Add(this.lblLearnGoals);
             this.pnlFeedup.Controls.Add(this.pnlLearngoal);
             this.pnlFeedup.Controls.Add(this.pnlTimeSpent);
-            this.pnlFeedup.Controls.Add(this.pnlActivity);
             this.pnlFeedup.Location = new System.Drawing.Point(9, 85);
             this.pnlFeedup.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedup.Name = "pnlFeedup";
@@ -569,14 +565,6 @@ namespace FeedBUF_Casus.Forms
             this.btnUpdateLearnGoalpnl.UseVisualStyleBackColor = true;
             this.btnUpdateLearnGoalpnl.Click += new System.EventHandler(this.btnUpdateLearnGoalpnl_Click);
             // 
-            // txbFeedup_Learngoal
-            // 
-            this.txbFeedup_Learngoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFeedup_Learngoal.Location = new System.Drawing.Point(28, 84);
-            this.txbFeedup_Learngoal.Name = "txbFeedup_Learngoal";
-            this.txbFeedup_Learngoal.Size = new System.Drawing.Size(527, 29);
-            this.txbFeedup_Learngoal.TabIndex = 6;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -699,18 +687,6 @@ namespace FeedBUF_Casus.Forms
             this.lblCompleted.TabIndex = 0;
             this.lblCompleted.Text = "Hoe lang heeft u over deze activiteit gedaan?";
             // 
-            // pnlActivity
-            // 
-            this.pnlActivity.Controls.Add(this.btnUpdateActivity);
-            this.pnlActivity.Controls.Add(this.label3);
-            this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
-            this.pnlActivity.Controls.Add(this.pnlNewActivity);
-            this.pnlActivity.Location = new System.Drawing.Point(801, 68);
-            this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(590, 659);
-            this.pnlActivity.TabIndex = 4;
-            this.pnlActivity.Visible = false;
-            // 
             // btnUpdateActivity
             // 
             this.btnUpdateActivity.Location = new System.Drawing.Point(431, 8);
@@ -768,9 +744,8 @@ namespace FeedBUF_Casus.Forms
             this.btnSaveActivity.TabIndex = 12;
             this.btnSaveActivity.Text = "Opslaan";
             this.btnSaveActivity.UseVisualStyleBackColor = false;
+            //
             // txbFeedup_SelectedActivitity
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Tijdsinschatting";
             // 
             this.txbFeedup_SelectedActivitity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbFeedup_SelectedActivitity.Location = new System.Drawing.Point(6, 32);
@@ -804,13 +779,17 @@ namespace FeedBUF_Casus.Forms
             this.pnlNewActivity.TabIndex = 13;
             // 
             // txbFeedup_TimeEstimation
+            // 
+
             this.txbFeedup_TimeEstimation.Location = new System.Drawing.Point(5, 92);
             this.txbFeedup_TimeEstimation.Location = new System.Drawing.Point(42, 240);
             this.txbFeedup_TimeEstimation.Size = new System.Drawing.Size(563, 29);
             this.txbFeedup_TimeEstimation.TabIndex = 10;
             this.txbFeedup_TimeEstimation.Size = new System.Drawing.Size(788, 40);
             this.txbFeedup_TimeEstimation.TabIndex = 7;
-            // 
+            //
+            // label15
+            //
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
@@ -820,8 +799,7 @@ namespace FeedBUF_Casus.Forms
             this.label15.Size = new System.Drawing.Size(139, 24);
             this.label15.TabIndex = 11;
             this.label15.Text = "Tijdsinschatting";
-            this.txbFeedup_Activitity.Size = new System.Drawing.Size(788, 40);
-            this.txbFeedup_Activitity.TabIndex = 6;
+
             // 
             // btnNewActivity
             // 
@@ -854,18 +832,6 @@ namespace FeedBUF_Casus.Forms
             this.tbxNewActivity.Name = "tbxNewActivity";
             this.tbxNewActivity.Size = new System.Drawing.Size(561, 29);
             this.tbxNewActivity.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 7);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.ForeColor = System.Drawing.Color.Orange;
-            this.label3.Location = new System.Drawing.Point(34, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 29);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Activiteiten";
             // 
             // pnlFeedback
             // 
@@ -1703,8 +1669,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlUpdateLearngoal.PerformLayout();
             this.pnlTimeSpent.ResumeLayout(false);
             this.pnlTimeSpent.PerformLayout();
-            this.pnlActivity.ResumeLayout(false);
-            this.pnlActivity.PerformLayout();
             this.pnlUpdateActivity.ResumeLayout(false);
             this.pnlUpdateActivity.PerformLayout();
             this.pnlNewActivity.ResumeLayout(false);
@@ -1799,8 +1763,6 @@ namespace FeedBUF_Casus.Forms
         private Label label12;
         private Button btnFeedbackAdd;
         private Button btnAddActivity;
-        private Button btnAddActivity;
-        private Button btnFeedbackAdd;
         private Label label14;
         private Label label10;
         private Label label13;
@@ -1858,7 +1820,6 @@ namespace FeedBUF_Casus.Forms
         private Button btnActivityBack;
         private Button btnDeleteActivity;
         private Button btnSaveActivity;
-        private Button btnFeedbackAdd;
         private Button btnUpdateSubject;
         private Button btnDeleteSubject;
         private DataGridViewTextBoxColumn dgcTimeEstimation;

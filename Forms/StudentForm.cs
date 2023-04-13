@@ -85,19 +85,13 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Feedup_SyncActivities();
-        }
-
-
         //
         // Switching panels
         //
 
         private void btnFeedup_SwitchLearngoal_Click(object sender, EventArgs e)
         {
-            pnlActivity.Hide();
+            pnlNewActivity.Hide();
             pnlLearngoal.Show();
             pnlAddLearngoal.Show();
             pnlUpdateLearngoal.Hide();
@@ -106,7 +100,6 @@ namespace FeedBUF_Casus.Forms
 
         private void btnFeedup_SwitchActivity_Click(object sender, EventArgs e)
         {
-            pnlActivity.Show();
             pnlNewActivity.Show();
             pnlUpdateActivity.Hide();
             pnlLearngoal.Hide();
@@ -122,33 +115,6 @@ namespace FeedBUF_Casus.Forms
         //
         // CRUD to database
         //
-
-        private void btnAddLearnGoal_Click(object sender, EventArgs e)
-        {
-            string learngoal = txbFeedup_Learngoal.Text;
-            int weeknumber = determinePickedWeek();
-            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
-            DAL.FeedupDAL.AddLearngoal(learnGoal);
-            txbFeedup_Learngoal.Clear();
-            Feedup_SyncLearngoals();
-            SyncLearngoals();
-        }
-        private void btnAddActivity_Click(object sender, EventArgs e)
-        {
-            if (dgvLearnGoals.CurrentRow != null)
-            {
-                string activityStr = txbFeedup_Activitity.Text;
-                string timeEstimation = txbFeedup_TimeEstimation.Text;
-                DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
-                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity activity = new Activity(learngoalid, activityStr, timeEstimation);
-                Activity.AddActivity(activity);
-                txbFeedup_Activitity.Clear();
-                txbFeedup_TimeEstimation.Clear();
-                Feedup_SyncActivities();
-            }
-        }
-        }
 
         private void btnSaveTimeSpent_Click(object sender, EventArgs e)
         {
@@ -176,7 +142,7 @@ namespace FeedBUF_Casus.Forms
                     //Rowindex being the current row and column being which column.
                     //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
 
-                    pnlActivity.Hide();
+                    pnlNewActivity.Hide();
                     pnlLearngoal.Hide();
                     pnlTimeSpent.Show();
                     dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
@@ -420,12 +386,10 @@ namespace FeedBUF_Casus.Forms
 
         private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SyncActivities();
+            Feedup_SyncActivities();
             DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
             string learngoal = (selectedRow.Cells[1].Value.ToString());
             txbSelectedLearngoal.Text = learngoal;
-
-            SyncActivities();
         }
 
         private void btnFeedbackDelete_Click(object sender, EventArgs e)
@@ -603,7 +567,7 @@ namespace FeedBUF_Casus.Forms
                 return weeknumber;
             }
             else { return -1; }
-
+        }
         private void btnAddLearngoal_Click(object sender, EventArgs e)
         {
             string learngoal = txbFeedup_AddLearngoal.Text;
@@ -612,7 +576,7 @@ namespace FeedBUF_Casus.Forms
             LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
             DAL.FeedupDAL.AddLearngoal(learnGoal);
             txbFeedup_AddLearngoal.Clear();
-            SyncLearngoals();
+            Feedup_SyncLearngoals();
         }
 
         private void btnBackLearngoal_Click(object sender, EventArgs e)
@@ -652,7 +616,7 @@ namespace FeedBUF_Casus.Forms
                 Activity.AddActivity(activity);
                 tbxNewActivity.Clear();
                 txbFeedup_TimeEstimation.Clear();
-                SyncActivities();
+                Feedup_SyncActivities();
             }
         }
 
@@ -666,7 +630,7 @@ namespace FeedBUF_Casus.Forms
                     DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
                     int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
                     Activity.RemoveActivity(activityid);
-                    SyncActivities();
+                    Feedup_SyncActivities();
                     pnlUpdateActivity.Hide();
                     pnlNewActivity.Show();
                     txbFeedup_SelectedActivitity.Clear();
@@ -684,7 +648,7 @@ namespace FeedBUF_Casus.Forms
             int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
             string newactivity = txbFeedup_SelectedActivitity.Text.ToString();
             Activity.UpdateActivity(activityid, newactivity);
-            SyncActivities();
+            Feedup_SyncActivities();
             pnlUpdateActivity.Hide();
             pnlNewActivity.Show();
             txbFeedup_SelectedActivitity.Clear();
@@ -696,8 +660,8 @@ namespace FeedBUF_Casus.Forms
             int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
             string learngoal = txbSelectedLearngoal.Text.ToString();
             LearnGoal.UpdateLearngoal(learngoalid, learngoal);
-            SyncLearngoals();
-            SyncActivities();
+            Feedup_SyncLearngoals();
+            Feedup_SyncActivities();
             pnlUpdateLearngoal.Hide();
             pnlAddLearngoal.Show();
             txbSelectedLearngoal.Clear();
@@ -713,8 +677,8 @@ namespace FeedBUF_Casus.Forms
                     DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
                     int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
                     LearnGoal.DeleteLearngoal(learngoalid);
-                    SyncLearngoals();
-                    SyncActivities();
+                    Feedup_SyncLearngoals();
+                    Feedup_SyncActivities();
                     pnlUpdateLearngoal.Hide();
                     pnlAddLearngoal.Show();
                     txbSelectedLearngoal.Clear();
