@@ -54,11 +54,11 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "DELETE FROM FEEDBACK WHERE FeedbackID = @FeedbackID";
+                    string sql = "UPDATE FEEDBACK SET Note = @Note WHERE FeedbackID = @FeedbackID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@Note", DBNull.Value);
                         command.Parameters.AddWithValue("@FeedbackID", feedbackid);
                         command.ExecuteNonQuery();
                     }
@@ -73,11 +73,11 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "DELETE FROM ACTIVITY WHERE ActivityID = @ActivityID";
+                    string sql = "UPDATE ACTIVITY SET Note = @Note WHERE ActivityID = @ActivityID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@Note", DBNull.Value);
                         command.Parameters.AddWithValue("@ActivityID", activityid);
                         command.ExecuteNonQuery();
                     }
@@ -172,11 +172,11 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "DELETE FROM LEARNGOAL WHERE ActivityID = @ActivityID";
+                    string sql = "UPDATE LEARNGOAL SET Note = @Note WHERE LearnGoalID = @LearnGoalID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@Note", DBNull.Value);
                         command.Parameters.AddWithValue("@LearnGoalID", learngoalid);
                         command.ExecuteNonQuery();
                     }

@@ -501,27 +501,27 @@ namespace FeedBUF_Casus.Forms
 
         }
 
-        private int determineSelectedGridRow()
+        private void btnFeedforwardDeleteNote_Click(object sender, EventArgs e)
         {
-            if (dgvFeedforwardFeedback.SelectedRows.Count < 0)
+            if (dgvFeedforwardFeedback.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
                 int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                return feedbackid;
+                Feedback.DeleteFeedbackNote(feedbackid, tbxFeedforwardNote.Text);
             }
-            if (dgvFeedforwardLearnGoals.SelectedRows.Count < 0)
+            if (dgvFeedforwardLearnGoals.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
                 int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                return learngoalid;
+                LearnGoal.DeleteLearnGoalNote(learngoalid, tbxFeedforwardNote.Text);
             }
-            if (dgvFeedforwardActivities.SelectedRows.Count < 0)
+            if (dgvFeedforwardActivities.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
                 int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                return activityid;
+                Activity.DeleteActivityNote(activityid, tbxFeedforwardNote.Text);
             }
-            return -1;
+            tbxFeedforwardNote.Clear();
         }
     }
 }
