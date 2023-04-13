@@ -331,6 +331,8 @@ namespace FeedBUF_Casus.Forms
         {
             SyncFeedforwardActivities();
             SyncLearnGoalNote();
+            dgvFeedforwardActivities.ClearSelection();
+            dgvFeedforwardFeedback.ClearSelection();
         }
 
         private void dgvActivities_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -458,6 +460,14 @@ namespace FeedBUF_Casus.Forms
         private void dgvFeedforwardFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SyncFeedbackNote();
+            dgvFeedforwardLearnGoals.ClearSelection();
+            dgvFeedforwardActivities.ClearSelection();
+        }
+
+        private void dgvFeedforwardActivities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvFeedforwardLearnGoals.ClearSelection();
+            dgvFeedforwardFeedback.ClearSelection();
         }
     }
 }

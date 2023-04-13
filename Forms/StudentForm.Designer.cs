@@ -31,9 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -639,21 +639,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
@@ -685,8 +685,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 6;
@@ -1013,15 +1013,20 @@ namespace FeedBUF_Casus.Forms
             // dgvFeedforwardActivities
             // 
             this.dgvFeedforwardActivities.AllowUserToAddRows = false;
+            this.dgvFeedforwardActivities.AllowUserToResizeColumns = false;
+            this.dgvFeedforwardActivities.AllowUserToResizeRows = false;
             this.dgvFeedforwardActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardActivities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardActivityID,
             this.clnFeedforwardActivityActivity});
             this.dgvFeedforwardActivities.Location = new System.Drawing.Point(30, 259);
+            this.dgvFeedforwardActivities.MultiSelect = false;
             this.dgvFeedforwardActivities.Name = "dgvFeedforwardActivities";
+            this.dgvFeedforwardActivities.ReadOnly = true;
             this.dgvFeedforwardActivities.RowHeadersVisible = false;
             this.dgvFeedforwardActivities.Size = new System.Drawing.Size(502, 150);
             this.dgvFeedforwardActivities.TabIndex = 6;
+            this.dgvFeedforwardActivities.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFeedforwardActivities_CellClick);
             this.dgvFeedforwardActivities.Click += new System.EventHandler(this.dgvFeedforwardActivities_Click);
             // 
             // clnFeedforwardActivityID
@@ -1039,6 +1044,8 @@ namespace FeedBUF_Casus.Forms
             // dgvFeedforwardFeedback
             // 
             this.dgvFeedforwardFeedback.AllowUserToAddRows = false;
+            this.dgvFeedforwardFeedback.AllowUserToResizeColumns = false;
+            this.dgvFeedforwardFeedback.AllowUserToResizeRows = false;
             this.dgvFeedforwardFeedback.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardFeedback.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardFeedbackID,
@@ -1047,7 +1054,9 @@ namespace FeedBUF_Casus.Forms
             this.clnFeedforwardFeedbackDescription});
             this.dgvFeedforwardFeedback.Location = new System.Drawing.Point(29, 443);
             this.dgvFeedforwardFeedback.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvFeedforwardFeedback.MultiSelect = false;
             this.dgvFeedforwardFeedback.Name = "dgvFeedforwardFeedback";
+            this.dgvFeedforwardFeedback.ReadOnly = true;
             this.dgvFeedforwardFeedback.RowHeadersVisible = false;
             this.dgvFeedforwardFeedback.RowHeadersWidth = 51;
             this.dgvFeedforwardFeedback.RowTemplate.Height = 24;
@@ -1094,13 +1103,17 @@ namespace FeedBUF_Casus.Forms
             // dgvFeedforwardLearnGoals
             // 
             this.dgvFeedforwardLearnGoals.AllowUserToAddRows = false;
+            this.dgvFeedforwardLearnGoals.AllowUserToResizeColumns = false;
+            this.dgvFeedforwardLearnGoals.AllowUserToResizeRows = false;
             this.dgvFeedforwardLearnGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFeedforwardLearnGoals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnFeedforwardLearnGoalID,
             this.clnFeedforwardLearngoal});
             this.dgvFeedforwardLearnGoals.Location = new System.Drawing.Point(30, 31);
             this.dgvFeedforwardLearnGoals.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvFeedforwardLearnGoals.MultiSelect = false;
             this.dgvFeedforwardLearnGoals.Name = "dgvFeedforwardLearnGoals";
+            this.dgvFeedforwardLearnGoals.ReadOnly = true;
             this.dgvFeedforwardLearnGoals.RowHeadersVisible = false;
             this.dgvFeedforwardLearnGoals.RowHeadersWidth = 51;
             this.dgvFeedforwardLearnGoals.RowTemplate.Height = 24;
