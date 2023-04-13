@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DOMAIN;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using DAL;
 
 namespace FeedBUF_Casus.Forms
@@ -78,7 +79,7 @@ namespace FeedBUF_Casus.Forms
                 row.Cells[1].Value = activity.ActivityText;
                 row.Cells[2].Value = activity.TimeEstimate;
                 dgvActivities.Rows.Add(row);
-                if(activity.TimeSpent != "")
+                if (activity.TimeSpent != "")
                 {
                     row.Cells[3].Value = true;
                     row.Cells[3].ReadOnly = true;
