@@ -31,8 +31,8 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -42,21 +42,6 @@ namespace FeedBUF_Casus.Forms
             this.lblStudentName = new System.Windows.Forms.Label();
             this.cbxPanelSwitch = new System.Windows.Forms.ComboBox();
             this.pnlFeedup = new System.Windows.Forms.Panel();
-            this.pnlActivity = new System.Windows.Forms.Panel();
-            this.lblActivity = new System.Windows.Forms.Label();
-            this.btnUpdateActivity = new System.Windows.Forms.Button();
-            this.pnlNewActivity = new System.Windows.Forms.Panel();
-            this.txbFeedup_TimeEstimation = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.btnNewActivity = new System.Windows.Forms.Button();
-            this.lblNewActivity = new System.Windows.Forms.Label();
-            this.tbxNewActivity = new System.Windows.Forms.TextBox();
-            this.pnlUpdateActivity = new System.Windows.Forms.Panel();
-            this.btnActivityBack = new System.Windows.Forms.Button();
-            this.btnDeleteActivity = new System.Windows.Forms.Button();
-            this.btnSaveActivity = new System.Windows.Forms.Button();
-            this.txbFeedup_SelectedActivitity = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnFeedup_SwitchActivity = new System.Windows.Forms.Button();
             this.btnFeedup_SwitchLearngoal = new System.Windows.Forms.Button();
             this.dgvActivities = new System.Windows.Forms.DataGridView();
@@ -86,6 +71,21 @@ namespace FeedBUF_Casus.Forms
             this.btnSaveTimeSpent = new System.Windows.Forms.Button();
             this.txbTimeSpent = new System.Windows.Forms.TextBox();
             this.lblCompleted = new System.Windows.Forms.Label();
+            this.pnlActivity = new System.Windows.Forms.Panel();
+            this.lblActivity = new System.Windows.Forms.Label();
+            this.btnUpdateActivity = new System.Windows.Forms.Button();
+            this.pnlNewActivity = new System.Windows.Forms.Panel();
+            this.txbFeedup_TimeEstimation = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnNewActivity = new System.Windows.Forms.Button();
+            this.lblNewActivity = new System.Windows.Forms.Label();
+            this.tbxNewActivity = new System.Windows.Forms.TextBox();
+            this.pnlUpdateActivity = new System.Windows.Forms.Panel();
+            this.btnActivityBack = new System.Windows.Forms.Button();
+            this.btnDeleteActivity = new System.Windows.Forms.Button();
+            this.btnSaveActivity = new System.Windows.Forms.Button();
+            this.txbFeedup_SelectedActivitity = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pnlFeedback = new System.Windows.Forms.Panel();
             this.btnVraagStellen = new System.Windows.Forms.Button();
             this.btnRegisterFeedback = new System.Windows.Forms.Button();
@@ -98,6 +98,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlAskQuestion = new System.Windows.Forms.Panel();
             this.btnSubmitQuestion = new System.Windows.Forms.Button();
             this.lblQuestionTeacher = new System.Windows.Forms.Label();
+            this.txbQuestionTitle = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -107,7 +108,6 @@ namespace FeedBUF_Casus.Forms
             this.btnUpdateQuestion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlRegisterFeedback = new System.Windows.Forms.Panel();
-            this.btnFeedbackUpdate = new System.Windows.Forms.Button();
             this.btnFeedbackDelete = new System.Windows.Forms.Button();
             this.btnFeedbackAdd = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -121,8 +121,8 @@ namespace FeedBUF_Casus.Forms
             this.pcbUserIcon = new System.Windows.Forms.PictureBox();
             this.txbFeedbackDescription = new System.Windows.Forms.TextBox();
             this.lblRegisterFeedback = new System.Windows.Forms.Label();
+            this.btnFeedbackUpdate = new System.Windows.Forms.Button();
             this.txbFeedbackTitle = new System.Windows.Forms.TextBox();
-            this.txbQuestionTitle = new System.Windows.Forms.TextBox();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
             this.dgvFeedback2 = new System.Windows.Forms.DataGridView();
             this.clnFeedforwardFeedbackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -149,7 +149,6 @@ namespace FeedBUF_Casus.Forms
             this.lblHome = new System.Windows.Forms.Label();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.btnDeleteSubject = new System.Windows.Forms.Button();
-            this.btnUpdateSubject = new System.Windows.Forms.Button();
             this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -158,17 +157,18 @@ namespace FeedBUF_Casus.Forms
             this.btnAddSubject = new System.Windows.Forms.Button();
             this.lblManageSubjects = new System.Windows.Forms.Label();
             this.lblHome_ = new System.Windows.Forms.Label();
+            this.btnUpdateSubject = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.pnlFeedup.SuspendLayout();
-            this.pnlActivity.SuspendLayout();
-            this.pnlNewActivity.SuspendLayout();
-            this.pnlUpdateActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLearnGoals)).BeginInit();
             this.pnlLearngoal.SuspendLayout();
             this.pnlUpdateLearngoal.SuspendLayout();
             this.pnlAddLearngoal.SuspendLayout();
             this.pnlTimeSpent.SuspendLayout();
+            this.pnlActivity.SuspendLayout();
+            this.pnlNewActivity.SuspendLayout();
+            this.pnlUpdateActivity.SuspendLayout();
             this.pnlFeedback.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback)).BeginInit();
             this.pnlAskQuestion.SuspendLayout();
@@ -326,172 +326,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Size = new System.Drawing.Size(1900, 962);
             this.pnlFeedup.TabIndex = 3;
             this.pnlFeedup.Visible = false;
-            // 
-            // pnlActivity
-            // 
-            this.pnlActivity.Controls.Add(this.lblActivity);
-            this.pnlActivity.Controls.Add(this.btnUpdateActivity);
-            this.pnlActivity.Controls.Add(this.pnlNewActivity);
-            this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
-            this.pnlActivity.Location = new System.Drawing.Point(1267, 91);
-            this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(636, 698);
-            this.pnlActivity.TabIndex = 14;
-            this.pnlActivity.Visible = false;
-            // 
-            // lblActivity
-            // 
-            this.lblActivity.AutoSize = true;
-            this.lblActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActivity.ForeColor = System.Drawing.Color.Orange;
-            this.lblActivity.Location = new System.Drawing.Point(2, 9);
-            this.lblActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblActivity.Name = "lblActivity";
-            this.lblActivity.Size = new System.Drawing.Size(151, 40);
-            this.lblActivity.TabIndex = 6;
-            this.lblActivity.Text = "Activiteit";
-            // 
-            // btnUpdateActivity
-            // 
-            this.btnUpdateActivity.Location = new System.Drawing.Point(459, 9);
-            this.btnUpdateActivity.Name = "btnUpdateActivity";
-            this.btnUpdateActivity.Size = new System.Drawing.Size(170, 49);
-            this.btnUpdateActivity.TabIndex = 15;
-            this.btnUpdateActivity.Text = "Activiteit beheren";
-            this.btnUpdateActivity.UseVisualStyleBackColor = true;
-            this.btnUpdateActivity.Click += new System.EventHandler(this.btnUpdateActivity_Click);
-            // 
-            // pnlNewActivity
-            // 
-            this.pnlNewActivity.Controls.Add(this.txbFeedup_TimeEstimation);
-            this.pnlNewActivity.Controls.Add(this.label15);
-            this.pnlNewActivity.Controls.Add(this.btnNewActivity);
-            this.pnlNewActivity.Controls.Add(this.lblNewActivity);
-            this.pnlNewActivity.Controls.Add(this.tbxNewActivity);
-            this.pnlNewActivity.Location = new System.Drawing.Point(4, 62);
-            this.pnlNewActivity.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlNewActivity.Name = "pnlNewActivity";
-            this.pnlNewActivity.Size = new System.Drawing.Size(627, 310);
-            this.pnlNewActivity.TabIndex = 13;
-            // 
-            // txbFeedup_TimeEstimation
-            // 
-            this.txbFeedup_TimeEstimation.Location = new System.Drawing.Point(1, 141);
-            this.txbFeedup_TimeEstimation.Name = "txbFeedup_TimeEstimation";
-            this.txbFeedup_TimeEstimation.Size = new System.Drawing.Size(160, 26);
-            this.txbFeedup_TimeEstimation.TabIndex = 7;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(-4, 100);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(218, 33);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Tijdsinschatting";
-            // 
-            // btnNewActivity
-            // 
-            this.btnNewActivity.BackColor = System.Drawing.Color.Orange;
-            this.btnNewActivity.Location = new System.Drawing.Point(-2, 177);
-            this.btnNewActivity.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewActivity.Name = "btnNewActivity";
-            this.btnNewActivity.Size = new System.Drawing.Size(163, 54);
-            this.btnNewActivity.TabIndex = 9;
-            this.btnNewActivity.Text = "Toevoegen";
-            this.btnNewActivity.UseVisualStyleBackColor = false;
-            this.btnNewActivity.Click += new System.EventHandler(this.btnNewActivity_Click);
-            // 
-            // lblNewActivity
-            // 
-            this.lblNewActivity.AutoSize = true;
-            this.lblNewActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewActivity.ForeColor = System.Drawing.Color.Black;
-            this.lblNewActivity.Location = new System.Drawing.Point(-6, 7);
-            this.lblNewActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNewActivity.Name = "lblNewActivity";
-            this.lblNewActivity.Size = new System.Drawing.Size(211, 33);
-            this.lblNewActivity.TabIndex = 8;
-            this.lblNewActivity.Text = "Nieuw activiteit";
-            // 
-            // tbxNewActivity
-            // 
-            this.tbxNewActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxNewActivity.Location = new System.Drawing.Point(0, 47);
-            this.tbxNewActivity.Name = "tbxNewActivity";
-            this.tbxNewActivity.Size = new System.Drawing.Size(606, 40);
-            this.tbxNewActivity.TabIndex = 6;
-            // 
-            // pnlUpdateActivity
-            // 
-            this.pnlUpdateActivity.Controls.Add(this.btnActivityBack);
-            this.pnlUpdateActivity.Controls.Add(this.btnDeleteActivity);
-            this.pnlUpdateActivity.Controls.Add(this.btnSaveActivity);
-            this.pnlUpdateActivity.Controls.Add(this.txbFeedup_SelectedActivitity);
-            this.pnlUpdateActivity.Controls.Add(this.label8);
-            this.pnlUpdateActivity.Location = new System.Drawing.Point(0, 62);
-            this.pnlUpdateActivity.Name = "pnlUpdateActivity";
-            this.pnlUpdateActivity.Size = new System.Drawing.Size(633, 270);
-            this.pnlUpdateActivity.TabIndex = 14;
-            this.pnlUpdateActivity.Visible = false;
-            // 
-            // btnActivityBack
-            // 
-            this.btnActivityBack.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActivityBack.Location = new System.Drawing.Point(481, 94);
-            this.btnActivityBack.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActivityBack.Name = "btnActivityBack";
-            this.btnActivityBack.Size = new System.Drawing.Size(142, 45);
-            this.btnActivityBack.TabIndex = 14;
-            this.btnActivityBack.Text = "Terug";
-            this.btnActivityBack.UseVisualStyleBackColor = false;
-            this.btnActivityBack.Click += new System.EventHandler(this.btnActivityBack_Click);
-            // 
-            // btnDeleteActivity
-            // 
-            this.btnDeleteActivity.BackColor = System.Drawing.Color.Tomato;
-            this.btnDeleteActivity.Location = new System.Drawing.Point(152, 94);
-            this.btnDeleteActivity.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteActivity.Name = "btnDeleteActivity";
-            this.btnDeleteActivity.Size = new System.Drawing.Size(142, 45);
-            this.btnDeleteActivity.TabIndex = 13;
-            this.btnDeleteActivity.Text = "Verwijderen";
-            this.btnDeleteActivity.UseVisualStyleBackColor = false;
-            this.btnDeleteActivity.Click += new System.EventHandler(this.btnDeleteActivity_Click);
-            // 
-            // btnSaveActivity
-            // 
-            this.btnSaveActivity.BackColor = System.Drawing.Color.Orange;
-            this.btnSaveActivity.Location = new System.Drawing.Point(8, 94);
-            this.btnSaveActivity.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveActivity.Name = "btnSaveActivity";
-            this.btnSaveActivity.Size = new System.Drawing.Size(142, 45);
-            this.btnSaveActivity.TabIndex = 12;
-            this.btnSaveActivity.Text = "Opslaan";
-            this.btnSaveActivity.UseVisualStyleBackColor = false;
-            // 
-            // txbFeedup_SelectedActivitity
-            // 
-            this.txbFeedup_SelectedActivitity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFeedup_SelectedActivitity.Location = new System.Drawing.Point(9, 47);
-            this.txbFeedup_SelectedActivitity.Name = "txbFeedup_SelectedActivitity";
-            this.txbFeedup_SelectedActivitity.Size = new System.Drawing.Size(614, 40);
-            this.txbFeedup_SelectedActivitity.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(5, 7);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 37);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Activiteit";
             // 
             // btnFeedup_SwitchActivity
             // 
@@ -816,6 +650,172 @@ namespace FeedBUF_Casus.Forms
             this.lblCompleted.TabIndex = 0;
             this.lblCompleted.Text = "Hoe lang heeft u over deze activiteit gedaan?";
             // 
+            // pnlActivity
+            // 
+            this.pnlActivity.Controls.Add(this.lblActivity);
+            this.pnlActivity.Controls.Add(this.btnUpdateActivity);
+            this.pnlActivity.Controls.Add(this.pnlNewActivity);
+            this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
+            this.pnlActivity.Location = new System.Drawing.Point(1267, 91);
+            this.pnlActivity.Name = "pnlActivity";
+            this.pnlActivity.Size = new System.Drawing.Size(636, 698);
+            this.pnlActivity.TabIndex = 14;
+            this.pnlActivity.Visible = false;
+            // 
+            // lblActivity
+            // 
+            this.lblActivity.AutoSize = true;
+            this.lblActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActivity.ForeColor = System.Drawing.Color.Orange;
+            this.lblActivity.Location = new System.Drawing.Point(2, 9);
+            this.lblActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblActivity.Name = "lblActivity";
+            this.lblActivity.Size = new System.Drawing.Size(151, 40);
+            this.lblActivity.TabIndex = 6;
+            this.lblActivity.Text = "Activiteit";
+            // 
+            // btnUpdateActivity
+            // 
+            this.btnUpdateActivity.Location = new System.Drawing.Point(459, 9);
+            this.btnUpdateActivity.Name = "btnUpdateActivity";
+            this.btnUpdateActivity.Size = new System.Drawing.Size(170, 49);
+            this.btnUpdateActivity.TabIndex = 15;
+            this.btnUpdateActivity.Text = "Activiteit beheren";
+            this.btnUpdateActivity.UseVisualStyleBackColor = true;
+            this.btnUpdateActivity.Click += new System.EventHandler(this.btnUpdateActivity_Click);
+            // 
+            // pnlNewActivity
+            // 
+            this.pnlNewActivity.Controls.Add(this.txbFeedup_TimeEstimation);
+            this.pnlNewActivity.Controls.Add(this.label15);
+            this.pnlNewActivity.Controls.Add(this.btnNewActivity);
+            this.pnlNewActivity.Controls.Add(this.lblNewActivity);
+            this.pnlNewActivity.Controls.Add(this.tbxNewActivity);
+            this.pnlNewActivity.Location = new System.Drawing.Point(4, 62);
+            this.pnlNewActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlNewActivity.Name = "pnlNewActivity";
+            this.pnlNewActivity.Size = new System.Drawing.Size(627, 310);
+            this.pnlNewActivity.TabIndex = 13;
+            // 
+            // txbFeedup_TimeEstimation
+            // 
+            this.txbFeedup_TimeEstimation.Location = new System.Drawing.Point(1, 141);
+            this.txbFeedup_TimeEstimation.Name = "txbFeedup_TimeEstimation";
+            this.txbFeedup_TimeEstimation.Size = new System.Drawing.Size(160, 26);
+            this.txbFeedup_TimeEstimation.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(-4, 100);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(218, 33);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Tijdsinschatting";
+            // 
+            // btnNewActivity
+            // 
+            this.btnNewActivity.BackColor = System.Drawing.Color.Orange;
+            this.btnNewActivity.Location = new System.Drawing.Point(-2, 177);
+            this.btnNewActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewActivity.Name = "btnNewActivity";
+            this.btnNewActivity.Size = new System.Drawing.Size(163, 54);
+            this.btnNewActivity.TabIndex = 9;
+            this.btnNewActivity.Text = "Toevoegen";
+            this.btnNewActivity.UseVisualStyleBackColor = false;
+            this.btnNewActivity.Click += new System.EventHandler(this.btnNewActivity_Click);
+            // 
+            // lblNewActivity
+            // 
+            this.lblNewActivity.AutoSize = true;
+            this.lblNewActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewActivity.ForeColor = System.Drawing.Color.Black;
+            this.lblNewActivity.Location = new System.Drawing.Point(-6, 7);
+            this.lblNewActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewActivity.Name = "lblNewActivity";
+            this.lblNewActivity.Size = new System.Drawing.Size(211, 33);
+            this.lblNewActivity.TabIndex = 8;
+            this.lblNewActivity.Text = "Nieuw activiteit";
+            // 
+            // tbxNewActivity
+            // 
+            this.tbxNewActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNewActivity.Location = new System.Drawing.Point(0, 47);
+            this.tbxNewActivity.Name = "tbxNewActivity";
+            this.tbxNewActivity.Size = new System.Drawing.Size(606, 40);
+            this.tbxNewActivity.TabIndex = 6;
+            // 
+            // pnlUpdateActivity
+            // 
+            this.pnlUpdateActivity.Controls.Add(this.btnActivityBack);
+            this.pnlUpdateActivity.Controls.Add(this.btnDeleteActivity);
+            this.pnlUpdateActivity.Controls.Add(this.btnSaveActivity);
+            this.pnlUpdateActivity.Controls.Add(this.txbFeedup_SelectedActivitity);
+            this.pnlUpdateActivity.Controls.Add(this.label8);
+            this.pnlUpdateActivity.Location = new System.Drawing.Point(0, 62);
+            this.pnlUpdateActivity.Name = "pnlUpdateActivity";
+            this.pnlUpdateActivity.Size = new System.Drawing.Size(633, 270);
+            this.pnlUpdateActivity.TabIndex = 14;
+            this.pnlUpdateActivity.Visible = false;
+            // 
+            // btnActivityBack
+            // 
+            this.btnActivityBack.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActivityBack.Location = new System.Drawing.Point(481, 94);
+            this.btnActivityBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActivityBack.Name = "btnActivityBack";
+            this.btnActivityBack.Size = new System.Drawing.Size(142, 45);
+            this.btnActivityBack.TabIndex = 14;
+            this.btnActivityBack.Text = "Terug";
+            this.btnActivityBack.UseVisualStyleBackColor = false;
+            this.btnActivityBack.Click += new System.EventHandler(this.btnActivityBack_Click);
+            // 
+            // btnDeleteActivity
+            // 
+            this.btnDeleteActivity.BackColor = System.Drawing.Color.Tomato;
+            this.btnDeleteActivity.Location = new System.Drawing.Point(152, 94);
+            this.btnDeleteActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteActivity.Name = "btnDeleteActivity";
+            this.btnDeleteActivity.Size = new System.Drawing.Size(142, 45);
+            this.btnDeleteActivity.TabIndex = 13;
+            this.btnDeleteActivity.Text = "Verwijderen";
+            this.btnDeleteActivity.UseVisualStyleBackColor = false;
+            this.btnDeleteActivity.Click += new System.EventHandler(this.btnDeleteActivity_Click);
+            // 
+            // btnSaveActivity
+            // 
+            this.btnSaveActivity.BackColor = System.Drawing.Color.Orange;
+            this.btnSaveActivity.Location = new System.Drawing.Point(8, 94);
+            this.btnSaveActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveActivity.Name = "btnSaveActivity";
+            this.btnSaveActivity.Size = new System.Drawing.Size(142, 45);
+            this.btnSaveActivity.TabIndex = 12;
+            this.btnSaveActivity.Text = "Opslaan";
+            this.btnSaveActivity.UseVisualStyleBackColor = false;
+            // 
+            // txbFeedup_SelectedActivitity
+            // 
+            this.txbFeedup_SelectedActivitity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbFeedup_SelectedActivitity.Location = new System.Drawing.Point(9, 47);
+            this.txbFeedup_SelectedActivitity.Name = "txbFeedup_SelectedActivitity";
+            this.txbFeedup_SelectedActivitity.Size = new System.Drawing.Size(614, 40);
+            this.txbFeedup_SelectedActivitity.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(5, 7);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 37);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Activiteit";
+            // 
             // pnlFeedback
             // 
             this.pnlFeedback.Controls.Add(this.btnVraagStellen);
@@ -823,16 +823,17 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedback.Controls.Add(this.dgvFeedback);
             this.pnlFeedback.Controls.Add(this.lblFeedback);
             this.pnlFeedback.Controls.Add(this.pnlAskQuestion);
-            this.pnlFeedback.Location = new System.Drawing.Point(14, 131);
+            this.pnlFeedback.Controls.Add(this.pnlRegisterFeedback);
+            this.pnlFeedback.Location = new System.Drawing.Point(7, 83);
             this.pnlFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedback.Name = "pnlFeedback";
-            this.pnlFeedback.Size = new System.Drawing.Size(1414, 743);
+            this.pnlFeedback.Size = new System.Drawing.Size(1919, 979);
             this.pnlFeedback.TabIndex = 4;
             this.pnlFeedback.Visible = false;
             // 
             // btnVraagStellen
             // 
-            this.btnVraagStellen.Location = new System.Drawing.Point(442, 628);
+            this.btnVraagStellen.Location = new System.Drawing.Point(791, 880);
             this.btnVraagStellen.Name = "btnVraagStellen";
             this.btnVraagStellen.Size = new System.Drawing.Size(150, 85);
             this.btnVraagStellen.TabIndex = 7;
@@ -842,7 +843,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // btnRegisterFeedback
             // 
-            this.btnRegisterFeedback.Location = new System.Drawing.Point(28, 628);
+            this.btnRegisterFeedback.Location = new System.Drawing.Point(20, 879);
             this.btnRegisterFeedback.Name = "btnRegisterFeedback";
             this.btnRegisterFeedback.Size = new System.Drawing.Size(150, 85);
             this.btnRegisterFeedback.TabIndex = 6;
@@ -860,16 +861,16 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            this.dgvFeedback.Location = new System.Drawing.Point(20, 45);
+            this.dgvFeedback.Location = new System.Drawing.Point(20, 53);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFeedback.Size = new System.Drawing.Size(562, 545);
+            this.dgvFeedback.Size = new System.Drawing.Size(921, 821);
             this.dgvFeedback.TabIndex = 2;
             this.dgvFeedback.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFeedback_CellClick);
             // 
@@ -898,8 +899,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle3;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 8;
@@ -922,6 +923,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.pnlAskQuestion.Controls.Add(this.btnSubmitQuestion);
             this.pnlAskQuestion.Controls.Add(this.lblQuestionTeacher);
+            this.pnlAskQuestion.Controls.Add(this.txbQuestionTitle);
             this.pnlAskQuestion.Controls.Add(this.label14);
             this.pnlAskQuestion.Controls.Add(this.label10);
             this.pnlAskQuestion.Controls.Add(this.label13);
@@ -930,19 +932,19 @@ namespace FeedBUF_Casus.Forms
             this.pnlAskQuestion.Controls.Add(this.txbQuestionDescription);
             this.pnlAskQuestion.Controls.Add(this.btnUpdateQuestion);
             this.pnlAskQuestion.Controls.Add(this.label1);
-            this.pnlAskQuestion.Location = new System.Drawing.Point(963, 105);
+            this.pnlAskQuestion.Location = new System.Drawing.Point(963, 221);
             this.pnlAskQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAskQuestion.Name = "pnlAskQuestion";
-            this.pnlAskQuestion.Size = new System.Drawing.Size(752, 645);
+            this.pnlAskQuestion.Size = new System.Drawing.Size(943, 747);
             this.pnlAskQuestion.TabIndex = 6;
             this.pnlAskQuestion.Visible = false;
             // 
             // btnSubmitQuestion
             // 
-            this.btnSubmitQuestion.Location = new System.Drawing.Point(42, 482);
+            this.btnSubmitQuestion.Location = new System.Drawing.Point(10, 402);
             this.btnSubmitQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmitQuestion.Name = "btnSubmitQuestion";
-            this.btnSubmitQuestion.Size = new System.Drawing.Size(100, 34);
+            this.btnSubmitQuestion.Size = new System.Drawing.Size(114, 64);
             this.btnSubmitQuestion.TabIndex = 8;
             this.btnSubmitQuestion.Text = "Toevoegen";
             this.btnSubmitQuestion.UseVisualStyleBackColor = true;
@@ -953,18 +955,26 @@ namespace FeedBUF_Casus.Forms
             this.lblQuestionTeacher.AutoSize = true;
             this.lblQuestionTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuestionTeacher.ForeColor = System.Drawing.Color.Orange;
-            this.lblQuestionTeacher.Location = new System.Drawing.Point(530, 52);
+            this.lblQuestionTeacher.Location = new System.Drawing.Point(528, 23);
             this.lblQuestionTeacher.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuestionTeacher.Name = "lblQuestionTeacher";
             this.lblQuestionTeacher.Size = new System.Drawing.Size(123, 40);
             this.lblQuestionTeacher.TabIndex = 13;
             this.lblQuestionTeacher.Text = "Auteur";
             // 
+            // txbQuestionTitle
+            // 
+            this.txbQuestionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbQuestionTitle.Location = new System.Drawing.Point(10, 90);
+            this.txbQuestionTitle.Name = "txbQuestionTitle";
+            this.txbQuestionTitle.Size = new System.Drawing.Size(472, 40);
+            this.txbQuestionTitle.TabIndex = 2;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(38, 289);
+            this.label14.Location = new System.Drawing.Point(4, 308);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 33);
             this.label14.TabIndex = 12;
@@ -974,7 +984,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(38, 125);
+            this.label10.Location = new System.Drawing.Point(4, 146);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(174, 33);
             this.label10.TabIndex = 11;
@@ -984,7 +994,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(38, 62);
+            this.label13.Location = new System.Drawing.Point(4, 54);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 33);
             this.label13.TabIndex = 10;
@@ -994,7 +1004,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(534, 91);
+            this.pictureBox1.Location = new System.Drawing.Point(535, 90);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 178);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1004,15 +1014,15 @@ namespace FeedBUF_Casus.Forms
             // txbQuestion
             // 
             this.txbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbQuestion.Location = new System.Drawing.Point(40, 317);
+            this.txbQuestion.Location = new System.Drawing.Point(10, 348);
             this.txbQuestion.Name = "txbQuestion";
-            this.txbQuestion.Size = new System.Drawing.Size(1036, 35);
+            this.txbQuestion.Size = new System.Drawing.Size(906, 35);
             this.txbQuestion.TabIndex = 4;
             // 
             // txbQuestionDescription
             // 
             this.txbQuestionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbQuestionDescription.Location = new System.Drawing.Point(40, 158);
+            this.txbQuestionDescription.Location = new System.Drawing.Point(10, 192);
             this.txbQuestionDescription.Multiline = true;
             this.txbQuestionDescription.Name = "txbQuestionDescription";
             this.txbQuestionDescription.Size = new System.Drawing.Size(472, 110);
@@ -1020,7 +1030,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // btnUpdateQuestion
             // 
-            this.btnUpdateQuestion.Location = new System.Drawing.Point(42, 482);
+            this.btnUpdateQuestion.Location = new System.Drawing.Point(10, 417);
             this.btnUpdateQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateQuestion.Name = "btnUpdateQuestion";
             this.btnUpdateQuestion.Size = new System.Drawing.Size(100, 34);
@@ -1035,7 +1045,7 @@ namespace FeedBUF_Casus.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Orange;
-            this.label1.Location = new System.Drawing.Point(34, 12);
+            this.label1.Location = new System.Drawing.Point(3, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(233, 40);
@@ -1044,7 +1054,6 @@ namespace FeedBUF_Casus.Forms
             // 
             // pnlRegisterFeedback
             // 
-            this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackUpdate);
             this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackDelete);
             this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackAdd);
             this.pnlRegisterFeedback.Controls.Add(this.label7);
@@ -1058,28 +1067,18 @@ namespace FeedBUF_Casus.Forms
             this.pnlRegisterFeedback.Controls.Add(this.pcbUserIcon);
             this.pnlRegisterFeedback.Controls.Add(this.txbFeedbackDescription);
             this.pnlRegisterFeedback.Controls.Add(this.lblRegisterFeedback);
+            this.pnlRegisterFeedback.Controls.Add(this.btnFeedbackUpdate);
+            this.pnlRegisterFeedback.Controls.Add(this.txbFeedbackTitle);
             this.pnlRegisterFeedback.Location = new System.Drawing.Point(963, 105);
             this.pnlRegisterFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRegisterFeedback.Name = "pnlRegisterFeedback";
-            this.pnlRegisterFeedback.Size = new System.Drawing.Size(752, 644);
+            this.pnlRegisterFeedback.Size = new System.Drawing.Size(956, 863);
             this.pnlRegisterFeedback.TabIndex = 5;
             this.pnlRegisterFeedback.Visible = false;
             // 
-            // btnFeedbackUpdate
-            // 
-            this.btnFeedbackUpdate.Location = new System.Drawing.Point(534, 275);
-            this.btnFeedbackUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFeedbackUpdate.Name = "btnFeedbackUpdate";
-            this.btnFeedbackUpdate.Size = new System.Drawing.Size(180, 133);
-            this.btnFeedbackUpdate.TabIndex = 17;
-            this.btnFeedbackUpdate.Text = "Bewerk Feedback";
-            this.btnFeedbackUpdate.UseVisualStyleBackColor = true;
-            this.btnFeedbackUpdate.Visible = false;
-            this.btnFeedbackUpdate.Click += new System.EventHandler(this.btnFeedbackUpdate_Click);
-            // 
             // btnFeedbackDelete
             // 
-            this.btnFeedbackDelete.Location = new System.Drawing.Point(534, 433);
+            this.btnFeedbackDelete.Location = new System.Drawing.Point(736, 670);
             this.btnFeedbackDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnFeedbackDelete.Name = "btnFeedbackDelete";
             this.btnFeedbackDelete.Size = new System.Drawing.Size(180, 96);
@@ -1091,7 +1090,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // btnFeedbackAdd
             // 
-            this.btnFeedbackAdd.Location = new System.Drawing.Point(534, 275);
+            this.btnFeedbackAdd.Location = new System.Drawing.Point(736, 424);
             this.btnFeedbackAdd.Name = "btnFeedbackAdd";
             this.btnFeedbackAdd.Size = new System.Drawing.Size(180, 133);
             this.btnFeedbackAdd.TabIndex = 14;
@@ -1103,7 +1102,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(284, 61);
+            this.label7.Location = new System.Drawing.Point(245, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 33);
             this.label7.TabIndex = 13;
@@ -1113,7 +1112,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(37, 61);
+            this.label6.Location = new System.Drawing.Point(4, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 33);
             this.label6.TabIndex = 12;
@@ -1123,7 +1122,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.cbxActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxActivity.FormattingEnabled = true;
-            this.cbxActivity.Location = new System.Drawing.Point(284, 91);
+            this.cbxActivity.Location = new System.Drawing.Point(251, 230);
             this.cbxActivity.Name = "cbxActivity";
             this.cbxActivity.Size = new System.Drawing.Size(225, 41);
             this.cbxActivity.TabIndex = 11;
@@ -1132,7 +1131,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.cbxLearnGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLearnGoal.FormattingEnabled = true;
-            this.cbxLearnGoal.Location = new System.Drawing.Point(37, 92);
+            this.cbxLearnGoal.Location = new System.Drawing.Point(4, 230);
             this.cbxLearnGoal.Name = "cbxLearnGoal";
             this.cbxLearnGoal.Size = new System.Drawing.Size(225, 41);
             this.cbxLearnGoal.TabIndex = 10;
@@ -1142,7 +1141,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 248);
+            this.label5.Location = new System.Drawing.Point(2, 480);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 33);
             this.label5.TabIndex = 9;
@@ -1152,7 +1151,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 185);
+            this.label4.Location = new System.Drawing.Point(4, 387);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 33);
             this.label4.TabIndex = 8;
@@ -1162,7 +1161,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.lblFeedbackAuteur.AutoSize = true;
             this.lblFeedbackAuteur.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFeedbackAuteur.Location = new System.Drawing.Point(37, 126);
+            this.lblFeedbackAuteur.Location = new System.Drawing.Point(2, 287);
             this.lblFeedbackAuteur.Name = "lblFeedbackAuteur";
             this.lblFeedbackAuteur.Size = new System.Drawing.Size(107, 33);
             this.lblFeedbackAuteur.TabIndex = 7;
@@ -1171,7 +1170,7 @@ namespace FeedBUF_Casus.Forms
             // txbFeedbackTeacher
             // 
             this.txbFeedbackTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFeedbackTeacher.Location = new System.Drawing.Point(37, 153);
+            this.txbFeedbackTeacher.Location = new System.Drawing.Point(4, 326);
             this.txbFeedbackTeacher.Name = "txbFeedbackTeacher";
             this.txbFeedbackTeacher.Size = new System.Drawing.Size(472, 40);
             this.txbFeedbackTeacher.TabIndex = 6;
@@ -1180,7 +1179,7 @@ namespace FeedBUF_Casus.Forms
             // 
             this.pcbUserIcon.Image = ((System.Drawing.Image)(resources.GetObject("pcbUserIcon.Image")));
             this.pcbUserIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pcbUserIcon.InitialImage")));
-            this.pcbUserIcon.Location = new System.Drawing.Point(534, 91);
+            this.pcbUserIcon.Location = new System.Drawing.Point(736, 224);
             this.pcbUserIcon.Name = "pcbUserIcon";
             this.pcbUserIcon.Size = new System.Drawing.Size(180, 178);
             this.pcbUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1189,10 +1188,10 @@ namespace FeedBUF_Casus.Forms
             // 
             // txbFeedbackDescription
             // 
-            this.txbFeedbackDescription.Location = new System.Drawing.Point(37, 275);
+            this.txbFeedbackDescription.Location = new System.Drawing.Point(4, 525);
             this.txbFeedbackDescription.Multiline = true;
             this.txbFeedbackDescription.Name = "txbFeedbackDescription";
-            this.txbFeedbackDescription.Size = new System.Drawing.Size(472, 133);
+            this.txbFeedbackDescription.Size = new System.Drawing.Size(679, 230);
             this.txbFeedbackDescription.TabIndex = 3;
             // 
             // lblRegisterFeedback
@@ -1200,28 +1199,32 @@ namespace FeedBUF_Casus.Forms
             this.lblRegisterFeedback.AutoSize = true;
             this.lblRegisterFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegisterFeedback.ForeColor = System.Drawing.Color.Orange;
-            this.lblRegisterFeedback.Location = new System.Drawing.Point(35, 13);
+            this.lblRegisterFeedback.Location = new System.Drawing.Point(3, 144);
             this.lblRegisterFeedback.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegisterFeedback.Name = "lblRegisterFeedback";
             this.lblRegisterFeedback.Size = new System.Drawing.Size(351, 40);
             this.lblRegisterFeedback.TabIndex = 1;
             this.lblRegisterFeedback.Text = "Registreer Feedback";
             // 
+            // btnFeedbackUpdate
+            // 
+            this.btnFeedbackUpdate.Location = new System.Drawing.Point(736, 424);
+            this.btnFeedbackUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFeedbackUpdate.Name = "btnFeedbackUpdate";
+            this.btnFeedbackUpdate.Size = new System.Drawing.Size(180, 133);
+            this.btnFeedbackUpdate.TabIndex = 17;
+            this.btnFeedbackUpdate.Text = "Bewerk Feedback";
+            this.btnFeedbackUpdate.UseVisualStyleBackColor = true;
+            this.btnFeedbackUpdate.Visible = false;
+            this.btnFeedbackUpdate.Click += new System.EventHandler(this.btnFeedbackUpdate_Click);
+            // 
             // txbFeedbackTitle
             // 
             this.txbFeedbackTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFeedbackTitle.Location = new System.Drawing.Point(37, 212);
+            this.txbFeedbackTitle.Location = new System.Drawing.Point(4, 424);
             this.txbFeedbackTitle.Name = "txbFeedbackTitle";
             this.txbFeedbackTitle.Size = new System.Drawing.Size(472, 40);
             this.txbFeedbackTitle.TabIndex = 2;
-            // 
-            // txbQuestionTitle
-            // 
-            this.txbQuestionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbQuestionTitle.Location = new System.Drawing.Point(40, 89);
-            this.txbQuestionTitle.Name = "txbQuestionTitle";
-            this.txbQuestionTitle.Size = new System.Drawing.Size(472, 40);
-            this.txbQuestionTitle.TabIndex = 2;
             // 
             // pnlFeedforward
             // 
@@ -1234,7 +1237,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedforward.Location = new System.Drawing.Point(9, 85);
             this.pnlFeedforward.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedforward.Name = "pnlFeedforward";
-            this.pnlFeedforward.Size = new System.Drawing.Size(1406, 743);
+            this.pnlFeedforward.Size = new System.Drawing.Size(1904, 964);
             this.pnlFeedforward.TabIndex = 5;
             this.pnlFeedforward.Visible = false;
             // 
@@ -1369,7 +1372,7 @@ namespace FeedBUF_Casus.Forms
             this.pnlConclusion.Location = new System.Drawing.Point(9, 85);
             this.pnlConclusion.Margin = new System.Windows.Forms.Padding(2);
             this.pnlConclusion.Name = "pnlConclusion";
-            this.pnlConclusion.Size = new System.Drawing.Size(1406, 743);
+            this.pnlConclusion.Size = new System.Drawing.Size(1904, 966);
             this.pnlConclusion.TabIndex = 5;
             this.pnlConclusion.Visible = false;
             // 
@@ -1481,38 +1484,28 @@ namespace FeedBUF_Casus.Forms
             // pnlHome
             // 
             this.pnlHome.Controls.Add(this.btnDeleteSubject);
-            this.pnlHome.Controls.Add(this.btnUpdateSubject);
             this.pnlHome.Controls.Add(this.dgvSubjects);
             this.pnlHome.Controls.Add(this.lblNewSubject_);
             this.pnlHome.Controls.Add(this.txbAddSubject);
             this.pnlHome.Controls.Add(this.btnAddSubject);
             this.pnlHome.Controls.Add(this.lblManageSubjects);
             this.pnlHome.Controls.Add(this.lblHome_);
+            this.pnlHome.Controls.Add(this.btnUpdateSubject);
             this.pnlHome.Location = new System.Drawing.Point(9, 85);
             this.pnlHome.Margin = new System.Windows.Forms.Padding(2);
             this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(1414, 743);
+            this.pnlHome.Size = new System.Drawing.Size(1919, 979);
             this.pnlHome.TabIndex = 9;
             // 
             // btnDeleteSubject
             // 
-            this.btnDeleteSubject.Location = new System.Drawing.Point(1306, 702);
+            this.btnDeleteSubject.Location = new System.Drawing.Point(1195, 803);
             this.btnDeleteSubject.Name = "btnDeleteSubject";
-            this.btnDeleteSubject.Size = new System.Drawing.Size(75, 26);
+            this.btnDeleteSubject.Size = new System.Drawing.Size(119, 36);
             this.btnDeleteSubject.TabIndex = 10;
             this.btnDeleteSubject.Text = "Verwijder";
             this.btnDeleteSubject.UseVisualStyleBackColor = true;
             this.btnDeleteSubject.Click += new System.EventHandler(this.btnDeleteSubject_Click);
-            // 
-            // btnUpdateSubject
-            // 
-            this.btnUpdateSubject.Location = new System.Drawing.Point(184, 74);
-            this.btnUpdateSubject.Name = "btnUpdateSubject";
-            this.btnUpdateSubject.Size = new System.Drawing.Size(75, 26);
-            this.btnUpdateSubject.TabIndex = 9;
-            this.btnUpdateSubject.Text = "Bewerk";
-            this.btnUpdateSubject.UseVisualStyleBackColor = true;
-            this.btnUpdateSubject.Click += new System.EventHandler(this.btnUpdateSubject_Click);
             // 
             // dgvSubjects
             // 
@@ -1524,7 +1517,7 @@ namespace FeedBUF_Casus.Forms
             this.dgvSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewCheckBoxColumn1});
-            this.dgvSubjects.Location = new System.Drawing.Point(908, 45);
+            this.dgvSubjects.Location = new System.Drawing.Point(926, 188);
             this.dgvSubjects.MultiSelect = false;
             this.dgvSubjects.Name = "dgvSubjects";
             this.dgvSubjects.RowHeadersVisible = false;
@@ -1557,7 +1550,7 @@ namespace FeedBUF_Casus.Forms
             this.lblNewSubject_.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblNewSubject_.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewSubject_.ForeColor = System.Drawing.Color.Black;
-            this.lblNewSubject_.Location = new System.Drawing.Point(14, 45);
+            this.lblNewSubject_.Location = new System.Drawing.Point(12, 53);
             this.lblNewSubject_.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNewSubject_.Name = "lblNewSubject_";
             this.lblNewSubject_.Size = new System.Drawing.Size(154, 33);
@@ -1567,16 +1560,16 @@ namespace FeedBUF_Casus.Forms
             // txbAddSubject
             // 
             this.txbAddSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAddSubject.Location = new System.Drawing.Point(18, 72);
+            this.txbAddSubject.Location = new System.Drawing.Point(18, 91);
             this.txbAddSubject.Name = "txbAddSubject";
             this.txbAddSubject.Size = new System.Drawing.Size(162, 35);
             this.txbAddSubject.TabIndex = 5;
             // 
             // btnAddSubject
             // 
-            this.btnAddSubject.Location = new System.Drawing.Point(184, 72);
+            this.btnAddSubject.Location = new System.Drawing.Point(186, 95);
             this.btnAddSubject.Name = "btnAddSubject";
-            this.btnAddSubject.Size = new System.Drawing.Size(75, 26);
+            this.btnAddSubject.Size = new System.Drawing.Size(95, 35);
             this.btnAddSubject.TabIndex = 4;
             this.btnAddSubject.Text = "Add";
             this.btnAddSubject.UseVisualStyleBackColor = true;
@@ -1588,7 +1581,7 @@ namespace FeedBUF_Casus.Forms
             this.lblManageSubjects.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblManageSubjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblManageSubjects.ForeColor = System.Drawing.Color.Orange;
-            this.lblManageSubjects.Location = new System.Drawing.Point(902, 11);
+            this.lblManageSubjects.Location = new System.Drawing.Point(919, 145);
             this.lblManageSubjects.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblManageSubjects.Name = "lblManageSubjects";
             this.lblManageSubjects.Size = new System.Drawing.Size(263, 40);
@@ -1608,17 +1601,27 @@ namespace FeedBUF_Casus.Forms
             this.lblHome_.TabIndex = 1;
             this.lblHome_.Text = "Home";
             // 
+            // btnUpdateSubject
+            // 
+            this.btnUpdateSubject.Location = new System.Drawing.Point(186, 94);
+            this.btnUpdateSubject.Name = "btnUpdateSubject";
+            this.btnUpdateSubject.Size = new System.Drawing.Size(95, 35);
+            this.btnUpdateSubject.TabIndex = 9;
+            this.btnUpdateSubject.Text = "Bewerk";
+            this.btnUpdateSubject.UseVisualStyleBackColor = true;
+            this.btnUpdateSubject.Click += new System.EventHandler(this.btnUpdateSubject_Click);
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1062);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pnlFeedup);
-            this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlHome);
+            this.Controls.Add(this.pnlFeedup);
+            this.Controls.Add(this.pnlConclusion);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1628,12 +1631,6 @@ namespace FeedBUF_Casus.Forms
             this.groupBox1.PerformLayout();
             this.pnlFeedup.ResumeLayout(false);
             this.pnlFeedup.PerformLayout();
-            this.pnlActivity.ResumeLayout(false);
-            this.pnlActivity.PerformLayout();
-            this.pnlNewActivity.ResumeLayout(false);
-            this.pnlNewActivity.PerformLayout();
-            this.pnlUpdateActivity.ResumeLayout(false);
-            this.pnlUpdateActivity.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLearnGoals)).EndInit();
             this.pnlLearngoal.ResumeLayout(false);
@@ -1644,6 +1641,12 @@ namespace FeedBUF_Casus.Forms
             this.pnlAddLearngoal.PerformLayout();
             this.pnlTimeSpent.ResumeLayout(false);
             this.pnlTimeSpent.PerformLayout();
+            this.pnlActivity.ResumeLayout(false);
+            this.pnlActivity.PerformLayout();
+            this.pnlNewActivity.ResumeLayout(false);
+            this.pnlNewActivity.PerformLayout();
+            this.pnlUpdateActivity.ResumeLayout(false);
+            this.pnlUpdateActivity.PerformLayout();
             this.pnlFeedback.ResumeLayout(false);
             this.pnlFeedback.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFeedback)).EndInit();
