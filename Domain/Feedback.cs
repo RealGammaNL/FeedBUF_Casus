@@ -38,7 +38,7 @@ namespace DOMAIN
         }
 
         // Feedback on an activity paired with a learngoal.
-        public Feedback (int studentid, int learngoalid, int activityid, string teacher, string title, string description)
+        public Feedback(int studentid, int learngoalid, int activityid, string teacher, string title, string description)
         {
             StudentID = studentid;
             LearngoalID = learngoalid;
@@ -58,12 +58,12 @@ namespace DOMAIN
             Description = description;
         }
 
-        public Feedback(int feedbackid, string teacher, string title, string description) 
+        public Feedback(int feedbackid, string teacher, string title, string description)
         {
             FeedbackID = feedbackid;
             Teacher = teacher;
             Title = title;
-            Description= description;
+            Description = description;
         }
 
         public Feedback(int feedbackid, string teacher, string title, string description, string question)
@@ -93,6 +93,18 @@ namespace DOMAIN
         public static void AddFeedback(Feedback feedback)
         {
             DAL.FeedbackDAL.AddFeedback(feedback);
+        }
+        public static string GetFeedbackNote(int feedbackid)
+        {
+            return DAL.FeedforwardDAL.GetFeedbackNote(feedbackid);
+        }
+        public static void UpdateFeedbackNote(int feedbackid, string note)
+        {
+            DAL.FeedforwardDAL.UpdateFeedbackNote(feedbackid, note);
+        }
+        public static void DeleteFeedbackNote(int feedbackid, string note)
+        {
+            DAL.FeedforwardDAL.DeleteFeedbackNote(feedbackid, note);
         }
 
         public static void AddQuestion(int feedbackID, string question)
