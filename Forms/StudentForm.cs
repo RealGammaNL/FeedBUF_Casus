@@ -679,114 +679,7 @@ namespace FeedBUF_Casus.Forms
 
 
 
-        //                                                                                  //
-        // -------------------------------------------------------------------------------- //
-        //                              Header panel code - Max                             //
-        //--------------------------------------------------------------------------------- //
-        //                                                                                  //
-        private int determinePickedWeek()
-        {
-            if (cbxWeek.Text != "")
-            {
-                string[] attributes = cbxWeek.Text.Split(' ');
-                int weeknumber = Int32.Parse(attributes[1]);
-                return weeknumber;
-            }
-            else { return -1; }
-        }
-        
-        
 
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            // Closes the studentform
-            this.Hide();
-            LoginForm loginform = new LoginForm();
-            loginform.Show();
-        }
-
-
-        // Eventhandler for SelectionChanged on the cbxWeek
-        private void WeekChanged(object sender, EventArgs e)
-        {
-            Feedup_SyncLearngoals();
-            SyncFeedforwardFeedback();
-
-            Feedback_SyncLearngoals();
-            Feedback_SyncFeedback();
-            cbxLearnGoal.Text = "";
-            cbxActivity.Text = "";
-            dgvActivities.Rows.Clear();
-            SyncFeedforwardLearngoals();
-            dgvFeedforwardActivities.Rows.Clear();
-
-            txbQuestion.Clear();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
-        }
-
-        // Eventhandler for SelectionChanged on the cbxSubject
-        private void SubjectChanged(object sender, EventArgs e)
-        {
-            Feedup_SyncLearngoals();
-            SyncFeedforwardFeedback();
-
-            Feedback_SyncFeedback();
-            cbxLearnGoal.Text = "";
-            cbxActivity.Text = "";
-            dgvActivities.Rows.Clear();
-            SyncFeedforwardLearngoals();
-
-
-            txbQuestion.Clear();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
-        }
-
-        private void LoginStudent(Student student)
-        {
-            lblStudentName.Text = student.Fullname;
-            lblStudentClass.Text = student.GroupID;
-        }
-        private void Switchpanel(object sender, EventArgs e)
-        {
-            string selectedChoice = cbxPanelSwitch.Text;
-            string selectedPnl = "pnl" + selectedChoice;
-
-            HidePanels();
-            foreach (Panel panel in panels)
-            {
-                if (panel.Name == selectedPnl)
-                {
-                    panel.Show();
-                }
-            }
-        }
-
-        private void HidePanels()
-        {
-            foreach (Panel p in panels)
-            {
-                p.Hide();
-            }
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            cbxPanelSwitch.SelectedItem = null;
-            cbxWeek.SelectedItem = null;
-            cbxSubject.SelectedItem = null;
-            HidePanels();
-            pnlHome.Show();
-            dgvLearnGoals.Rows.Clear();
-
-            txbAddSubject.Clear();
-            btnAddSubject.Show();
-            btnUpdateSubject.Hide();
-            dgvSubjects.ClearSelection();
-        }
 
 
         //                                                                                  //
@@ -953,6 +846,153 @@ namespace FeedBUF_Casus.Forms
             tbxFeedforwardNote.Clear();
         }
 
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                              ConclusiePanel - Soufian                            //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
+        private void SyncConclusion()
+        {
+            // Maak een instantie van de ConclusieDAL-klasse aan
+            ConclusieDAL conclusieDAL = new ConclusieDAL();
+
+            // De geselecteerde waarden ophalen
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            string Subjectname = cbxSubject.Text;
+
+
+            List<FeedbackData> feedbackDataList = conclusieDAL.GetFeedbackData(weeknumber, Subjectname);
+            dgvConclusion.Rows.Clear();
+
+            // Controleren of er resultaten zijn gevonden
+            if (feedbackDataList.Any())
+            {
+                // De gevonden gegevens in de datatextbox plaatsen
+                StringBuilder sb = new StringBuilder();
+
+                foreach (FeedbackData feedbackData in feedbackDataList)
+                {
+
+                    dgvConclusion.Rows.Add(feedbackData.LearnGoal, feedbackData.Activity, feedbackData.Title, feedbackData.Question, feedbackData.Note, feedbackData.TimeEstimate, feedbackData.TimeSpent);
+                }
+
+                dgvConclusion.Text = sb.ToString();
+            }
+            else
+            {
+                dgvConclusion.Text = "Geen data gevonden voor de geselecteerde combinatie van week en vak.";
+            }
+        }
+
+        //                                                                                  //
+        // -------------------------------------------------------------------------------- //
+        //                              Header panel code - Max                             //
+        //--------------------------------------------------------------------------------- //
+        //                                                                                  //
+        private int determinePickedWeek()
+        {
+            if (cbxWeek.Text != "")
+            {
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                return weeknumber;
+            }
+            else { return -1; }
+        }
+
+
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            // Closes the studentform
+            this.Hide();
+            LoginForm loginform = new LoginForm();
+            loginform.Show();
+        }
+
+
+        // Eventhandler for SelectionChanged on the cbxWeek
+        private void WeekChanged(object sender, EventArgs e)
+        {
+            Feedup_SyncLearngoals();
+            SyncFeedforwardFeedback();
+            SyncConclusion();
+            Feedback_SyncLearngoals();
+            Feedback_SyncFeedback();
+            cbxLearnGoal.Text = "";
+            cbxActivity.Text = "";
+            dgvActivities.Rows.Clear();
+            SyncFeedforwardLearngoals();
+            dgvFeedforwardActivities.Rows.Clear();
+
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
+        }
+
+        // Eventhandler for SelectionChanged on the cbxSubject
+        private void SubjectChanged(object sender, EventArgs e)
+        {
+            Feedup_SyncLearngoals();
+            SyncFeedforwardFeedback();
+            SyncConclusion();
+            Feedback_SyncFeedback();
+            cbxLearnGoal.Text = "";
+            cbxActivity.Text = "";
+            dgvActivities.Rows.Clear();
+            SyncFeedforwardLearngoals();
+
+
+            txbQuestion.Clear();
+            txbQuestionTitle.Clear();
+            txbQuestionDescription.Clear();
+            lblQuestionTeacher.Text = "Auteur";
+        }
+
+        private void LoginStudent(Student student)
+        {
+            lblStudentName.Text = student.Fullname;
+            lblStudentClass.Text = student.GroupID;
+        }
+        private void Switchpanel(object sender, EventArgs e)
+        {
+            string selectedChoice = cbxPanelSwitch.Text;
+            string selectedPnl = "pnl" + selectedChoice;
+
+            HidePanels();
+            foreach (Panel panel in panels)
+            {
+                if (panel.Name == selectedPnl)
+                {
+                    panel.Show();
+                }
+            }
+        }
+
+        private void HidePanels()
+        {
+            foreach (Panel p in panels)
+            {
+                p.Hide();
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            cbxPanelSwitch.SelectedItem = null;
+            cbxWeek.SelectedItem = null;
+            cbxSubject.SelectedItem = null;
+            HidePanels();
+            pnlHome.Show();
+            dgvLearnGoals.Rows.Clear();
+
+            txbAddSubject.Clear();
+            btnAddSubject.Show();
+            btnUpdateSubject.Hide();
+            dgvSubjects.ClearSelection();
+        }
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
