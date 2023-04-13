@@ -33,9 +33,7 @@ namespace FeedBUF_Casus.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -149,7 +147,7 @@ namespace FeedBUF_Casus.Forms
             this.dgvConclusion = new System.Windows.Forms.DataGridView();
             this.colomn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnConclusionConclusionConclusion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Feedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tijd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -271,7 +269,6 @@ namespace FeedBUF_Casus.Forms
             this.cbxSubject.Name = "cbxSubject";
             this.cbxSubject.Size = new System.Drawing.Size(153, 28);
             this.cbxSubject.TabIndex = 3;
-            this.cbxSubject.SelectedIndexChanged += new System.EventHandler(this.cbxSubject_SelectedIndexChanged);
             this.cbxSubject.SelectedValueChanged += new System.EventHandler(this.SubjectChanged);
             // 
             // cbxWeek
@@ -322,7 +319,6 @@ namespace FeedBUF_Casus.Forms
             this.cbxPanelSwitch.Name = "cbxPanelSwitch";
             this.cbxPanelSwitch.Size = new System.Drawing.Size(107, 28);
             this.cbxPanelSwitch.TabIndex = 1;
-            this.cbxPanelSwitch.SelectedIndexChanged += new System.EventHandler(this.cbxPanelSwitch_SelectedIndexChanged);
             this.cbxPanelSwitch.SelectedValueChanged += new System.EventHandler(this.Switchpanel);
             // 
             // pnlFeedup
@@ -1520,7 +1516,7 @@ namespace FeedBUF_Casus.Forms
             this.dgvConclusion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colomn1,
             this.clnConclusionConclusionConclusion,
-            this.Feedback,
+            this.dgvcFeedback,
             this.Column2,
             this.Column3,
             this.Tijd,
@@ -1533,7 +1529,6 @@ namespace FeedBUF_Casus.Forms
             this.dgvConclusion.RowTemplate.Height = 24;
             this.dgvConclusion.Size = new System.Drawing.Size(1323, 602);
             this.dgvConclusion.TabIndex = 2;
-            this.dgvConclusion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // colomn1
             // 
@@ -1551,9 +1546,9 @@ namespace FeedBUF_Casus.Forms
             // 
             // Feedback
             // 
-            this.Feedback.HeaderText = "Feedback";
-            this.Feedback.Name = "Feedback";
-            this.Feedback.Width = 225;
+            this.dgvcFeedback.HeaderText = "Feedback";
+            this.dgvcFeedback.Name = "Feedback";
+            this.dgvcFeedback.Width = 225;
             // 
             // Column2
             // 
@@ -1984,8 +1979,7 @@ namespace FeedBUF_Casus.Forms
         private Label lblFeedupTimeEstimate;
         private DataGridView dgvConclusion;
         private DataGridViewTextBoxColumn colomn1;
-        private DataGridViewTextBoxColumn clnConclusionConclusionConclusion;
-        private DataGridViewTextBoxColumn Feedback;
+        private DataGridViewTextBoxColumn dgvcFeedback;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Tijd;
