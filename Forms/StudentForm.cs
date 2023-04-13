@@ -644,18 +644,6 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
-        private void btnSaveActivity_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
-            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-            string newactivity = txbFeedup_SelectedActivitity.Text.ToString();
-            Activity.UpdateActivity(activityid, newactivity);
-            Feedup_SyncActivities();
-            pnlUpdateActivity.Hide();
-            pnlNewActivity.Show();
-            txbFeedup_SelectedActivitity.Clear();
-        }
-
         private void btnSaveLearngoal_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
@@ -777,6 +765,18 @@ namespace FeedBUF_Casus.Forms
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnSaveActivity_Click_1(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string newactivity = txbFeedup_SelectedActivitity.Text.ToString();
+            Activity.UpdateActivity(activityid, newactivity);
+            Feedup_SyncActivities();
+            pnlUpdateActivity.Hide();
+            pnlNewActivity.Show();
+            txbFeedup_SelectedActivitity.Clear();
         }
     }
 }

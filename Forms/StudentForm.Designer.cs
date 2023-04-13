@@ -31,8 +31,8 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -317,9 +317,9 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedup.Controls.Add(this.dgvLearnGoals);
             this.pnlFeedup.Controls.Add(this.lblActivities);
             this.pnlFeedup.Controls.Add(this.lblLearnGoals);
+            this.pnlFeedup.Controls.Add(this.pnlActivity);
             this.pnlFeedup.Controls.Add(this.pnlLearngoal);
             this.pnlFeedup.Controls.Add(this.pnlTimeSpent);
-            this.pnlFeedup.Controls.Add(this.pnlActivity);
             this.pnlFeedup.Location = new System.Drawing.Point(9, 85);
             this.pnlFeedup.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFeedup.Name = "pnlFeedup";
@@ -654,8 +654,8 @@ namespace FeedBUF_Casus.Forms
             // 
             this.pnlActivity.Controls.Add(this.lblActivity);
             this.pnlActivity.Controls.Add(this.btnUpdateActivity);
-            this.pnlActivity.Controls.Add(this.pnlNewActivity);
             this.pnlActivity.Controls.Add(this.pnlUpdateActivity);
+            this.pnlActivity.Controls.Add(this.pnlNewActivity);
             this.pnlActivity.Location = new System.Drawing.Point(1267, 91);
             this.pnlActivity.Name = "pnlActivity";
             this.pnlActivity.Size = new System.Drawing.Size(636, 698);
@@ -795,6 +795,7 @@ namespace FeedBUF_Casus.Forms
             this.btnSaveActivity.TabIndex = 12;
             this.btnSaveActivity.Text = "Opslaan";
             this.btnSaveActivity.UseVisualStyleBackColor = false;
+            this.btnSaveActivity.Click += new System.EventHandler(this.btnSaveActivity_Click_1);
             // 
             // txbFeedup_SelectedActivitity
             // 
@@ -866,8 +867,8 @@ namespace FeedBUF_Casus.Forms
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(921, 821);
@@ -899,8 +900,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle5;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 8;
@@ -1617,11 +1618,11 @@ namespace FeedBUF_Casus.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1062);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlFeedup);
+            this.Controls.Add(this.pnlConclusion);
             this.Controls.Add(this.pnlFeedback);
             this.Controls.Add(this.pnlFeedforward);
             this.Controls.Add(this.pnlHome);
-            this.Controls.Add(this.pnlFeedup);
-            this.Controls.Add(this.pnlConclusion);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
