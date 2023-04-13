@@ -469,5 +469,17 @@ namespace FeedBUF_Casus.Forms
             dgvFeedforwardLearnGoals.ClearSelection();
             dgvFeedforwardFeedback.ClearSelection();
         }
+
+        private void btnFeedforwardAddNote_Click(object sender, EventArgs e)
+        {
+            btnFeedforwardAddNote.Show();
+            btnFeedforwardUpdateNote.Hide();
+        }
+
+        private void btnFeedforwardUpdateNote_Click(object sender, EventArgs e)
+        {
+            btnFeedforwardUpdateNote.Show();
+            btnFeedforwardAddNote.Hide();
+        }
     }
 }
