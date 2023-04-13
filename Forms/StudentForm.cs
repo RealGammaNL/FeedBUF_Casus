@@ -91,6 +91,7 @@ namespace FeedBUF_Casus.Forms
 
         private void btnFeedup_SwitchLearngoal_Click(object sender, EventArgs e)
         {
+            pnlActivity.Hide();
             pnlNewActivity.Hide();
             pnlLearngoal.Show();
             pnlAddLearngoal.Show();
@@ -100,6 +101,7 @@ namespace FeedBUF_Casus.Forms
 
         private void btnFeedup_SwitchActivity_Click(object sender, EventArgs e)
         {
+            pnlActivity.Show();
             pnlNewActivity.Show();
             pnlUpdateActivity.Hide();
             pnlLearngoal.Hide();
@@ -142,7 +144,7 @@ namespace FeedBUF_Casus.Forms
                     //Rowindex being the current row and column being which column.
                     //Upon finding the specified cell, it binds it to its datatype which is now usable in code.
 
-                    pnlNewActivity.Hide();
+                    pnlActivity.Hide();
                     pnlLearngoal.Hide();
                     pnlTimeSpent.Show();
                     dgvActivities.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
