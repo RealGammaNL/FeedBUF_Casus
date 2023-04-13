@@ -52,7 +52,8 @@ namespace FeedBUF_Casus.Forms
 
                 foreach (LearnGoal goal in TotalLearngoal)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgvLearnGoals.Rows[0].Clone();
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dgvLearnGoals);
                     row.Cells[0].Value = goal.LearnGoalID;
                     row.Cells[1].Value = goal.Goal;
                     dgvLearnGoals.Rows.Add(row);
@@ -70,7 +71,8 @@ namespace FeedBUF_Casus.Forms
 
             foreach (Activity activity in TotalActivity)
             {
-                DataGridViewRow row = (DataGridViewRow)dgvActivities.Rows[0].Clone();
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvActivities);
                 row.Cells[0].Value = activity.ActivityID;
                 row.Cells[1].Value = activity.ActivityText;
                 row.Cells[2].Value = activity.TimeEstimate;
@@ -97,16 +99,25 @@ namespace FeedBUF_Casus.Forms
         {
             pnlActivity.Hide();
             pnlLearngoal.Show();
+            pnlAddLearngoal.Show();
+            pnlUpdateLearngoal.Hide();
             pnlTimeSpent.Hide();
         }
 
         private void btnFeedup_SwitchActivity_Click(object sender, EventArgs e)
         {
             pnlActivity.Show();
+            pnlNewActivity.Show();
+            pnlUpdateActivity.Hide();
             pnlLearngoal.Hide();
             pnlTimeSpent.Hide();
         }
 
+        private void btnUpdateLearnGoalpnl_Click(object sender, EventArgs e)
+        {
+            pnlAddLearngoal.Hide();
+            pnlUpdateLearngoal.Show();
+        }
 
         //
         // CRUD to database
@@ -120,8 +131,8 @@ namespace FeedBUF_Casus.Forms
             DAL.FeedupDAL.AddLearngoal(learnGoal);
             txbFeedup_Learngoal.Clear();
             Feedup_SyncLearngoals();
+            SyncLearngoals();
         }
-
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
             if (dgvLearnGoals.CurrentRow != null)
@@ -136,6 +147,7 @@ namespace FeedBUF_Casus.Forms
                 txbFeedup_TimeEstimation.Clear();
                 Feedup_SyncActivities();
             }
+        }
         }
 
         private void btnSaveTimeSpent_Click(object sender, EventArgs e)
@@ -402,9 +414,18 @@ namespace FeedBUF_Casus.Forms
             {
                 Feedback.AddQuestion(determineFeedbackID(), txbQuestion.Text.ToString());
             }
-
             btnSubmitQuestion.Hide();
             btnUpdateQuestion.Show();
+        }
+
+        private void dgvLearnGoals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SyncActivities();
+            DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+            string learngoal = (selectedRow.Cells[1].Value.ToString());
+            txbSelectedLearngoal.Text = learngoal;
+
+            SyncActivities();
         }
 
         private void btnFeedbackDelete_Click(object sender, EventArgs e)
@@ -582,6 +603,127 @@ namespace FeedBUF_Casus.Forms
                 return weeknumber;
             }
             else { return -1; }
+
+        private void btnAddLearngoal_Click(object sender, EventArgs e)
+        {
+            string learngoal = txbFeedup_AddLearngoal.Text;
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
+            DAL.FeedupDAL.AddLearngoal(learnGoal);
+            txbFeedup_AddLearngoal.Clear();
+            SyncLearngoals();
+        }
+
+        private void btnBackLearngoal_Click(object sender, EventArgs e)
+        {
+            pnlUpdateLearngoal.Hide();
+            pnlAddLearngoal.Show();
+        }
+
+        private void btnUpdateActivity_Click(object sender, EventArgs e)
+        {
+            pnlNewActivity.Hide();
+            pnlUpdateActivity.Show();
+        }
+
+        private void btnActivityBack_Click(object sender, EventArgs e)
+        {
+            pnlNewActivity.Show();
+            pnlUpdateActivity.Hide();
+        }
+
+        private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            string activity = (selectedRow.Cells[1].Value.ToString());
+            txbFeedup_SelectedActivitity.Text = activity;
+        }
+
+        private void btnNewActivity_Click(object sender, EventArgs e)
+        {
+            if (dgvLearnGoals.CurrentRow != null)
+            {
+                string activityStr = tbxNewActivity.Text;
+                string timeEstimation = txbFeedup_TimeEstimation.Text;
+                DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Activity activity = new Activity(learngoalid, activityStr, timeEstimation);
+                Activity.AddActivity(activity);
+                tbxNewActivity.Clear();
+                txbFeedup_TimeEstimation.Clear();
+                SyncActivities();
+            }
+        }
+
+        private void btnDeleteActivity_Click(object sender, EventArgs e)
+        {
+            if (txbFeedup_SelectedActivitity.Text.ToString() != "")
+            {
+                DialogResult result = MessageBox.Show("U staat op het punt om een activiteit te verwijderen, weet u het zeker?", "Verwijderen", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+                    int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                    Activity.RemoveActivity(activityid);
+                    SyncActivities();
+                    pnlUpdateActivity.Hide();
+                    pnlNewActivity.Show();
+                    txbFeedup_SelectedActivitity.Clear();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    // Do nothing
+                }
+            }
+        }
+
+        private void btnSaveActivity_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvActivities.Rows[dgvActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string newactivity = txbFeedup_SelectedActivitity.Text.ToString();
+            Activity.UpdateActivity(activityid, newactivity);
+            SyncActivities();
+            pnlUpdateActivity.Hide();
+            pnlNewActivity.Show();
+            txbFeedup_SelectedActivitity.Clear();
+        }
+
+        private void btnSaveLearngoal_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            string learngoal = txbSelectedLearngoal.Text.ToString();
+            LearnGoal.UpdateLearngoal(learngoalid, learngoal);
+            SyncLearngoals();
+            SyncActivities();
+            pnlUpdateLearngoal.Hide();
+            pnlAddLearngoal.Show();
+            txbSelectedLearngoal.Clear();
+        }
+
+        private void btnDeleteLearngoal_Click(object sender, EventArgs e)
+        {
+            if (txbSelectedLearngoal.Text.ToString() != "")
+            {
+                DialogResult result = MessageBox.Show("U staat op het punt om een leerdoel te verwijderen, alle activiteiten die hierbij horen zullen ook verwijderd worden. Weet u het zeker?", "Verwijderen", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
+                    int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                    LearnGoal.DeleteLearngoal(learngoalid);
+                    SyncLearngoals();
+                    SyncActivities();
+                    pnlUpdateLearngoal.Hide();
+                    pnlAddLearngoal.Show();
+                    txbSelectedLearngoal.Clear();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    // Do nothing
+                }
+            }
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -672,5 +814,6 @@ namespace FeedBUF_Casus.Forms
         }
 
 
+        }
     }
 }

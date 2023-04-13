@@ -66,6 +66,13 @@ namespace DOMAIN
         {
             return DAL.FeedbackDAL.GetLearnGoalByID(LearnGoalID);
         }
-
+        public static void UpdateLearngoal(int LearngoalID, string learngoal)
+        {
+            DAL.FeedupDAL.UpdateLearngoal(LearngoalID, learngoal);
+        }
+        public static void DeleteLearngoal(int learngoalID)
+        {
+            DAL.FeedupDAL.DeleteLearngoal(learngoalID);
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -178,9 +179,79 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
+        public static void DeleteActivity(int activity)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "DELETE FROM ACTIVITY WHERE ActivityID = @ActivityID";
 
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("ActivityID", activity);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+        public static void UpdateActivity(int activityID, string activity)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "UPDATE ACTIVITY SET Activity=@Activity WHERE ActivityID = @ActivityID";
 
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("ActivityID", activityID);
+                        command.Parameters.AddWithValue("Activity", activity);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+        public static void UpdateLearngoal(int learngoalID, string learngoal)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "UPDATE LEARNGOAL SET Learngoal=@Learngoal WHERE LearngoalID = @LearngoalID";
 
-
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("LearngoalID", learngoalID);
+                        command.Parameters.AddWithValue("Learngoal", learngoal);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
+        public static void DeleteLearngoal(int learngoal)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    string sql = "DELETE FROM ACTIVITY WHERE LearngoalID = @LearngoalID;" +
+                                 "DELETE FROM LEARNGOAL WHERE LearngoalID = @LearngoalID;";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("LearngoalID", learngoal);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+        }
     }
 }
