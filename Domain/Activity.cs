@@ -56,6 +56,9 @@ namespace DOMAIN
         {
             DAL.FeedforwardDAL.UpdateActivityNote(activityid, note);
         }
-
+        public static void DeleteActivityNote(int activityid, string note)
+        {
+            DAL.FeedforwardDAL.DeleteActivityNote(activityid, note);
+        }
     }
 }

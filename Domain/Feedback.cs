@@ -102,6 +102,9 @@ namespace DOMAIN
         {
             DAL.FeedforwardDAL.UpdateFeedbackNote(feedbackid, note);
         }
-
+        public static void DeleteFeedbackNote(int feedbackid, string note)
+        {
+            DAL.FeedforwardDAL.DeleteFeedbackNote(feedbackid, note);
+        }
     }
 }
