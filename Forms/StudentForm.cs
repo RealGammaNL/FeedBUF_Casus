@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DOMAIN;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FeedBUF_Casus.Forms
 {
@@ -33,7 +34,7 @@ namespace FeedBUF_Casus.Forms
 
         private void SyncFeedback()
         {
-            List<Feedback> TotalFeedback = Feedback.GetFeedback();
+            List<Feedback> TotalFeedback = DAL.FeedbackDAL.GetFeedback();
             dgvFeedback.Rows.Clear();
 
             foreach (Feedback feedback in TotalFeedback)
@@ -76,7 +77,7 @@ namespace FeedBUF_Casus.Forms
                 row.Cells[1].Value = activity.ActivityText;
                 row.Cells[2].Value = activity.TimeEstimate;
                 dgvActivities.Rows.Add(row);
-                if(activity.TimeSpent != "")
+                if (activity.TimeSpent != "")
                 {
                     row.Cells[3].Value = true;
                 }
@@ -256,6 +257,7 @@ namespace FeedBUF_Casus.Forms
         private void WeekChanged(object sender, EventArgs e)
         {
             SyncLearngoals();
+            SyncConclusion();
             dgvActivities.Rows.Clear();
         }
 
@@ -362,5 +364,77 @@ namespace FeedBUF_Casus.Forms
                 dgvSubjects.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // Voeg een nieuwe rij toe aan de DataGridView
+        {
+            dataGridView1.Rows.Add();
+
+        }
+
+        private void cbxPanelSwitch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            {
+                string selectedChoice = cbxPanelSwitch.Text;
+                string selectedPnl = "pnl" + selectedChoice;
+
+                HidePanels();
+                foreach (Panel panel in panels)
+                {
+                    if (panel.Name == selectedPnl)
+                    {
+                        panel.Show();
+                    }
+                }
+            }
+        }
+
+        private void cbxSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = txbAddSubject.Text;
+            txbAddSubject.Clear();
+            Subject Subject = new Subject(name, false);
+            Subject.AddSubject(CurrentStudent, Subject);
+            SyncConclusion();
+            //dgvSubjects_Sync();
+
+        }
+
+
+        private void SyncConclusion()
+        {
+            // Maak een instantie van de ConclusieDAL-klasse aan
+            ConclusieDAL conclusieDAL = new ConclusieDAL();
+
+            // De geselecteerde waarden ophalen
+            string[] attributes = cbxWeek.Text.Split(' ');
+            int weeknumber = Int32.Parse(attributes[1]);
+            string Subjectname = cbxSubject.Text;
+
+
+            List<FeedbackData> feedbackDataList = conclusieDAL.GetFeedbackData(weeknumber, Subjectname);
+            dgvConclusion.Rows.Clear();
+
+            // Controleren of er resultaten zijn gevonden
+            if (feedbackDataList.Any())
+            {
+                // De gevonden gegevens in de datatextbox plaatsen
+                StringBuilder sb = new StringBuilder();
+
+                foreach (FeedbackData feedbackData in feedbackDataList)
+                {
+                   
+                   dgvConclusion.Rows.Add(feedbackData.LearnGoal, feedbackData.Activity, feedbackData.Title, feedbackData.Question, feedbackData.Note, feedbackData.TimeEstimate, feedbackData.TimeSpent);
+                }
+
+                dgvConclusion.Text = sb.ToString();
+            }
+            else
+            {
+                dgvConclusion.Text = "Geen data gevonden voor de geselecteerde combinatie van week en vak.";
+            }
+        }
     }
+
 }
+
