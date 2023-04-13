@@ -74,5 +74,9 @@ namespace DOMAIN
         {
             DAL.FeedupDAL.DeleteLearngoal(learngoalID);
         }
+        public static void AddLearngoal(LearnGoal learngoal)
+        {
+            DAL.FeedupDAL.AddLearngoal(learngoal);
+        }
     }
 }
