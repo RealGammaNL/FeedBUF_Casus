@@ -857,8 +857,7 @@ namespace FeedBUF_Casus.Forms
             ConclusieDAL conclusieDAL = new ConclusieDAL();
 
             // De geselecteerde waarden ophalen
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
+            int weeknumber = determinePickedWeek();
             string Subjectname = cbxSubject.Text;
 
 
