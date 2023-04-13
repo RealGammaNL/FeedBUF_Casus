@@ -280,7 +280,7 @@ namespace FeedBUF_Casus.Forms
         //
         // Syncing Datagrids and Comboboxes
         //
-        private void SyncFeedback()
+        private void Feedback_SyncFeedback()
         {
             int weeknumber = determinePickedWeek();
 
@@ -476,7 +476,7 @@ namespace FeedBUF_Casus.Forms
 
                 Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
                 DAL.FeedbackDAL.AddFeedback(feedback);
-                SyncFeedback();
+                Feedback_SyncFeedback();
             }
 
             // If there isn't an activity selected.
@@ -507,7 +507,7 @@ namespace FeedBUF_Casus.Forms
 
             // Reset the panel
             btnRegisterFeedback_Click(sender, e);
-            SyncFeedback();
+            Feedback_SyncFeedback();
         }
 
         private void btnFeedbackUpdate_Click(object sender, EventArgs e)
@@ -516,8 +516,7 @@ namespace FeedBUF_Casus.Forms
             {
                 Feedback updatedFeedback = new Feedback(determineFeedbackID(), txbFeedbackTeacher.Text, txbFeedbackTitle.Text, txbFeedbackDescription.Text);
                 FeedbackDAL.UpdateFeedback(updatedFeedback);
-
-                SyncFeedback();
+                Feedback_SyncFeedback();
             }
         }
 
@@ -659,81 +658,7 @@ namespace FeedBUF_Casus.Forms
         }
 
 
-        private void SyncFeedbackNote(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows [dgvFeedforwardFeedback.CurrentCell.RowIndex];
-            int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-            tbxFeedforwardNote.Clear();
-            tbxFeedforwardNote.Text = Feedback.GetFeedbackNote(feedbackid);
-            dgvFeedforwardLearnGoals.ClearSelection();
-            dgvFeedforwardActivities.ClearSelection();
-        }
-        private void SyncLearnGoalNote()
-        {
-            DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
-            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-            tbxFeedforwardNote.Clear();
-            tbxFeedforwardNote.Text = LearnGoal.GetLearnGoalNote(learngoalid);
-            dgvFeedforwardActivities.ClearSelection();
-            dgvFeedforwardFeedback.ClearSelection();
 
-        }
-        private void SyncActivityNote()
-        {
-            DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
-            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-            tbxFeedforwardNote.Clear();
-            tbxFeedforwardNote.Text = Activity.GetActivityNote(activityid);
-            dgvFeedforwardLearnGoals.ClearSelection();
-            dgvFeedforwardFeedback.ClearSelection();
-        }
-
-
-
-        private void btnFeedforwardAddNote_Click(object sender, EventArgs e)
-        {
-            if (dgvFeedforwardFeedback.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
-                int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Feedback.UpdateFeedbackNote(feedbackid, tbxFeedforwardNote.Text);
-            }
-            if (dgvFeedforwardLearnGoals.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
-                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                LearnGoal.UpdateLearnGoalNote(learngoalid, tbxFeedforwardNote.Text);
-            }
-            if (dgvFeedforwardActivities.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
-                int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity.UpdateActivityNote(activityid, tbxFeedforwardNote.Text);
-            }
-        }
-
-        private void btnFeedforwardDeleteNote_Click(object sender, EventArgs e)
-        {
-            if (dgvFeedforwardFeedback.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
-                int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Feedback.DeleteFeedbackNote(feedbackid, tbxFeedforwardNote.Text);
-            }
-            if (dgvFeedforwardLearnGoals.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
-                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                LearnGoal.DeleteLearnGoalNote(learngoalid, tbxFeedforwardNote.Text);
-            }
-            if (dgvFeedforwardActivities.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
-                int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
-                Activity.DeleteActivityNote(activityid, tbxFeedforwardNote.Text);
-            }
-            tbxFeedforwardNote.Clear();
-        }
 
         //                                                                                  //
         // -------------------------------------------------------------------------------- //
@@ -769,7 +694,7 @@ namespace FeedBUF_Casus.Forms
             SyncFeedforwardFeedback();
 
             Feedback_SyncLearngoals();
-            SyncFeedback();
+            Feedback_SyncFeedback();
             cbxLearnGoal.Text = "";
             cbxActivity.Text = "";
             dgvActivities.Rows.Clear();
@@ -788,7 +713,7 @@ namespace FeedBUF_Casus.Forms
             Feedup_SyncLearngoals();
             SyncFeedforwardFeedback();
 
-            SyncFeedback();
+            Feedback_SyncFeedback();
             cbxLearnGoal.Text = "";
             cbxActivity.Text = "";
             dgvActivities.Rows.Clear();
@@ -850,15 +775,12 @@ namespace FeedBUF_Casus.Forms
         //                              FeedforwardPanel - Jeroen                           //
         //--------------------------------------------------------------------------------- //
         //                                                                                  //
+        
+     
 
-        private void dgvFeedforwardActivities_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvFeedforwardLearnGoals.ClearSelection();
-            dgvFeedforwardFeedback.ClearSelection();
-            SyncActivityNote();
-        }
-
-
+        //
+        // Syncing the Datagridviews
+        //
         private void SyncFeedforwardFeedback()
         {
             List<Feedback> TotalFeedback = Feedback.GetFeedback(CurrentStudent, determinePickedWeek(), cbxSubject.Text);
@@ -914,6 +836,103 @@ namespace FeedBUF_Casus.Forms
             }
         }
 
+        //
+        // Clicking in the datagridviews
+        //
+        private void dgvFeedforwardLearngoals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvFeedforwardActivities.ClearSelection();
+            dgvFeedforwardFeedback.ClearSelection();
+            SyncLearnGoalNote();
+            SyncFeedforwardActivities();
+        }
+
+        private void dgvFeedforwardActivities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvFeedforwardLearnGoals.ClearSelection();
+            dgvFeedforwardFeedback.ClearSelection();
+            SyncActivityNote();
+        }
+
+        private void dgvFeedforwardFeedback_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvFeedforwardLearnGoals.ClearSelection();
+            dgvFeedforwardActivities.ClearSelection();
+            SyncFeedbackNote();
+        }
+
+        //
+        // Syncing the note textbox
+        //
+
+        private void SyncLearnGoalNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
+            int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = LearnGoal.GetLearnGoalNote(learngoalid);
+        }
+        private void SyncActivityNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
+            int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = Activity.GetActivityNote(activityid);
+        }
+
+        private void SyncFeedbackNote()
+        {
+            DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
+            int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+            tbxFeedforwardNote.Clear();
+            tbxFeedforwardNote.Text = Feedback.GetFeedbackNote(feedbackid);
+        }
+
+
+        private void btnFeedforwardAddNote_Click(object sender, EventArgs e)
+        {
+            if (dgvFeedforwardFeedback.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
+                int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Feedback.UpdateFeedbackNote(feedbackid, tbxFeedforwardNote.Text);
+            }
+            if (dgvFeedforwardLearnGoals.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
+                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                LearnGoal.UpdateLearnGoalNote(learngoalid, tbxFeedforwardNote.Text);
+            }
+            if (dgvFeedforwardActivities.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
+                int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Activity.UpdateActivityNote(activityid, tbxFeedforwardNote.Text);
+            }
+        }
+
+        private void btnFeedforwardDeleteNote_Click(object sender, EventArgs e)
+        {
+            if (dgvFeedforwardFeedback.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardFeedback.Rows[dgvFeedforwardFeedback.CurrentCell.RowIndex];
+                int feedbackid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Feedback.DeleteFeedbackNote(feedbackid, tbxFeedforwardNote.Text);
+            }
+            if (dgvFeedforwardLearnGoals.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardLearnGoals.Rows[dgvFeedforwardLearnGoals.CurrentCell.RowIndex];
+                int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                LearnGoal.DeleteLearnGoalNote(learngoalid, tbxFeedforwardNote.Text);
+            }
+            if (dgvFeedforwardActivities.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvFeedforwardActivities.Rows[dgvFeedforwardActivities.CurrentCell.RowIndex];
+                int activityid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
+                Activity.DeleteActivityNote(activityid, tbxFeedforwardNote.Text);
+            }
+            tbxFeedforwardNote.Clear();
+        }
 
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
