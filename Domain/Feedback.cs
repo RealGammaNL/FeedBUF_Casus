@@ -98,5 +98,10 @@ namespace DOMAIN
         {
             return DAL.FeedforwardDAL.GetFeedbackNote(feedbackid);
         }
+        public static void UpdateFeedbackNote(int feedbackid, string note)
+        {
+            DAL.FeedforwardDAL.UpdateFeedbackNote(feedbackid, note);
+        }
+
     }
 }

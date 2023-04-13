@@ -11,18 +11,18 @@ namespace DAL
     public class FeedforwardDAL : MAINDAL
     {
         private static string ConnectionString = "Data Source=tcp:max.brosky.net\\GIGASOFTDB, 1433;Initial Catalog = FeedBUF_DB; Persist Security Info=True;User ID = sa; Password=Gigasoft123";
-        public static void AddFeedbackNote(Feedback feedback)
+        public static void UpdateFeedbackNote(int feedbackid, string note)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "INSERT INTO FEEDBACK(Note) VALUES (@Note) WHERE FeedbackID = @FeedbackID";
+                    string sql = "UPDATE FEEDBACK SET Note = @Note WHERE FeedbackID = @FeedbackID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", feedback.Note);
-                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@FeedbackID", feedbackid);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -30,64 +30,25 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static void AddActivityNote(Activity activity)
+        public static void UpdateActivityNote(int activityid, string note)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "INSERT INTO ACTIVITY(Note) VALUES (@Note) WHERE ActivityID = @ActivityID";
+                    string sql = "UPDATE ACTIVITY SET Note = @Note WHERE ActivityID = @ActivityID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", activity.Note);
-                        command.Parameters.AddWithValue("ActivityID", activity.ActivityID);
-
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@ActivityID", activityid);
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (SqlException ex) { throw ex; }
         }
-
-        public static void UpdateFeedbackNote(Feedback feedback)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    string sql = "UPDATE FEEDBACK SET (Note = @Note) WHERE FeedbackID = @FeedbackID";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@Note", feedback.Note);
-                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (SqlException ex) { throw ex; }
-        }
-
-        public static void UpdateAvtivityNote(Activity activity)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    string sql = "UPDATE ACTIVITY SET (Note = @Note) WHERE ActivityID = @ActivityID";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@Note", activity.Note);
-                        command.Parameters.AddWithValue("@ActivityID", activity.ActivityID);
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (SqlException ex) { throw ex; }
-        }
-        public static void DeleteFeedbackNote(Feedback feedback)
+        public static void DeleteFeedbackNote(int feedbackid, string note)
         {
             try
             {
@@ -97,8 +58,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", feedback.Note);
-                        command.Parameters.AddWithValue("@FeedbackID", feedback.FeedbackID);
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@FeedbackID", feedbackid);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -106,7 +67,7 @@ namespace DAL
             catch (SqlException ex) { throw ex; }
         }
 
-        public static void DeleteActivityNote(Activity activity)
+        public static void DeleteActivityNote(int activityid, string note)
         {
             try
             {
@@ -116,8 +77,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", activity.Note);
-                        command.Parameters.AddWithValue("@ActivityID", activity.ActivityID);
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@ActivityID", activityid);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -186,44 +147,26 @@ namespace DAL
             }
             catch (SqlException ex) { throw ex; }
         }
-        public static void AddLearnGoalNote(LearnGoal learngoal)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    string sql = "INSERT INTO LEARNGOAL(Note) VALUES (@Note) WHERE LearnGoalID = @LearnGoalID";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@Note", learngoal.Note);
-                        command.Parameters.AddWithValue("@LearnGoalID", learngoal.LearnGoalID);
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (SqlException ex) { throw ex; }
-        }
 
-        public static void UpdateLearnGoalNote(LearnGoal learngoal)
+        public static void UpdateLearnGoalNote(int learngoalid, string note)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    string sql = "UPDATE LEARNGOAL SET (Note = @Note) WHERE LearnGoalID = @LearnGoalID";
+                    string sql = "UPDATE LEARNGOAL SET Note = @Note WHERE LearnGoalID = @LearnGoalID";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", learngoal.Note);
-                        command.Parameters.AddWithValue("@LearnGoalID", learngoal.LearnGoalID);
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@LearnGoalID", learngoalid);
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (SqlException ex) { throw ex; }
         }
-        public static void DeleteLearnGoalNote(LearnGoal learngoal)
+        public static void DeleteLearnGoalNote(int learngoalid, string note)
         {
             try
             {
@@ -233,8 +176,8 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Note", learngoal.Note);
-                        command.Parameters.AddWithValue("@LearnGoalID", learngoal.LearnGoalID);
+                        command.Parameters.AddWithValue("@Note", note);
+                        command.Parameters.AddWithValue("@LearnGoalID", learngoalid);
                         command.ExecuteNonQuery();
                     }
                 }

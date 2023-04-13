@@ -48,5 +48,10 @@ namespace DOMAIN
         {
             return DAL.FeedforwardDAL.GetLearnGoalNote(learngoalid);
         }
+        public static void UpdateLearnGoalNote(int learngoalid, string note)
+        {
+            DAL.FeedforwardDAL.UpdateLearnGoalNote(learngoalid, note);  
+        }
+
     }
 }

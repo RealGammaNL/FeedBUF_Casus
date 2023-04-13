@@ -52,5 +52,10 @@ namespace DOMAIN
         {
             return DAL.FeedforwardDAL.GetActivityNote(activityid);
         }
+        public static void UpdateActivityNote(int activityid, string note)
+        {
+            DAL.FeedforwardDAL.UpdateActivityNote(activityid, note);
+        }
+
     }
 }
