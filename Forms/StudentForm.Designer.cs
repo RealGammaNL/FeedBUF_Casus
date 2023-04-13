@@ -31,9 +31,9 @@ namespace FeedBUF_Casus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -105,7 +105,6 @@ namespace FeedBUF_Casus.Forms
             this.txbQuestionTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlFeedforward = new System.Windows.Forms.Panel();
-            this.btnFeedforwardUpdateNote = new System.Windows.Forms.Button();
             this.tbxFeedforwardNote = new System.Windows.Forms.TextBox();
             this.btnFeedforwardAddNote = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -641,21 +640,21 @@ namespace FeedBUF_Casus.Forms
             this.FeedbackTeacher,
             this.FeedbackTitle,
             this.FeedbackDescription});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFeedback.Location = new System.Drawing.Point(29, 68);
             this.dgvFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFeedback.Name = "dgvFeedback";
             this.dgvFeedback.RowHeadersVisible = false;
             this.dgvFeedback.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFeedback.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFeedback.RowTemplate.Height = 24;
             this.dgvFeedback.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFeedback.Size = new System.Drawing.Size(563, 544);
@@ -687,8 +686,8 @@ namespace FeedBUF_Casus.Forms
             // FeedbackDescription
             // 
             this.FeedbackDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FeedbackDescription.DefaultCellStyle = dataGridViewCellStyle7;
             this.FeedbackDescription.FillWeight = 5F;
             this.FeedbackDescription.HeaderText = "Descriptie";
             this.FeedbackDescription.MinimumWidth = 6;
@@ -967,7 +966,6 @@ namespace FeedBUF_Casus.Forms
             // pnlFeedforward
             // 
             this.pnlFeedforward.Controls.Add(this.btnFeedforwardDeleteNote);
-            this.pnlFeedforward.Controls.Add(this.btnFeedforwardUpdateNote);
             this.pnlFeedforward.Controls.Add(this.tbxFeedforwardNote);
             this.pnlFeedforward.Controls.Add(this.btnFeedforwardAddNote);
             this.pnlFeedforward.Controls.Add(this.label15);
@@ -985,16 +983,6 @@ namespace FeedBUF_Casus.Forms
             this.pnlFeedforward.Visible = false;
             this.pnlFeedforward.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFeedforward_Paint);
             // 
-            // btnFeedforwardUpdateNote
-            // 
-            this.btnFeedforwardUpdateNote.Location = new System.Drawing.Point(702, 253);
-            this.btnFeedforwardUpdateNote.Name = "btnFeedforwardUpdateNote";
-            this.btnFeedforwardUpdateNote.Size = new System.Drawing.Size(93, 63);
-            this.btnFeedforwardUpdateNote.TabIndex = 10;
-            this.btnFeedforwardUpdateNote.Text = "Bijwerken";
-            this.btnFeedforwardUpdateNote.UseVisualStyleBackColor = true;
-            this.btnFeedforwardUpdateNote.Click += new System.EventHandler(this.btnFeedforwardUpdateNote_Click);
-            // 
             // tbxFeedforwardNote
             // 
             this.tbxFeedforwardNote.Location = new System.Drawing.Point(597, 54);
@@ -1009,7 +997,7 @@ namespace FeedBUF_Casus.Forms
             this.btnFeedforwardAddNote.Name = "btnFeedforwardAddNote";
             this.btnFeedforwardAddNote.Size = new System.Drawing.Size(93, 63);
             this.btnFeedforwardAddNote.TabIndex = 8;
-            this.btnFeedforwardAddNote.Text = "Toevoegen";
+            this.btnFeedforwardAddNote.Text = "Bijwerken";
             this.btnFeedforwardAddNote.UseVisualStyleBackColor = true;
             this.btnFeedforwardAddNote.Click += new System.EventHandler(this.btnFeedforwardAddNote_Click);
             // 
@@ -1413,7 +1401,7 @@ namespace FeedBUF_Casus.Forms
             // 
             // btnFeedforwardDeleteNote
             // 
-            this.btnFeedforwardDeleteNote.Location = new System.Drawing.Point(809, 253);
+            this.btnFeedforwardDeleteNote.Location = new System.Drawing.Point(698, 253);
             this.btnFeedforwardDeleteNote.Name = "btnFeedforwardDeleteNote";
             this.btnFeedforwardDeleteNote.Size = new System.Drawing.Size(93, 63);
             this.btnFeedforwardDeleteNote.TabIndex = 11;
@@ -1584,7 +1572,6 @@ namespace FeedBUF_Casus.Forms
         private DataGridViewTextBoxColumn clnFeedforwardActivityActivity;
         private DataGridViewTextBoxColumn clnFeedforwardLearnGoalID;
         private DataGridViewTextBoxColumn clnFeedforwardLearngoal;
-        private Button btnFeedforwardUpdateNote;
         private Button btnFeedforwardDeleteNote;
     }
 }
