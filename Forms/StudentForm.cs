@@ -776,8 +776,5 @@ namespace FeedBUF_Casus.Forms
         {
             Application.Exit();
         }
-
-
-        }
     }
 }
