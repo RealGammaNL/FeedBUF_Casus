@@ -501,7 +501,7 @@ namespace FeedBUF_Casus.Forms
                 }
 
                 Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
-                DAL.FeedbackDAL.AddFeedback(feedback);
+                FeedbackDAL.AddFeedback(feedback);
                 Feedback_SyncFeedback();
             }
 
@@ -509,7 +509,7 @@ namespace FeedBUF_Casus.Forms
             if (cbxActivity.Text == "")
             {
                 Feedback feedback = new Feedback(StudentID, CurrentLearnGoal.LearnGoalID, ActivityID, Auteur, Title, Description);
-                DAL.FeedbackDAL.AddFeedback(feedback);
+                FeedbackDAL.AddFeedback(feedback);
             }
         }
 

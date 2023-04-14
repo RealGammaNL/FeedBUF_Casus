@@ -13,7 +13,6 @@ namespace DOMAIN
 
         //Who it's for and who gave it.
         public int StudentID;
-        public int TeacherID;
 
         //What its for and what activities are linked to that.
         public int LearngoalID;
@@ -24,18 +23,11 @@ namespace DOMAIN
         public string Description;
 
         //When was it given/by who
-        public int Weeknr;
         public string Teacher;
 
         //Information about feedback
         public string Question;
         public string Note;
-
-
-        public Feedback()
-        {
-
-        }
 
         // Feedback on an activity paired with a learngoal.
         public Feedback(int studentid, int learngoalid, int activityid, string teacher, string title, string description)
@@ -48,41 +40,12 @@ namespace DOMAIN
             Description = description;
         }
 
-        // Feedback on an learngoal, without a paired activity
-        public Feedback(int studentid, int learngoalid, string teacher, string title, string description)
-        {
-            StudentID = studentid;
-            LearngoalID = learngoalid;
-            Teacher = teacher;
-            Title = title;
-            Description = description;
-        }
-
         public Feedback(int feedbackid, string teacher, string title, string description)
         {
             FeedbackID = feedbackid;
             Teacher = teacher;
             Title = title;
             Description = description;
-        }
-
-        public Feedback(int feedbackid, string teacher, string title, string description, string question)
-        {
-            FeedbackID = feedbackid;
-            Teacher = teacher;
-            Title = title;
-            Description = description;
-            Question = question;
-        }
-
-        public Feedback(int feedbackid, string teacher, string title, string description, string question, string note)
-        {
-            FeedbackID = feedbackid;
-            Teacher = teacher;
-            Title = title;
-            Description = description;
-            Question = question;
-            Note = note;
         }
 
         public static List<Feedback> GetFeedback(Student student, int weeknumber, string subject)
@@ -111,8 +74,6 @@ namespace DOMAIN
         {
             DAL.FeedbackDAL.AddQuestion(feedbackID, question);
         }
-
-
 
         public static Feedback GetFeedBackByID(int FeedbackID)
         {
