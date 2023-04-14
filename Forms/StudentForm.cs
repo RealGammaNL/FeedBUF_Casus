@@ -166,9 +166,9 @@ namespace FeedBUF_Casus.Forms
 
         private void btnNewActivity_Click(object sender, EventArgs e)
         {
-            if (dgvLearnGoals.CurrentRow != null)
+            string activityStr = tbxNewActivity.Text;
+            if (dgvLearnGoals.CurrentRow != null && activityStr != "")
             {
-                string activityStr = tbxNewActivity.Text;
                 string timeEstimation = txbFeedup_TimeEstimation.Text;
                 DataGridViewRow selectedRow = dgvLearnGoals.Rows[dgvLearnGoals.CurrentCell.RowIndex];
                 int learngoalid = Int32.Parse(selectedRow.Cells[0].Value.ToString());
