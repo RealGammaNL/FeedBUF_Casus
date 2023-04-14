@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DOMAIN
 {
-    public class User
+    public class Student
     {
         public int ID;
         public string GroupID;
@@ -14,7 +14,7 @@ namespace DOMAIN
         public string Email;
         public string Password;
 
-        public User(int id, string groupid, string fullname, string email, string password)
+        public Student(int id, string groupid, string fullname, string email, string password)
         {
             ID = id;
             GroupID = groupid;
@@ -22,5 +22,6 @@ namespace DOMAIN
             Email = email;
             Password = password;
         }
+
     }
 }
