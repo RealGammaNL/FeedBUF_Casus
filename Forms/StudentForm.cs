@@ -760,10 +760,10 @@ namespace FeedBUF_Casus.Forms
         //
         private void dgvFeedforwardLearngoals_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvFeedforwardActivities.ClearSelection();
             dgvFeedforwardFeedback.ClearSelection();
             SyncLearnGoalNote();
             SyncFeedforwardActivities();
+            dgvFeedforwardActivities.ClearSelection();
         }
 
         private void dgvFeedforwardActivities_CellClick(object sender, DataGridViewCellEventArgs e)
