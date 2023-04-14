@@ -914,25 +914,16 @@ namespace FeedBUF_Casus.Forms
         // Eventhandler for SelectionChanged on the cbxWeek
         private void WeekChanged(object sender, EventArgs e)
         {
-            Feedup_SyncLearngoals();
-            SyncFeedforwardFeedback();
-            SyncConclusion();
-            Feedback_SyncLearngoals();
-            Feedback_SyncFeedback();
-            cbxLearnGoal.Text = "";
-            cbxActivity.Text = "";
-            dgvActivities.Rows.Clear();
-            SyncFeedforwardLearngoals();
-            dgvFeedforwardActivities.Rows.Clear();
-
-            txbQuestion.Clear();
-            txbQuestionTitle.Clear();
-            txbQuestionDescription.Clear();
-            lblQuestionTeacher.Text = "Auteur";
+            SyncPanels();
         }
 
         // Eventhandler for SelectionChanged on the cbxSubject
         private void SubjectChanged(object sender, EventArgs e)
+        {
+            SyncPanels();
+        }
+
+        private void SyncPanels()
         {
             Feedup_SyncLearngoals();
             SyncFeedforwardFeedback();
@@ -942,8 +933,7 @@ namespace FeedBUF_Casus.Forms
             cbxActivity.Text = "";
             dgvActivities.Rows.Clear();
             SyncFeedforwardLearngoals();
-
-
+            dgvFeedforwardActivities.Rows.Clear();
             txbQuestion.Clear();
             txbQuestionTitle.Clear();
             txbQuestionDescription.Clear();
@@ -968,6 +958,7 @@ namespace FeedBUF_Casus.Forms
                     panel.Show();
                 }
             }
+            SyncPanels();
         }
 
         private void HidePanels()
