@@ -153,12 +153,15 @@ namespace FeedBUF_Casus.Forms
         private void btnAddLearngoal_Click(object sender, EventArgs e)
         {
             string learngoal = txbFeedup_AddLearngoal.Text;
-            string[] attributes = cbxWeek.Text.Split(' ');
-            int weeknumber = Int32.Parse(attributes[1]);
-            LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
-            LearnGoal.AddLearngoal(learnGoal);
-            txbFeedup_AddLearngoal.Clear();
-            Feedup_SyncLearngoals();
+            if (learngoal != "")
+            {
+                string[] attributes = cbxWeek.Text.Split(' ');
+                int weeknumber = Int32.Parse(attributes[1]);
+                LearnGoal learnGoal = new LearnGoal(CurrentStudent.ID, cbxSubject.Text, weeknumber, learngoal) { };
+                LearnGoal.AddLearngoal(learnGoal);
+                txbFeedup_AddLearngoal.Clear();
+                Feedup_SyncLearngoals();
+            }
         }
 
         private void btnNewActivity_Click(object sender, EventArgs e)
@@ -375,6 +378,10 @@ namespace FeedBUF_Casus.Forms
             txbQuestionDescription.Clear();
             lblQuestionTeacher.Text = "Teacher";
             Feedback_SyncLearngoals();
+
+            btnSubmitQuestion.Show();
+            btnUpdateQuestion.Hide();
+            txbQuestion.Clear();
         }
 
         private void cbxLearnGoal_SelectedValueChanged(object sender, EventArgs e)
