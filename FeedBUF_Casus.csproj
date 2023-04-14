@@ -56,7 +56,7 @@
     <Compile Include="Domain\Feedback.cs" />
     <Compile Include="Domain\LearnGoal.cs" />
     <Compile Include="Domain\Subject.cs" />
-    <Compile Include="Domain\User\Student.cs" />
+    <Compile Include="Domain\Student.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
